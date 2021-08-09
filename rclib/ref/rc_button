@@ -1,0 +1,128 @@
+REF rc_button                                       JLCunningham, 2002-09-04
+
+    create_rc_button(
+        x, y,
+        width, height,
+        action_spec,
+        style,
+        specs) -> button
+
+    create_rc_button(
+        x, y,
+        width, height,
+        vector_action_spec,
+        ignored,
+        specs) -> button
+
+USES
+    rclib, rc_buttons (rc_window_object)
+
+EXAMPLE
+
+    define btn_action(); [ouch]=> enddefine;
+    vars btn = create_rc_button(-100, 80, false, false,
+                            ['My button' ^btn_action], "action", false);
+
+Argument list
+
+    x, y
+        Coordinates of top-left corner of button, in the current
+        rc_window_object (see REF * rc_new_window_object).
+
+        Place words may be used (e.g. "right", "top"), see REF * placement.
+
+    width, height
+        Width and height of the button. Either or both may be false,
+        to use default values.
+
+    action_spec
+        A two element list [label action].
+
+        label
+            A string, or word, or number.
+
+        action
+
+            One of the following:
+
+            A string, which is interpreted as a VED ENTER command.
+
+            A word (the name of a procedure to be run), an ident whose
+            idval is a procedure, or a procedure itself. The procedure
+            is run when the user clicks on the button, and is called
+            without arguments.
+
+            A list, the first element is special word (see below) or a
+            procedure or the name of a procedure, the remaining elements
+            are arguments to the procedure. NB the arguments are not
+            evaluated at action time, but are passed directly to the
+            action procedure.
+
+            A vector of one element, which is a string. The string is
+            evaluated as pop11 code.
+
+        In the case that the action is a list, certain special strings may
+        occur as the first item in the list. The rest of the list ought to
+        be treated as an action, but the documentation lists a whole lot of
+        ad-hoc alternatives. In particular if the list is three or more
+        elements (including the special word) it is treated as pop11 code.
+        If it is only two elements and the second is a word or procedure,
+        that procedure is the action.
+
+            POPNOW -- this cause the button click to be processed
+            immediately, rather than waiting until poplog has processed
+            other stuff.
+
+            POP11 -- the rest of the list is pop11 code. Is this true in
+            general, I wonder? Or is it just a special case of three or
+            more elements?
+
+            Other stuff -- exists, but is not documented yet.
+
+    vector_action_spec
+        A three or four element vector {type label arg} or
+        {type label arg spec}.
+
+        The label component is the same as label in an action_spec (see
+        above).
+
+        Possible values for type are:
+
+            "action", "blob", "counter", "toggle", "invisible"
+
+        in addition the values
+
+            "option", "radio", "select"
+
+        are used internally by other rclib functions.
+
+        When the type is "action", the arg is the same as an action in
+        an action_spec (see above).
+
+        When the type is "toggle", the arg is the name of a boolean
+        variable, whose value is toggled between true and false by
+        successive clicks on the button.
+
+        The other types are not documented yet.
+
+        The spec component of a four element vector is an alternative
+        to the specs argument to create_rc_button. Whether it overrides
+        it or is additional (and which takes priority) is a mystery, but
+        I guess it overrides it (i.e. spec is interpreted after specs).
+
+    style
+        Either the word "action", the word "blob" or the word "invisible".
+
+        May be false in the case that the vector_action_spec form of
+        the function is used.
+
+        The choice affects the way the button is drawn.
+
+    ignored
+        This argument must be present but is ignored. A safe value to use
+        in this case is false.
+
+    specs
+        A featurespec or false -- see HELP * FEATURESPEC.
+
+/* end of file */
