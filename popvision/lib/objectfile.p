@@ -13,13 +13,13 @@ lconstant ARCH = sys_architecture,
     SUFFIX = '.so',
 ;
 
+lvars popvision_bin_dir = systranslate('popvisionbindir') or
+    systranslate('popsys') dir_>< '../packages/popvision/bin'
+;
+
 define procedure objectfile(name) -> obfilename;
     lvars name, obfilename;
-    unless popfilename then
-        mishap(name, 1, 'Need to be compiling named file')
-    endunless;
-    sys_fname_path(popfilename)
-        dir_>< 'bin' dir_>< ARCH dir_>< (name sys_>< SUFFIX)
+    popvision_bin_dir dir_>< ARCH dir_>< (name sys_>< SUFFIX)
         -> obfilename;
     ;;; This should really throw an exception which can be caught
     ;;; by callers which can substitute pop-11 code when an

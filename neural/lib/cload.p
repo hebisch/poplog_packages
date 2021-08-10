@@ -12,15 +12,11 @@ include sysdefs;
 lvars systype = sys_architecture;
 
 
-lvars popneural_dir =
-                        systranslate('popneural')
+lvars packages_bindir = systranslate('poppackagesbindir') or
+                        systranslate('popsys') dir_>< '../packages'
 ;
 
-unless isstring(popneural_dir) then
-    mishap(popneural_dir, 1, 'Undefined symbol: popneural');
-endunless;
-
-lvars popneural_bindir = popneural_dir dir_>< 'bin/'
+lvars popneural_bindir = packages_bindir dir_>< 'neural/bin/'
                             dir_>< systype dir_>< '/';
 
 global vars c_liblist;
@@ -33,7 +29,7 @@ printf(c_liblist, ';;; Link options: %p\n');
 ;;; specify location of shared library
 
 lvars link_file_stub =
-    sprintf(systype, '$popneural/bin/%p/%%p.so')
+    popneural_bindir dir_>< '%p.so'
 ;
 
 
