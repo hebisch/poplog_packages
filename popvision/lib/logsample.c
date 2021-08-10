@@ -155,7 +155,7 @@ Like resamp_g but using nearest data point.                                  \
 */                                                                           \
 {                                                                            \
     int     x, y, xout, yout;                                                \
-    float   rinc, r, winden, window, val,                                    \
+    float   rinc, r, winden, window,                                         \
             *cptr, *sptr, *aoutx, *aouty;                                    \
                                                                              \
     rinc = pow(rmax/rmin, 1.0/(nr - 1));                                     \
@@ -330,7 +330,7 @@ Like resamp_g but using interpolation or averaging.                          \
 */                                                                           \
 {                                                                            \
     int     xout, yout;                                                      \
-    float   x, y, rinc, r, rad, rrad, winden, window, val,                   \
+    float   x, y, rinc, r, rad, rrad, winden, window,                        \
             *cptr, *sptr, *aoutx, *aouty;                                    \
                                                                              \
     rinc = pow(rmax/rmin, 1.0/(nr - 1));                                     \
@@ -376,7 +376,7 @@ float interp_wrap(int xsize, int ysize, float *arr, int xdim,
 Like smoothval, but only interpolates and wraps round on the y-axis.
 */
 {
-    int     irad, ix, ixp1, iy, iyp1;
+    int     ix, ixp1, iy, iyp1;
     float   yrem;
 
     ix = ifloor(x);

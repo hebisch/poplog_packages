@@ -49,7 +49,7 @@ void warp_n_f (
     float       in_xstart, in_ystart, Txx, Txy, Tyx, Tyy;
 
 {
-    float   *outslow, *outslow_max, *outfast, *outfast_max, *in_pos;
+    float   *outslow, *outslow_max, *outfast, *outfast_max;
     float   xstart, ystart, x, y;
     int     xdo = out_xend - out_xstart;
     int     xint, yint;
@@ -102,7 +102,7 @@ void warp_nc_f (
     float       in_xstart, in_ystart, Txx, Txy, Tyx, Tyy;
 
 {
-    float   *outslow, *outslow_max, *outfast, *outfast_max, *in_pos;
+    float   *outslow, *outslow_max, *outfast, *outfast_max;
     float   xstart, ystart, x, y;
     int     xdo = out_xend - out_xstart;
     int     xint, yint;
@@ -289,7 +289,7 @@ void warp_lc_f (
 
 {
     float   *outslow, *outslow_max, *outfast, *outfast_max, *in_pos;
-    float   xstart, ystart, x, y, xrem, xremc, yrem, yremc, xa, xb;
+    float   xstart, ystart, x, y, xrem, xremc, yrem, yremc;
     int     xdo = out_xend - out_xstart,
             xsp1 = in_xsize + 1,
             xsm1 = in_xsize - 1,

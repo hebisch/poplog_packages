@@ -43,7 +43,7 @@ int N1 ## AM ## N2(ARGS int *mask, int *specm, TYPE *arr, int *spec) \
 {                                                                    \
     int err, off, d, nd, offm, dm, ndm,                              \
         *wk, *wp, *sps, *sp,                                         \
-        *wkm, *wpm, *spsm, *spm;                                     \
+        *wkm, *spsm, *spm;                                           \
     TYPE *arrend;                                                    \
                                                                      \
     if (                                                             \
@@ -155,7 +155,7 @@ int N1 ## AM ## N2(ARGS int *mask, int *specm,                       \
     int err, off1, d1, nd1, off2, d2, nd2, offm, dm, ndm,            \
         *wk1, *wp1, *sps1, *sp1,                                     \
         *wk2, *wp2, *sps2, *sp2,                                     \
-        *wkm, *wpm, *spsm, *spm;                                     \
+        *wkm, *spsm, *spm;                                           \
     TYPE1 *arrend;                                                   \
                                                                      \
     if (                                                             \
@@ -296,7 +296,7 @@ int N1 ## AM ## N2(ARGS int *mask, int *specm, TYPE1 *arr1, int *spec1, \
         *wk1, *wp1, *sps1, *sp1,                                     \
         *wk2, *wp2, *sps2, *sp2,                                     \
         *wk3, *wp3, *sps3, *sp3,                                     \
-        *wkm, *wpm, *spsm, *spm;                                     \
+        *wkm, *spsm, *spm;                                           \
     TYPE1 *arrend;                                                   \
                                                                      \
     if (                                                             \
@@ -515,7 +515,7 @@ int N1 ## AM ## N2(                                                  \
 {                                                                    \
     int err, i, istart, iinc, cdim, off, d, nd, offm, dm, ndm,       \
         *wk, *wp, *sps, *sp,                                         \
-        *wkm, *wpm, *spsm, *spm;                                     \
+        *wkm, *spsm, *spm;                                           \
     TYPE *arrend;                                                    \
                                                                      \
     if (err = arrscan_dimpars1(dim, spec, &istart, &iinc))           \
@@ -617,7 +617,7 @@ int N1 ## AM ## N2(int *mask, int *specm,                            \
     int err, i, ist1, iinc1, off, d, nd, offm, dm, ndm,              \
         iout = 0, nout = *noutp;                                     \
     int *wk, *wp, *sps, *sp,                                         \
-        *wkm, wpm, *spsm, *spm,                                      \
+        *wkm, *spsm, *spm,                                           \
         *istarts, *iincs, *istart, *iinc, *iend;                     \
     TYPE *arrend;                                                    \
                                                                      \

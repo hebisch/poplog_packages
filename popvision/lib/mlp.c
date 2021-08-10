@@ -778,7 +778,7 @@ static float bprop_batch(
 {
     int cpos, ncurrent, nlower, nwts, *nlowerp, *trnfn;
     float errsum,
-        *act, *actend, *actlower, *weights1, *wtchange1, *etas1;
+        *act, *actend, *actlower, *weights1, *wtchange1;
     cpos = ntunits - nout;
     activs += cpos;
     actlower = activs;
@@ -820,7 +820,7 @@ static float bprop_batch(
     return errsum;
 }
 
-static float bwtupd_batch(
+static void bwtupd_batch(
     float *biases,
     int ntunits,
     float *weights,

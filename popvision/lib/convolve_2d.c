@@ -301,12 +301,12 @@ void convolve_2d_skip_f (
                 mask_xlen   = mask_xsize - 1,
                 mask_ylen   = mask_ysize - 1,
                 in_yjump    = in_xsize * in_yskip;
-    float       sum, sclr,
+    float       sum,
                 *out_y, *out_y_max, *out_x, *out_x_max,
                 *in_y, *in_x,
                 *in_fast_x, *in_fast_y,
                 *mask_x, *mask_y,
-                *mask_x_max, *mask_y_max;
+                *mask_y_max;
 
 /* Shift now to zero-based arrays */
 in_2d = in_2d + in_offset;

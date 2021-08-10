@@ -33,6 +33,9 @@ weights   : <array double> 1-d array of all weights; ordered 1st input to
                            1st hidden unit, 2nd input to 1st hidden unit...
 */
 
+int ccheckns(int * nunits, int nlevels, int nin, int ntunits,
+             int nweights, int * clusters, int nclusters, int * clustlev);
+
 
 /* *** Add the components of a vector *** */
 
@@ -423,7 +426,7 @@ int    *clusters;
 int     nclusters;
 int    *clustlev;
 {
-  int cluster,
+  int
       ncurrent,
       ncl;
 

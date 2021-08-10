@@ -71,7 +71,7 @@ float            p255;
 {
     unsigned char   *inpoint, *inend;
     float           *outpoint;
-    float            inval, c;
+    float             c;
 
     if (p0 == 0.0 && p255 == 255.0)
 

@@ -325,10 +325,9 @@ int    nin;
 int   *ifail;
 
 {
-  int count, ncurrent, nlower, iunit, i;
+  int count, ncurrent, nlower, i;
   register int cpos, wpos, lpos;
-  double *lactivs;
-  double sum, temp, a;
+  double sum, a;
 
 /* Check the variables are consistent if required */
 

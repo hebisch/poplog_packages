@@ -162,7 +162,7 @@ Assumes data contiguous.
     int     nd2 = n/2,
             nd4 = nd2/2,
             i, j, i1, i2;
-    float   temp, t1, t2, h1r, h1i, h2r, h2i,
+    float   t1, t2, h1r, h1i, h2r, h2i,
             *datri = datrarri + rstarti,    /* zero-based arrays */
             *datro = datrarro + rstarto,
             *datio = datiarro + istarto;
@@ -239,8 +239,8 @@ already operating on half-length data.
 {
     int     nd2 = n/2,
             nd4 = nd2/2,
-            i, i1, i2, i3, i4;
-    float   temp, t1, t2, h1r, h1i, h2r, h2i,
+            i1, i2, i3, i4;
+    float   t1, t2, h1r, h1i, h2r, h2i,
             *datri = datrarri + rstarti,    /* zero-based arrays */
             *datii = datiarri + istarti,
             *datro = datrarro + rstarto;
@@ -407,8 +407,8 @@ In effect, applies fft1pow2rf to multiple columns.
     int     nd2 = n/2,
             nd4 = nd2/2,
             ppinco = p * pinco,
-            i, j, i1, i2;
-    float   temp, t1, t2, h1r, h1i, h2r, h2i,
+            i, j;
+    float   t1, t2, h1r, h1i, h2r, h2i,
             *datri = datrarri + rstarti,    /* zero-based arrays */
             *datro = datrarro + rstarto,
             *datio = datiarro + istarto,
@@ -511,8 +511,8 @@ In effect applies fft1pow2rb to each column of an array.
             nd4 = nd2/2,
             ppinci = p * pinci,
             ppinco = p * pinco,
-            i, i1, i2, i3, i4;
-    float   temp, t1, t2, h1r, h1i, h2r, h2i,
+            i1, i2, i3, i4;
+    float   t1, t2, h1r, h1i, h2r, h2i,
             *datri = datrarri + rstarti,    /* zero-based arrays */
             *datii = datiarri + istarti,
             *datro = datrarro + rstarto,

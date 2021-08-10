@@ -39,18 +39,20 @@ int         *out, n;
 
                     for (arrfastinner = arrslowinner, j = 3;
                          j && atpeak;
-                         arrfastinner++, j--)
-
+                         arrfastinner++, j--) {
                             atpeak = a >= *arrfastinner;
+                    }
 
-                if (atpeak)
+                if (atpeak) {
                     if (n) {
                         *out++ = x;
                         *out++ = y;
-                        n--; }
-                    else
+                        n--;
+                    } else {
                         return -1;
-                };
+                    }
+                }
+            }
     return n;
 }
 
@@ -64,7 +66,6 @@ int         *out;
 
 {
     float       *arrslow, *arrfast,
-                *arrslowinner, *arrfastinner,
                 amx;
     int         x, y,
                 xmx = xstart,

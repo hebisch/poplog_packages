@@ -179,7 +179,7 @@ int arrspec(int *spec, int cdopt, int ordopt,
 
     /* Check flags */
     init = flags&01;
-    if (init && (flags>>2&01 == cdopt) && (flags>>3&01 == ordopt))
+    if (init && ((flags>>2)&(01 == cdopt)) && ((flags>>3)&(01 == ordopt)))
         goto Return;    /* Nothing needed */
     firstfastest = flags&02;
 
@@ -250,22 +250,25 @@ int arrspec(int *spec, int cdopt, int ordopt,
         Copy to higher part of spec also. */
         for (i=0; i<newN; i++) {
             n = *ns++;  d = *ns++;
-            if (ordopt || cdopt)
+            if (ordopt || cdopt) {
                 while (ns <= newNp && n == 1 && newN > 1) {
                     newN--;
                     n = *ns++;  d = *ns++;
                 }
-            if (cdopt)
-                if (firstfastest)
+            }
+            if (cdopt) {
+                if (firstfastest) {
                     while (ns < newNp && n * d  == *(ns+1)) {
                         newN--;
                         n *= *ns++;  ns++;
                     }
-                else
+                } else {
                     while (ns < newNp && d == *ns * *(ns+1)) {
                         newN--;
                         n *= *ns++; d = *ns++;
                     }
+                }
+            }
             *newns++ = n;  *newns++ = d;
         }
         *newNp = newN;
@@ -277,11 +280,13 @@ int arrspec(int *spec, int cdopt, int ordopt,
         therefore OK even when array will be processed alongside others
         treated the same way. Switch on firstfastest for consistency
         between the two cases. */
-        if (ordopt)
-            if (firstfastest)
+        if (ordopt) {
+            if (firstfastest) {
                 qsort((void *)newnbase, (size_t)newN, twoints, dusort);
-            else
+            } else {
                 qsort((void *)newnbase, (size_t)newN, twoints, ddsort);
+            }
+        }
 
         /* Convert to jumps for efficient looping, put incr. before n */
         for (s=0; newnbase<newns; ) {
