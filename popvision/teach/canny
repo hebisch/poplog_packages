@@ -9,6 +9,7 @@ You need to be running POPLOG under X to display the results.
 
 Load some libraries:
 
+    uses popvision      ;;; search popvision libraries
     uses float_arrayprocs
     uses straight_hough;
     uses canny
