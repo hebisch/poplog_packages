@@ -147,7 +147,7 @@ define prb_checkpatterns(infile, oklist, outfile);
                     nextloop(1);
                 endif
             endif;
-            
+
             if isnumber(next) or not(isinheap(next)) then
                 ;;; ignore words in system
             elseif prb_action_type(next) then
@@ -160,7 +160,7 @@ define prb_checkpatterns(infile, oklist, outfile);
                 ;;; ignore
                 ;;; for debugging
                 ;;; printf(next, '\nFOUND : %P ')
-                
+
             elseunless isokword(next, oklist) then
                 if no_line_numbers then
                     true -> foundword(next);

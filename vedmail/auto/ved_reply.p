@@ -504,7 +504,7 @@ nil -> proglist;
     Altered to cope with 'wrapped' Subject line.
 --- Aaron Sloman, Feb  7 2007
     Fixed some problems with continuation lines, and dealt with missing
-    references field    
+    references field
 --- Aaron Sloman, Jan 30 2007
     Altered to insert In-Reply-To: field and References: field
     (Users who don't want them can delete them before sending.)

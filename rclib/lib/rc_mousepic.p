@@ -144,7 +144,7 @@ enddefine;
 define :method updaterof rc_coords(/*x, y,*/ pic:rc_selectable);
     -> (rc_picx(pic), rc_picy(pic))
 enddefine;
-    
+
 
 /*
 define -- Utilities and methods concerned with mouse actions
@@ -359,7 +359,7 @@ define vars apply_or_unpack(proc, obj, x, y, modifiers, /*key*/);
         endfor;
     else
         ;;; [% proc, obj, x, y, modifiers, %]=>
-        proc(obj, x, y, modifiers, if key then key endif)   
+        proc(obj, x, y, modifiers, if key then key endif)
     endif;
 enddefine;
 
@@ -379,9 +379,9 @@ define vars procedure rc_system_button_down_callback(obj, x, y, modifiers, item,
 
     ;;; [down ^obj ^x ^y]=>
     if proc then
-        apply_or_unpack(proc, obj, x, y, modifiers) 
+        apply_or_unpack(proc, obj, x, y, modifiers)
     endif;
-    
+
 enddefine;
 
 
@@ -396,7 +396,7 @@ define vars procedure rc_system_button_up_callback(obj, x, y, modifiers, item, b
     ;;; get the callback handler, and apply it to the object and coords
     lvars proc = rc_get_handler( obj, rc_button_up_handlers, button);
     ;;; [up ^obj ^x ^y]=>
-    
+
     if button == 1 then
         false -> rc_button_1_is_down;
     elseif button == 2 then
@@ -405,13 +405,13 @@ define vars procedure rc_system_button_up_callback(obj, x, y, modifiers, item, b
         false -> rc_button_3_is_down
     endif;
     if proc then
-        apply_or_unpack(proc, obj, x, y, modifiers) 
+        apply_or_unpack(proc, obj, x, y, modifiers)
     endif;
 enddefine;
 
 define vars procedure rc_system_move_callback(obj, x, y, modifiers, item, button);
     ;;; Button should always be 0 for move events
-    
+
     lvars event;
     if rc_fast_move and Events_list /== [] then
         ;;; see if the next event is a move event and if so abort
@@ -425,7 +425,7 @@ define vars procedure rc_system_move_callback(obj, x, y, modifiers, item, button
     ;;; get the callback handler, and apply it to the object and coords
     lvars proc = rc_get_handler( obj, rc_move_handler,  false /*i.e. no button*/);
     if proc then
-        apply_or_unpack(proc, obj, x, y, modifiers) 
+        apply_or_unpack(proc, obj, x, y, modifiers)
     endif;
     ;;; [move ^obj ^x ^y]=>
 enddefine;
@@ -439,13 +439,13 @@ define vars procedure rc_system_drag_callback(obj, x, y, modifiers, item, button
         if islist(fast_front(Events_list) ->> event) then
             ;;; event format (widget, item, data, proc, x, y, modifiers);
             returnif(fast_subscrl(4, event) == rc_system_drag_callback)
-            
+
         endif
     endif;
     ;;; get the callback handler, and apply it to the object and coords
     lvars proc = rc_get_handler( obj, rc_drag_handlers, button);
     if proc then
-        apply_or_unpack(proc, obj, x, y, modifiers) 
+        apply_or_unpack(proc, obj, x, y, modifiers)
     endif;
     ;;; [drag ^obj ^x ^y]=>
 enddefine;
@@ -469,7 +469,7 @@ define vars procedure rc_system_entry_callback(obj, x, y, modifiers, data, mode)
     ;;; data should be the word "mouse", mode should be 7
     lvars proc = rc_get_handler(obj, rc_entry_handler, false /*i.e. no button*/);
     if proc then
-        apply_or_unpack(proc, obj, x, y, modifiers) 
+        apply_or_unpack(proc, obj, x, y, modifiers)
     endif;
     ;;; [Entering ^obj at ^x ^y] =>
 enddefine;
@@ -479,7 +479,7 @@ define vars procedure rc_system_exit_callback(obj, x, y, modifiers, data, mode);
     ;;; data should be the word "mouse", mode should be 8
     lvars proc = rc_get_handler(obj, rc_exit_handler, false /*i.e. no button*/);
     if proc then
-        apply_or_unpack(proc, obj, x, y, modifiers) 
+        apply_or_unpack(proc, obj, x, y, modifiers)
     endif;
     ;;; [Leaving ^obj at ^x ^y] =>
 enddefine;
@@ -711,7 +711,7 @@ define constant rc_modifier_codes =
         [9 'ms'][265 'ms'][521 'ms'][1033 'ms']
         [12 'cm'][268 'cm'][524 'cm'][1036 'cm']
         [13 'cms'][269 'cms'][525 'cms'][1037 'cms']
-        ]   
+        ]
         ,32,nullstring,"perm");
 enddefine;
 
@@ -745,7 +745,7 @@ define vars procedure process_defer_list();
         dlocal cucharout = oldcucharout, cucharerr = oldcucharerr;
         oldprmishap();
     enddefine;
-    
+
     dlocal cucharout, cucharerr, prmishap;
 
     ;;; If necessary set up output to go into Ved buffer.
@@ -761,7 +761,7 @@ define vars procedure process_defer_list();
         ;;; [2. Deferred_events_list ^Deferred_events_list]=>
         ;;;'Processing deferred events' =>
         sys_grbg_destpair(Deferred_events_list) -> (event, Deferred_events_list);
-        
+
         ;;; removed this Feb 2000
         ;;; rc_reset_context(explode(rc_window_frame(rc_active_window_object)));
 
@@ -830,7 +830,7 @@ define vars procedure rc_process_event(event);
     lvars widget, item, data, procedure proc, x, y, modifiers,
         oldcurrent_win_obj = rc_current_window_object,
         newcurrent_win_obj;
-    
+
     define lconstant restore_current();
         ;;; decide whether to restore the saved rc_current_window_object
         ;;; don't do so if a new current object has been created
@@ -845,7 +845,7 @@ define vars procedure rc_process_event(event);
         ;;; [Restored ^rc_current_window_object] =>
     enddefine;
 
-    
+
     dl(event) -> (widget, item, data, proc, x, y, modifiers);
     ;;; Note, x and y are in widget coordinates, not RC coordinates
     ;;; So they need to be transformed to select relevant picture
@@ -916,7 +916,7 @@ define vars procedure rc_process_event(event);
         else
             ;;; for other event types, find whether the event is in the
             ;;; sensitive region of a picture object of the right type
-        
+
             find_selected_object_type(
                 win_obj, x, y,
                     if not(rc_transparent_objects) then
@@ -1039,7 +1039,7 @@ define vars procedure rc_process_event_queue();
 ;;;         vedcharinsert(char)
 ;;;     enddefine;
 
-    
+
     define lconstant prmishapinved();
         ;;; If errors occur, restore output
         dlocal cucharout = oldcucharout, cucharerr = oldcucharerr;
@@ -1064,7 +1064,7 @@ define vars procedure rc_process_event_queue();
         ;;; ['queue done' events ^Events_list]=>
     enduntil;
 
-    rc_sync_display();  
+    rc_sync_display();
 
     ;;; now process deferred events, outside of the context used for the
     ;;; current active window object
@@ -1120,7 +1120,7 @@ enddefine;
 
 define vars procedure rc_external_defer_apply();
     ;;; User definable version of rc_external_defer_apply
-    
+
     external_defer_apply()
 enddefine;
 
@@ -1168,7 +1168,7 @@ define vars rc_really_handle_event(w, item, data, proc);
         dlocal prmishap = oldprmishap;
         vedinterrupt();
     enddefine;
-    
+
     dlocal cucharout, cucharerr, prmishap;
 
     ;;; If necessary set up output to go into Ved buffer.
@@ -1249,7 +1249,7 @@ define vars rc_handle_event(w, item, data, proc);
         dlocal cucharout = oldcucharout, cucharerr = oldcucharerr;
         oldprmishap();
     enddefine;
-    
+
     dlocal cucharout, cucharerr, prmishap;
 
     ;;; If necessary set up output to go into Ved buffer.
@@ -1400,9 +1400,9 @@ define :method rc_resize_object(win_obj:rc_resizeable);
         ;;; [RESIZING ^win_obj] ==>
         unless in_rc_resize_object then
             true -> in_rc_resize_object;
-            
+
             XptSyncDisplay(XptDefaultDisplay);
-            
+
             ;;; this will update the widget, using current actual
             ;;; window size
             rc_window_location(win_obj) -> ( , , , );
@@ -1734,7 +1734,7 @@ nil -> proglist;
             RC_DO_MOUSE_ACTIONS
             RC_DO_KEYBOARD_ACTIONS
             rc_do_addpic_to_window
-        
+
 --- Aaron Sloman, Sep 15 2000
     added two new (part) methods:
         rc_add_pic_to_window(pic:rc_keysensitive, win_obj:rc_window_object, atfront);
@@ -1794,7 +1794,7 @@ nil -> proglist;
         define vars procedure rc_do_keyboard_actions(widget, item, data);
 
     removed the calls of external_defer_apply controlled by #_IF
-        
+
 --- Aaron Sloman, Jul  5 1999
     Used #_IF to control use of external_defer_apply, for older versions
     of Poplog.

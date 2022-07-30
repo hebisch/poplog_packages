@@ -71,7 +71,7 @@ define ved_attach();
     vedinsertstring('"');
 
     '--' sys_>< barrier -> barrier;
-    
+
     vedinsertstring('\n\nThis is a multi-part message in MIME format,\nwith an attachment below.\n\n');
 
     ;;; Start region for viewable plain text
@@ -131,7 +131,7 @@ define ved_attach();
     vedmarkhi();
     vedpositionpop();
 enddefine;
-    
+
 endsection;
 
 /* --- Revision History ---------------------------------------------------

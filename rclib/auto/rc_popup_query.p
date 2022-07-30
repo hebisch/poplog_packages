@@ -106,7 +106,7 @@ define :method rc_rcbutton_1_down(pic:rc_select_button, x, y, modifiers);
 enddefine;
 
 global vars rc_selected_label = false;
-    
+
 define :method rc_rcbutton_1_up(pic:rc_select_button, x, y, modifiers);
     lvars oldwin = rc_window, wasdifferent = false;
 
@@ -114,7 +114,7 @@ define :method rc_rcbutton_1_up(pic:rc_select_button, x, y, modifiers);
         ;;; Make sure button is redrawn even if there's an error
         ;;; fix appearance if still on old window
         if rc_window == oldwin and pic then
-            
+
             rc_setframe_draw_border(pic, rc_button_bordercolour(pic));
             ;;; used in rc_popup_query
             unless wasdifferent then rc_hide_menu(); endunless;
@@ -122,7 +122,7 @@ define :method rc_rcbutton_1_up(pic:rc_select_button, x, y, modifiers);
         false -> rc_selected_action_button;
         ;;; rc_button_label(pic) -> rc_selected_label;
     enddefine;
-    
+
 
     dlocal 0 %, if dlocal_context < 3 then exit_action() endif%;
 
@@ -249,7 +249,7 @@ define rc_popup_query(x,y, strings, answers, centre, columns, buttonW, buttonH, 
 
         buttonoffset    ;;; indentation of buttons
             = if columnswidth < picW then (picW - columnswidth) div 2 else 0 endif,
-        
+
         depth           ;;; vertical space required
             =
             stringH*length(strings) + rows*buttonH

@@ -60,7 +60,7 @@ enddefine;
 define freepointvec(vec);
     ;;; restore vec to the free set if it is not too long.
     lvars vec, len = datalength(vec);
-    
+
     if len fi_<= max_reusable_vector then
         ;;; store the vector for re-use.
         ;;; First get new pair, in case creating it causes a garbage

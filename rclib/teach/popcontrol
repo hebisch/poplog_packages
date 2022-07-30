@@ -233,7 +233,7 @@ rc_control_panel("right", "top",
             ;;; {slidercol 'grey91'}
             {margin 0} {align left} {offset 30} :
             ;;; associated selection with variable "selected_text"
-            
+
                 {%
                     applist(
                         pdtolist(

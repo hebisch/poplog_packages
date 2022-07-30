@@ -147,7 +147,7 @@ define rc_pythagoras(a, b, delay);
 
         win = rc_new_window_object("right", "top", picwidth, picheight,
                     {0 ^y_orig 1 -1}, 'Pythag');
-    
+
     lvars
         ;;; colours for the triangles and squares
         col1 = 'red',
@@ -168,7 +168,7 @@ define rc_pythagoras(a, b, delay);
     ;;; draw the basic triangle
     draw_filled_outlined(triangle1, col1);
     sleep_delay(delay * 2);
-    
+
     rc_print_at(5, a+b+70, 'A TRIANGLE');
     sleep_delay(delay * 4);
 
@@ -250,7 +250,7 @@ define rc_pythagoras(a, b, delay);
         sleep_delay(delay);
         draw_three(squarea, squareb, squarec, 'black');
     endrepeat;
-    
+
     draw_filled_outlined(squareb, 'white');
     draw_filled_outlined(newsquareb, col5);
     repeat 5 times
@@ -268,7 +268,7 @@ define rc_pythagoras(a, b, delay);
 
 
     rc_draw_filled_rect(5, a+b+90, picwidth, 65 , "background");
-    
+
 
     'lucidasans-bold-14' -> rc_font(rc_window);
     rc_print_at(5, a+b+70, 'It also works for triangles of different shapes!');
@@ -285,7 +285,7 @@ define rc_pythagoras(a, b, delay);
 
     ;;; change drawing mode to over-write rather than use xor
     dlocal Glinefunction = GXcopy;
-    
+
     lvars
         (Triangle1, Newtriangle1,
         Triangle2, Newtriangle2,
@@ -332,12 +332,12 @@ printf('\nPlease use lengths that add up to under 200, e.g.\nrc_pythagoras(90, 1
 endsection;
 
 /* --- Revision History ---------------------------------------------------
-        
+
 --- Aaron Sloman, Feb  1 2003
         Introduced sleep_delay, to make it easier to do rapid testing
         Fixed rc_transform_filled(poly1, poly2, col) to get final
         colour of new triangle right.
-        Added some extra printing for the demo.     
+        Added some extra printing for the demo.
 --- Aaron Sloman, 7 Sep 2001
     Added new delays
 --- Aaron Sloman, Nov 28 2000

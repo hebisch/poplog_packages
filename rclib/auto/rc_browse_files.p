@@ -182,7 +182,7 @@ enddefine;
 /* --- Revision History ---------------------------------------------------
 --- Aaron Sloman, Aug 26 2002
     replaced rc_informant_contents with rc_informant_value
-        
+
 --- Aaron Sloman, Jul 22 2000
     Introduced rc_browser_button_width_def, and used rc_defaults
     If an action name that is typed in begins with 'ved_' the file is

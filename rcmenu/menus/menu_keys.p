@@ -87,7 +87,7 @@ define :menu keys;
     ['PageDown' [POPNOW vednextscreen()]]
     ['HalfUp' [POPNOW menu_do_scroll(-1, "vert")]]
     ['HalfDown' [POPNOW menu_do_scroll(1, "vert")]]
-    ['Help Keys' 'help vedncdxtermkeys']    
+    ['Help Keys' 'help vedncdxtermkeys']
     ;;; ['Help Sun4Keys' 'help vedsunxtermkeys']
     ['HELP vedkeys' 'help vedkeys']
     ['HELP DefKey' 'help DK']

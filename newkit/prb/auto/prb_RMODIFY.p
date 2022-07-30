@@ -38,7 +38,7 @@ define copy_rmodify(modlist, list) -> list;
                     quitloop()
                 endif;
                 fast_destpair(list) -> (oldval, list);
-                
+
                 if prb_assoc(key, modlist) ->> value then
                     value,
                     ;;; replaces next element

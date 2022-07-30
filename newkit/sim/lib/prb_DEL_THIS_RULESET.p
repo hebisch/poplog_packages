@@ -2,7 +2,7 @@
  > File:            $poplocal/local/sim/lib/prb_DEL_THIS_RULESET.p
  > Purpose:         Define action for deleting current ruleset
  > Author:          Aaron Sloman, Feb 18 1998
- > Documentation:   
+ > Documentation:
  > Related Files:
  */
 

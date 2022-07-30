@@ -195,7 +195,7 @@ define lconstant markmime_field();
         enduntil;
     endif;
 
-/*  
+/*
     if vedline <= vvedmarklo then
         vederror('Second boundary string not found '>< boundary_string);
     endif;
@@ -340,7 +340,7 @@ define get_field(field_string) -> found;
     ;;; lower case to simplify matching.
     while vedline < vvedmarkhi do
         uppertolower(vedthisline()) -> string;
-        
+
         if isstartstring(field_string, string) then
             ;;; Found the field, return stuff to right
             ;;;allbutfirst(field_len, string) -> found;
@@ -424,7 +424,7 @@ define lconstant remove_quotes(string) -> string;
                     unless char == `\`` or char == `'` then char endunless;
                 endfor
                 |#) -> string
-    endif   
+    endif
 enddefine;
 
 define get_name(content_type, content_disposition) -> name;
@@ -443,7 +443,7 @@ define get_name(content_type, content_disposition) -> name;
         then
         ;;; get name
         allbutfirst(loc+len1-1, content_type) -> name;
-            
+
     elseif content_disposition and issubstring(namestring2, content_disposition)->>loc then
         allbutfirst(loc+len2-1, content_disposition) -> name;
     endif;
@@ -458,7 +458,7 @@ define get_name(content_type, content_disposition) -> name;
 
         remove_quotes(name) -> name;
         ;;; Veddebug('Name minus quotes  ' >< name);
-    
+
         ;;; replace spaces with hyphens
         lvars loc, foundspace = false;
         while (strmember(`\s`, name) ->> loc) do
@@ -840,7 +840,7 @@ define ved_decode();
         lynx_path = sys_search_unix_path('lynx',systranslate('PATH')),
         DISPLAY = systranslate('DISPLAY'),
         ;
-        
+
     if vedargument /= nullstring and Isstartstring(vedargument, 'doc') then
         ;;; invoked as "ENTER decode doc"
         ;;; decode doc file to right of cursor
@@ -849,7 +849,7 @@ define ved_decode();
         veddo(lhalw_command >< ' \'^f\'');
         return;
     endif;
-    
+
     ;;; Veddebug('savedir '>< savedir);
 
     if member(savedir, ['/var/mail/' '/var/spool/mail/' '/usr/spool/mail/']) then
@@ -1063,7 +1063,7 @@ define ved_decode();
         ;;; empty type works OK
         ;;; see if it is necessary to add a suffix.
         lvars suff = uppertolower(sys_fname_extn(savedfile));
-    
+
         savedfile >< saved_file_type-> savedfile;
     endif;
     if quoted_printable then savedfile<>'-qp' -> savedfile endif;
@@ -1091,7 +1091,7 @@ define ved_decode();
 
     ;;; Decide whether and how to decode it
     if mimencoded then
-    
+
         if file_name then savedir dir_>< file_name
         else savedpath >< filetype
         endif -> decodedfile;
@@ -1283,7 +1283,7 @@ define ved_decode();
     unless deleteasked then
         delete_coded(mailfile);
     endunless;
-    
+
 
     lvars
         DISPLAY = systranslate('DISPLAY'),
@@ -1342,7 +1342,7 @@ endsection;
     Moved latex type to later, in case it clashes with something
     like Zip type.
 --- Aaron Sloman, Nov 23 2006
-    Altered find_file_type to keep '.txt' for files that already    
+    Altered find_file_type to keep '.txt' for files that already
     have that.
 
     Replaced

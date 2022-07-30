@@ -25,7 +25,7 @@ global constant prb_readline_orig = prb_readline;
 define vars prb_readline();
     lvars item, list;
     dlocal popprompt = pop_readline_prompt, popnewline, proglist;
-    
+
     define lconstant repeater();
         ;;; special character repeater to suppress string quotes
         ;;; and null characters (needed?)

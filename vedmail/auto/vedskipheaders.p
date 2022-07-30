@@ -13,7 +13,7 @@ define vars procedure vedskipheaders();
     lvars string, line = vedline, len;
     ;;; go down mail file till an interesting line is found.
 
-    vedchardown();  
+    vedchardown();
     repeat
         vedthisline() -> string;
         datalength(string) -> len;

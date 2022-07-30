@@ -121,7 +121,7 @@ define :rc_defaults;
     rc_buttons_pressedcolour_def = rc_button_pressedcolour_def;
     rc_buttons_field_borderwidth_def = rc_button_border_def;
     rc_field_override_specs_def = [];
-enddefine;  
+enddefine;
 
 global vars
     ;;; Use two defaults from LIB * RC_BUTTONS
@@ -168,7 +168,7 @@ define -- mixin for fields containing text, buttons, etc
 define :mixin vars rc_panel_field;
     slot rc_field_x == undef;
     slot rc_field_y == undef;
-    slot rc_field_label == consundef("rc_field_label"); 
+    slot rc_field_label == consundef("rc_field_label");
     slot rc_field_ident == false; ;;; for classes with rc_informant_ident
     slot rc_field_gap = rc_field_gap_def;
     slot rc_field_offset = rc_field_offset_def;
@@ -432,7 +432,7 @@ define :method rc_draw_graphic_field(field:rc_graphic_field, x, y, aligned, widt
         ;;; oldxstart + x_offset -> rc_xorigin;
         ;;; 0 -> rc_yorigin;
     endif;
-    
+
 
     dlocal %rc_foreground(rc_window)% = fg;
 
@@ -540,7 +540,7 @@ define :method print_instance(f:rc_panel_field);
         [%class_dataword(datakey(f)),
             rc_field_coords(f),
             if isundef(label) then 'nolabel' else label endif,
-            if isrc_window_object(container) then           
+            if isrc_window_object(container) then
                     rc_window_title(container)
             else container
             endif%]);
@@ -924,7 +924,7 @@ global vars rc_control_panel_keyspec =
         ]
         ;;; Specify keys usable in ALL fields
         ;;; (some may actually be meaningless for some fields.)
-        [[] 
+        [[]
             ;;; Set a label for the field which can be used to access
             ;;; the field later
             {[label fieldlabel] rc_field_label}
@@ -1172,7 +1172,7 @@ define getscrolltext_details(field, list) -> (text_w, text_h, cols, rows);
 
         1 + cols*font_w + font_w div 2 + 3*(slider_w + slider_frame_w)
                     ->> text_w  -> rc_text_w(field);
-    
+
 enddefine;
 
 define multiscroll_text_field_instance(list, type) -> field;
@@ -1188,7 +1188,7 @@ define multiscroll_text_field_instance(list, type) -> field;
 
     rc_field_rows(field) -> rc_scroll_text_numrows(field);
     rc_field_cols(field) -> rc_scroll_text_numcols(field);
-    
+
     lvars
         offset = rc_field_offset(field),
         spacing = rc_field_spacing(field),
@@ -1270,7 +1270,7 @@ define multitextin_field_instance(list, type) -> field;
     ;;; multinumber input field, create an instance  of the field and
     ;;;  store relevant values in its slots, for use when the panel
     ;;; instances are created
-    
+
     check_has_colon(list) -> ;
 
     newrc_multitextin_field() -> field;
@@ -1292,7 +1292,7 @@ define multitextin_field_instance(list, type) -> field;
     ;;; list is now a list of text/number input panel field_specs.
 
     ;;; go through finding out lengths of labels
-    
+
     lvars
         font = rc_field_font(field),
         labelfont = rc_field_labelfont(field),
@@ -1335,7 +1335,7 @@ define multitextin_field_instance(list, type) -> field;
         font_h = max(l_font_h+6, max(s_font_h+6, rc_textfield_height(field)));
 
         font_h ->> rc_font_h(field) -> rc_textfield_height(field);
-    
+
     ;;; [l_width ^l_width    s_width ^s_width] =>
     ;;; adjust width and height of the field, ensuring that
     ;;; font height can be accommodated
@@ -1736,7 +1736,7 @@ define :method rc_redraw_panel(panel:rc_panel);
 
             [] -> panel_objects;
         endunless;
-            
+
         for field in rc_panel_fields(panel) do
             ;;; Re-set global variable for use in field code
 
@@ -1772,7 +1772,7 @@ define :method rc_redraw_panel(panel:rc_panel);
             ;;; See if a feature spec has been provided, to override
             ;;; default slot values. See HELP * FEATURESPEC
             ;;; translate abbreviations here
-                newspecs = rc_translate_panel_spec(rc_field_override_specs(field)), 
+                newspecs = rc_translate_panel_spec(rc_field_override_specs(field)),
                 contents = rc_field_contents(field),
                 ;
 
@@ -1960,7 +1960,7 @@ define :method rc_redraw_panel(panel:rc_panel);
                 ;;; MULTITEXTIN or MULTINNUMBERIN
                 ;;; this must come BEFORE isrc_text_field, and before
                 ;;; isrc_textin_field as it is a subclass of both
-                
+
                 procedure();
                     dlocal
                         rc_text_input_bg_def = rc_field_bg(field),
@@ -1991,7 +1991,7 @@ define :method rc_redraw_panel(panel:rc_panel);
                                 label = hd(item),
                                 contents = back(item),
                                 textin;
-                            
+
 
                             define lconstant fix_textin_panel(textin) -> textin;
                                 ;;; create textin or numberin field.
@@ -2029,7 +2029,7 @@ define :method rc_redraw_panel(panel:rc_panel);
                 ;;; TEXTIN or NUMBERIN
                 ;;; left in for backward compatibility
                 ;;; this must come BEFORE isrc_text_field, as it is a subclass
-                
+
                 procedure();
                     dlocal
                         rc_text_input_bg_def = rc_field_bg(field),
@@ -2076,7 +2076,7 @@ define :method rc_redraw_panel(panel:rc_panel);
                         rc_field_font(field),
                         make_field) -> rc_field_contents(field);
                     ;;;constructor) -> rc_field_contents(field);
-                    
+
                 endprocedure();
 
             elseif isrc_text_field(field) then
@@ -2115,7 +2115,7 @@ define :method rc_redraw_panel(panel:rc_panel);
                     y_offset = margin + (barframewidth -2.0*radius)/rc_yscale,
                     wid,
                     contents = rc_field_contents(field);
-                
+
                 if contents == [] then
                     ;;; sliders not yet created
                     [%
@@ -2298,7 +2298,7 @@ define :method rc_redraw_panel(panel:rc_panel);
                 endlblock;
             elseif isrc_graphic_field(field) then
                 ;;; ignore margin?
-                
+
                 max(abs(new_window_w*rc_xscale), abs(field_w*rc_xscale))
                     ->> field_w -> rc_field_width(field);
 
@@ -2329,7 +2329,7 @@ define :method rc_redraw_panel(panel:rc_panel);
                         field_specs,
                         buttontype,
                         [%newspecs,
-                            
+
                             {%
                                 lvars
                                     chosenbg = false,
@@ -2413,7 +2413,7 @@ define :method rc_redraw_panel(panel:rc_panel);
 enddefine;
 
 define :method rc_redraw_window_object(panel:rc_panel);
-    
+
     XpwClearWindow(rc_widget(panel));
     rc_redraw_panel(panel);
 
@@ -2537,7 +2537,7 @@ define global vars rc_control_panel(x, y, fields, title) -> panel;
     window_h -> rc_panel_height(panel);
 
     rc_sync_display();
-    ;;; rc_current_window_object=>  
+    ;;; rc_current_window_object=>
 
     if events then
         rc_mousepic(rc_current_panel, events)
@@ -2546,7 +2546,7 @@ define global vars rc_control_panel(x, y, fields, title) -> panel;
         rc_mousepic(rc_current_panel)
     endif;
 
-    ;;; rc_current_window_object=>  
+    ;;; rc_current_window_object=>
     rc_sync_display();
 
     if panel_offset then
@@ -2570,7 +2570,7 @@ define global vars rc_control_panel(x, y, fields, title) -> panel;
     rc_redraw_panel(panel);
 
     if resizable then rc_set_resize_handler(panel) endif;
-    
+
 enddefine;
 
 endsection;
@@ -2700,7 +2700,7 @@ define -- Revisions
 
 --- Jul 28 2002
     made the main mixin and class use "vars"
-        
+
 
 --- 27 Jul 2002
 
@@ -2851,7 +2851,7 @@ define -- Revisions
 --- Aaron Sloman, Apr  3 1999
     Allowed "default" and value of ident variable to set defaults for
     radio and someof buttons, using rc_set_button_defaults
-    
+
 --- Aaron Sloman, Mar 30 1999
     Made to set ident field for someof and radio buttons.
     Used rc_reactor_depth to prevent reactors running while panels

@@ -30,7 +30,7 @@ lvars
 
 define global procedure ved_menu_grep();
     ;;; Use lconstant so that the same widget is always used.
-    
+
     lconstant
         title = 'Search files',
         tellstrings =
@@ -49,7 +49,7 @@ define global procedure ved_menu_grep();
 
 
     define do_search();
-    
+
         lvars
             field1 = rc_fieldcontents_of(rc_active_window_object, "text1"),
             field2 = rc_fieldcontents_of(rc_active_window_object, "text2"),
@@ -80,7 +80,7 @@ define global procedure ved_menu_grep();
             endif;
             vedrefreshstatus();
         enddefine;
-        
+
         if vedusewindows == "x" then
             ;;; running this directly causes a crash
             vedinput(sub_search);

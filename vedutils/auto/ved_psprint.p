@@ -77,7 +77,7 @@ endunless;
 
 
     '-P' -> pop_printer_flag;
-    
+
     unless isstring(pop_default_printer) then
         systranslate('PRINTER')  -> pop_default_printer
     endunless;
@@ -232,7 +232,7 @@ define ved_do_print(marked_range);
         if issubstring('-nH', args) or issubstring('-nh', args) then
             vederror('Use "B" for no header on Linux')
         endif
-            
+
     elseif issubstring('-nH', args) then
             vederror('Use "-nh" for no header on DEC Alphas')
     endif;
@@ -255,7 +255,7 @@ define ved_do_print(marked_range);
 
     if marked_range then
 
-        lvars char, size = vvedmarkhi - vvedmarklo;     
+        lvars char, size = vvedmarkhi - vvedmarklo;
 
         if isinteger(pop_check_long_file)
         and size > pop_check_long_file
@@ -285,7 +285,7 @@ define ved_do_print(marked_range);
         ;;; Veddebug('written to ' >< outfile);
 
     else
-        lvars char;     
+        lvars char;
         if isinteger(pop_check_long_file)
         and vvedbuffersize > pop_check_long_file
         then

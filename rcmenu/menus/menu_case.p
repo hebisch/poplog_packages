@@ -29,7 +29,7 @@ define :menu case;
     ['WdEnd' vedendwordright]
     ['NextLine' vednextline]
     ['PrevLine' vedcharup]
-    
+
 ;;; [ChangeRange ved_ccr]   ;;; not in library
     ['MENUS...' [MENU toplevel]]
 enddefine;

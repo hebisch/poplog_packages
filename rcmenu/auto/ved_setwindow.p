@@ -39,7 +39,7 @@ define ved_setwindow();
         ;;; Initialize it
         conspair(0, vedscreenlength) ->> size_info -> file_prop();
     endif;
-    
+
     destpair(size_info) -> (index, oldsize);
 
     (index mod datalength(ved_set_win_multipliers)) -> index;

@@ -570,7 +570,7 @@ define lconstant RC_add_pic_to_container(pic, win_obj, moving);
     ;;; moving is a boolean, true for movable objects
     lvars
         oldwins = rc_pic_containers(pic);
-    
+
     unless lmember(win_obj, oldwins) then
         if moving then
             ;;; first undraw everywhere in existing containers

@@ -60,7 +60,7 @@ define global ved_mems;
             printf(if vedwriteable then "true" else "false" endif,
                     vedline,pathname,'%p\n%p\n%p\n');
             endprocedure);
-        
+
     cucharout(termin);
 enddefine;
 

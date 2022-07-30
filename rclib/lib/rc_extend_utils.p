@@ -7,7 +7,7 @@
  */
 
 uses rclib
-uses rc_apply_util  
+uses rc_apply_util
 
 ;;; the above defines the syntax word rc_extend_utils
 

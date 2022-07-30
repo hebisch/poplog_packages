@@ -148,7 +148,7 @@ define menu_go();
         {cols 1}                ;;; orientation vertical, single column
                                 ;;; try {cols 2}
         'Change the\nfunction'
-        
+
         ;;; Now button definitions. Use POPNOW for instant action.
         ['STARTUP' startup]
         ['SLOWER' [POP11 do_delay_delay + 1 -> do_delay_delay]]

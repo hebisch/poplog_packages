@@ -19,7 +19,7 @@ define :menu toplevel;
     'Toplevel'
     menu_toplevel_location
     {cols 1}
-    
+
      'Toplevel'
     ['TUTOR' 'teach quickved']
     ['ExitAll' 'qq']

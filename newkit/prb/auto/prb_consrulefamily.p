@@ -40,7 +40,7 @@ Format for list of rulesets (2nd argument):
             ruleset, usually a list of rules.
         A list of rules should start with a word with which the rules
             are to be associated.
-            
+
 */
 
 compile_mode :pop11 +strict;

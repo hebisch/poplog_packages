@@ -40,9 +40,9 @@ used to train networks. The following are options are available:
 See HELP *EXAMPLESETSMENU for more information.
 
 
--- 'Networks ...' -----------------------------------------------------      
+-- 'Networks ...' -----------------------------------------------------
 
-Selecting the 'Networks ...' option will take you to the Network Menu.                     
+Selecting the 'Networks ...' option will take you to the Network Menu.
 This menu has the following options on it:
 
     New             - create a new network
@@ -67,7 +67,7 @@ options:
     New             - create a new datatype
     Display         - display an existing datatype
     Edit            - edit a datatype definition
-    Delete          - delete a datatype        
+    Delete          - delete a datatype
     Set Current     - define which datatype is currently of most interest
     List All        - display a list of all currently defined datatypes
     Load            - load one or more datatypes from disk

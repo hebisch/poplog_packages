@@ -24,5 +24,5 @@ define prb_add_list_to_db(list, dbtable);
         conspair(item, dbtable(key)) -> dbtable(key);
     endfor
 enddefine;
-    
+
 endsection;

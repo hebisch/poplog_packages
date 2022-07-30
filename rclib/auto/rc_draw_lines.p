@@ -99,7 +99,7 @@ define lconstant rc_draw_coords(coords, colour, widthOrShape, mode, closed, proc
         ;;; NB rc_transxyout rounds, so only integers are returned.
         ;;; in principle they should be short (16 bit), but may not be!
         ;;; If so a mishap will occur.
-        rc_transxyout(  
+        rc_transxyout(
             fast_subscrv(1, vec),
             fast_subscrv(2, vec))
             -> ( fast_subscrv(1, vec),
@@ -111,7 +111,7 @@ define lconstant rc_draw_coords(coords, colour, widthOrShape, mode, closed, proc
         3 -> index;
 
         until index fi_> len do
-            rc_transxyout(  
+            rc_transxyout(
                 fast_subscrv(index, vec),
                 fast_subscrv(index fi_+ 1, vec))
                     -> ( fast_subscrv(index, vec),
@@ -140,7 +140,7 @@ define lconstant rc_draw_coords(coords, colour, widthOrShape, mode, closed, proc
         ;;; CoordModeOrigin
         ;;; transform all the coordinates relative to the current origin
         until index fi_> len do
-            rc_transxyout(  
+            rc_transxyout(
                 fast_subscrv(index, vec),
                 fast_subscrv(index fi_+ 1, vec))
                     -> ( fast_subscrv(index, vec),
@@ -185,7 +185,7 @@ define lconstant rc_draw_coords(coords, colour, widthOrShape, mode, closed, proc
 
     ;;; Return vec to freelist.
     unless vec == coords then freepointvec(vec); endunless;
-    
+
 enddefine;
 
 

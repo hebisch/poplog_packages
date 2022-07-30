@@ -179,7 +179,7 @@ define menu_create_menu(word, menu_list);
     unless coords then menu_default_location -> coords endunless;
 
     lvars description = false ;
-        
+
     if isstring(hd(list)) then
         ;;; Starts with a string
         ;;; Build up description list by collecting initial strings
@@ -334,7 +334,7 @@ define menu_new_menu(menu_name, reload);
     lvars
         old_win_obj = rc_current_window_object,
         associated_obj = rc_window_object_of(rc_window);
-    
+
     dlocal
         rc_xorigin, rc_yorigin, rc_xscale, rc_yscale, rc_window,
         rc_window_xsize, rc_window_ysize, rc_window_x, rc_window_y,

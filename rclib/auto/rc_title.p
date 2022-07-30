@@ -43,9 +43,9 @@ define updaterof rc_title(string, window);
             ->> XptValue(XtParent(window), XtN title, TYPESPEC(:XptString))
             ->> XptValue(XtParent(window), XtN iconName, TYPESPEC(:XptString))
         -> old_title;
-        
+
         window -> old_window
-    endif       
+    endif
 enddefine;
 
 endsection;

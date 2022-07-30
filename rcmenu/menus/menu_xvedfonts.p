@@ -2,7 +2,7 @@
  > Purpose:         Easy font changes, and related activities
  > File:            $poplocal/local/menu/menus/menu_xvedfonts.p
  > Author:          Aaron Sloman, Oct  1 1998
- > Documentation:   
+ > Documentation:
  > Related Files:   HELP * VED_WINDOW, REF * XVED
  */
 

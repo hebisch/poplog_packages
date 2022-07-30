@@ -51,7 +51,7 @@ define async_interpret_action(action);
             mishap('UNRECOGNIZED TYPE OF MENU ACTION', [^action])
         endif;
     enddefine;
-    
+
     rc_handle_vedwarpcontext(action, rc_active_window_object, do_action);
 enddefine;
 

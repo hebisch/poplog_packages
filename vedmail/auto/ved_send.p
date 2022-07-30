@@ -147,7 +147,7 @@ define lconstant parse_string(str) -> stringlist;
             quitloop()
         endunless;
     endfor;
-    
+
     [%
         if ved_send_new_format then
             sys_parse_string(str, `,`);
@@ -211,7 +211,7 @@ define lconstant full_email_name(alias) -> alias;
         else
             mishap('NON-EMPTY ALIAS EXPECTED', [^alias])
         endif;
-    
+
         lvars username = sysgetusername(alias);
         if username then
             username <> ' <' <> alias <> popsitename <> '>'
@@ -273,7 +273,7 @@ define lconstant checkentry(name, alias);
     else
         expand_local_address(name, alias);
     endif;
-    
+
 enddefine;
 
 
@@ -384,7 +384,7 @@ define lconstant check_aliases(line) -> line;
 
     ;;; prepare translated version
     lvars strings = parse_string(line);
-    
+
     consstring(#|
         fast_for name in strings do
             if aliases(name) ->> alias then
@@ -561,7 +561,7 @@ mail_names() =>
 
 define lconstant mail_names() -> (fullname, emailname, fromname);
     ;;; Using popusername (the login name) try to get the user's full name,
-    ;;; the email address (login name plus site name) and a full name   
+    ;;; the email address (login name plus site name) and a full name
     ;;; to use in From: line in form "Aaaa Bbbbb <xxx@yyy.zzz.ac.uk>"
 
     sysgetusername(popusername) -> fullname;
@@ -576,7 +576,7 @@ define lconstant mail_names() -> (fullname, emailname, fromname);
         fullname sys_>< ' <' sys_>< emailname sys_>< '>'
     else emailname
     endif -> fromname;
-    
+
 enddefine;
 
 

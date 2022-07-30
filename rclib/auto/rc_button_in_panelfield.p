@@ -14,7 +14,7 @@ uses rc_buttons
 uses rc_control_panel
 
 define rc_button_in_panelfield(label, fieldlabel, panel) -> button;
-    
+
     rc_button_with_label(label, rc_fieldcontents_of(panel, fieldlabel)) -> button
 
 enddefine;

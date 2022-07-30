@@ -195,7 +195,7 @@ enddefine;
 
 define lconstant gn_update_newsrc(group_string, last_num);
     lvars group_string, last_num, string, num, file;
-    
+
     dlocal ved_current_file, vedediting;
     get_newsrc_file();
     vedscreengraphoff();
@@ -269,7 +269,7 @@ define lconstant gn_try_close(dev);
     ;;; used with gn_indev or gn_outdev, to close (and flush if necessary)
     lvars dev;
     if isdevice(dev) and not(isclosed(dev, false)) then
-        
+
         define dlocal prmishap();
             ;;; ignore mishaps here
             erasenum(2);
@@ -367,7 +367,7 @@ define global procedure gn_repeater() -> (string, len);
     if iscaller(gn_retry_communicate) then
     ;;;;veddebug('waiting to read, in retry');
     endif;
-    
+
     ;;; set timeout for reading
     false -> gn_timed_out;
     gn_timeout_secs * 1e6 -> sys_timer(gn_timeout);
@@ -792,7 +792,7 @@ define lconstant gn_create_buffer(suffix, break, indent, vector, mess1, mess2);
     vedusedsize(vedbuffer) -> vvedbuffersize;
     vedbufferextend();  ;;; may not be necessary
     vedtopfile();
-    
+
     if mess2 then
         vedtopfile();
         vedlineabove();
@@ -1483,7 +1483,7 @@ define gn_sendnews();
     vededit('gn_send_messages_received', vedhelpdefaults);
     vedendfile();
     vedinsertstring('\nMESSAGES FROM NEWS SERVER\n');
-        
+
     lvars string;
     for string in rev(gn_messages) do
         vedlinebelow();
@@ -1532,7 +1532,7 @@ define global procedure ved_gn;
     dlocal
         gn_retries,             ;;; counter incremented in gn_retry_communicate
         gn_timeout_ok = true;   ;;; used to test context
-    
+
     define dlocal interrupt();
         ;;; after interrupts socket connection has to be reset
         dlocal interrupt = oldinterrupt;    ;;; allow only one interrupt

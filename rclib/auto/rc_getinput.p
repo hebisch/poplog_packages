@@ -46,14 +46,14 @@ uses rc_popup_panel
 global vars
     rc_default_textin_width = 300,
     rc_default_numberin_width = 100;
-    
+
 
 define rc_getinput(x, y, strings, prompt, specs, title) -> result;
 
     lvars container = false, len = stacklength();
 
     ARGS x, y, strings, prompt, specs, title, &OPTIONAL container:isrc_window_object;
-    
+
     lvars type = if isstring(prompt) then "TEXTIN" else "NUMBERIN" endif;
 
     lvars width = if type == "TEXTIN" then rc_default_textin_width

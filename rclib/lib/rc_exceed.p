@@ -16,7 +16,7 @@ rc_setup_linefunction();
 ;;; This is now handled by rc_setup_linefunction
 
 GXequiv -> Glinefunction;
-rc_xor_drawpic -> Gdrawprocedure;   
+rc_xor_drawpic -> Gdrawprocedure;
 */
 
 ;;; for uses

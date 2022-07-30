@@ -49,7 +49,7 @@ define lconstant do_subs();
         consolidate_or_activate(replacefield)
     endif;
 
-    ;;; Now get the options from the SOMEOF and RADIO buttons       
+    ;;; Now get the options from the SOMEOF and RADIO buttons
     [%
         if member('CaseLess', search_options) then "nocase"
             else false -> caseless endif,

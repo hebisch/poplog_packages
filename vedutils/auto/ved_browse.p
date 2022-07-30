@@ -18,7 +18,7 @@ lconstant dir_lists =
         [mlteach [ '$poplocal/local/pml/teach/' '$usepop/pop/pml/teach/']]
         [mllib ['$poplocal/local/pml/lib/' '$usepop/pop/pml/lib/']]
         [mlsrc [ '$usepop/pop/pml/src/' ]]
-;;; LISP        
+;;; LISP
         [lisphelp
             ['$poplocal/local/lisp/help/' '$usepop/pop/lisp/help/' ]]
         [lispref ['$usepop/pop/lisp/ref/' ]]
@@ -26,7 +26,7 @@ lconstant dir_lists =
         [lispteach ['$poplocal/local/lisp/teach/']]
         [lisplib
             ['$poplocal/local/lisp/modules/' '$usepop/pop/lisp/modules/']]
-;;; PROLOG      
+;;; PROLOG
         [prologhelp
             ['$poplocal/local/plog/help/' '$usepop/pop/plog/help/' ]]
         [prologteach
@@ -90,7 +90,7 @@ global vars
 
 #_ELSEIF issubstring('hp', hd(sys_machine_type))
     ;;; Running HP-UX
-    
+
     global vars browse_ls_command = '/bin/ls -xL';
 
 #_ELSE
@@ -302,5 +302,5 @@ define global ved_browse();
         browse_make_index()
     endif
 enddefine;
-    
+
 endsection;

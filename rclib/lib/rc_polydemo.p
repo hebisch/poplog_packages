@@ -182,7 +182,7 @@ define lconstant polyreadline(popprompt) -> list;
         procedure rep = incharitem(charin);     ;;; item repeater
 
     dlocal popnewline = true, popprompt;
-    
+
     ;;; Make a list items to next newline
     [% until (rep() ->> item) == newline do item enduntil %] -> list;
 

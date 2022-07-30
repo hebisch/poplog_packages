@@ -117,7 +117,7 @@ define panel_reactor(pic, val);
     vedendfile();
     dlocal cucharout = vedcharinsert;
     0 -> pop_charout_col;
-    
+
     [Reacting ^pic ^val]=>
 enddefine;
 
@@ -701,7 +701,7 @@ vars x;
 for x from -100 by 5 to 100 do
     x -> rc_panel_field_value(demo_panel6, [sliders Slider1]);
     syssleep(10);
-endfor;         
+endfor;
 Sval1 =>
 
 ;;; radio buttons.
@@ -961,7 +961,7 @@ the_colour =>
 ;;; know their associated word!
 rc_informant_ident(hd(rc_fieldcontents_of(demo_panel6, "radio1")))=>
 ident the_colour =>
-    
+
 
 ;;; another way of setting fields, using current window for drawing
 ;;; Some drawing commands require rc_current_window_object to be set

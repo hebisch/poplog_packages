@@ -204,7 +204,7 @@ define lconstant prb_POPRULESET(rule_instance, action);
         mishap('No rules to pop in rulefamily',
             [POPRULESET ^prb_current_family=])
     endunless;
-    
+
     destpair(stack) -> (prb_rules, prb_family_stack(prb_current_family));
     if isword(prb_rules) then
         prb_rules -> prb_ruleset_name;

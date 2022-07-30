@@ -26,7 +26,7 @@ define ved_winsize;
     vedputmessage(vedstartwindow sys_>< nullstring);
     vedsetcursor()
 enddefine;
-        
+
 
 section;
 

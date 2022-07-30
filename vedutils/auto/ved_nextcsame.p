@@ -108,7 +108,7 @@ define lconstant procedure sametail(col1,string1,len1,col2,string2,len2) -> matc
         col2 fi_+ 1 -> col2;
     endrepeat
 enddefine;
-    
+
 
 define lconstant nextcsame(col1,string1,col2,string2) -> (col1,col2);
     ;;; Starting from those locations try to find positions in the two
@@ -201,7 +201,7 @@ define global ved_nextcsame;
         linestart1 -> line1;
         startcol1 -> col1;
         repeat
-        
+
             unless line1 fi_>= lim1 or line2 fi_>= lim2 then
 ;;;; veddebug([lines ^line1 ^line2 cols ^col1 ^col2]><'');
 

@@ -47,7 +47,7 @@ define :menu unix;
     else
         ['MyProcs' 'sh ps -fu $USER']
     endif;;;
-    ;;; this one may not be relevant to everyone    
+    ;;; this one may not be relevant to everyone
     ['LocalXterm'
         [POP11 menu_xterm(false, 'csh')]]
     ;;; This is an example: replace Lap and lap with some other

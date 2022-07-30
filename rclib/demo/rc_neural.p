@@ -190,7 +190,7 @@ define rc_neural_setup(ninputs );
                 {margin 5}
                 {align centre} :
                 'Artificial Neuron Demo' 'Inputs']
-            
+
             [SLIDERS
                 ^slider_specs
                 {framecol 'green'}
@@ -217,20 +217,20 @@ define rc_neural_setup(ninputs );
                 ^slider_specs
                 {framecol 'yellow'}
                 {label bias}:
-                [{-10 10 0} identfn [{-5 12 'bias'}] ]  
+                [{-10 10 0} identfn [{-5 12 'bias'}] ]
             ]
             [TEXT
                 {margin 5}
                 {align centre} :
                 'Output']
-            
+
             [SLIDERS
                 ^slider_specs
                 {framecol 'red'}
                 {label output} :
-                [{0 1 0} identfn [{-5 12 'output'}] ]   
+                [{0 1 0} identfn [{-5 12 'output'}] ]
             ]
-            
+
             [TEXT
                 {margin 5}
                 {align centre} :
@@ -240,7 +240,7 @@ define rc_neural_setup(ninputs );
                 ^slider_specs
                 {framecol 'grey50'}
                 {label delay} :
-                [{0 500 100} round [{-5 12 'delay'}] ]  
+                [{0 500 100} round [{-5 12 'delay'}] ]
             ]
 
             [ACTIONS
@@ -276,12 +276,12 @@ define rc_neural_propagate();
     [%
       for x to rc_neural_ninputs do
       slider_value_of_name(rc_neural_panel,"weights", x);
-      endfor;   
+      endfor;
       %] -> weights;
     [%
       for x to rc_neural_ninputs do
       slider_value_of_name(rc_neural_panel,"inputs", x);
-      endfor;   
+      endfor;
       %] -> inputs;
 
     neuron(inputs,weights,bias) ->
@@ -298,7 +298,7 @@ define rc_neural_set_weights(weights, bias);
     bias -> slider_value_of_name(rc_neural_panel,"bias", 1);
     for x to rc_neural_ninputs do
     weights(x) -> slider_value_of_name(rc_neural_panel,"weights", x);
-    endfor; 
+    endfor;
 enddefine;
 
 /*
@@ -334,7 +334,7 @@ define train_net(training_set) -> (new_weights,new_bias);
     endrepeat;
     ( false, false ) -> (new_weights,new_bias);
 enddefine;
-    
+
 /*
 train_net([[[1 0] 1][[0 1] 1]]) =>
 train_net([[[1 0] 1][[0 1] 0]]) =>

@@ -15,7 +15,7 @@ section;
 define :menu mark;
     'Mark Ops'
     {cols 2}
-    'Menu mark: marked range'   
+    'Menu mark: marked range'
     ['HELP mark' 'menu_doc help mark']
     ['TEACH mark' 'menu_doc teach mark']
     ['MarkStart' vedmarklo]

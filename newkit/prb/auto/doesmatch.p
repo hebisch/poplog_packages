@@ -491,7 +491,7 @@ BINDVAR:
                             conspair(n, conspair(id, pop_match_vals))
                                 -> pop_match_vals;
                         endif;
-                        return(true);   
+                        return(true);
                     endif;
                 endif;
                 RESTORE();

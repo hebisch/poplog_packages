@@ -694,7 +694,7 @@ define :method sim_sense_agent(a1:sim_object, a2:sim_object, dist);
 
     unless a1 == a2 then
         agent_bearing(a1, a2) -> bearing;
-        
+
         ;;; Calculates which sector a2 falls into from the perspective
         ;;; of a1
         ;;; There are six sectors around sheep, labelled 0 to 5,
@@ -1613,8 +1613,8 @@ define run_sheep(n);
         printf('\nthen press RETURN to start the demo.');
         printf('\nPress button 3 in the window to stop.\n');
         readline() ->;
-    endunless;  
-    
+    endunless;
+
     applist(sheep_agents, sim_setup);
     sim_scheduler(sheep_agents, n);
 enddefine;

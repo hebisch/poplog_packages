@@ -300,7 +300,7 @@ define constant getprinter(vedarg, loc) -> (newvedarg, printer);
             vederror('Missing space before -P')
         endunless;
     endif;
-        
+
     locchar(`\s`, newloc, vedarg) -> endloc;
 
     if endloc then
@@ -315,7 +315,7 @@ define constant getprinter(vedarg, loc) -> (newvedarg, printer);
         substring(newloc, len - newloc+1, vedarg) -> printer;
         substring(1,loc-1, vedarg) -> newvedarg
     endif;
-    
+
 enddefine;
 
 define lconstant dviprint(rootfile, dir);
@@ -514,7 +514,7 @@ define ved_latex;
             if vedchanged then ved_w1() endif;
         else
             ;;; included files may have been edited, write everything.
-            ved_w();    
+            ved_w();
         endif;
 
         dlocal ved_latex_command = set_latex_command();

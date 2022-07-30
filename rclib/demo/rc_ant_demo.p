@@ -27,8 +27,8 @@ Load this file with ENTER l1 then run this
     rc_ant_demo(40);
 
 turn Garbage Collection on or off
-    true -> popgctrace;     
-    false -> popgctrace;        
+    true -> popgctrace;
+    false -> popgctrace;
 
 ;;; To find which procedures take most time use the next two commands
     uses profile
@@ -91,7 +91,7 @@ global vars
     room_height = room_ymax - room_ymin,
     ant_radius = 4, ant_step_size = 5,
 
-    
+
     ;;; the window
     antwin,
     ;;; location and size
@@ -225,7 +225,7 @@ define :method ant_dec_button_up(pic:ant_count_button, x, y, modifiers);
     newant - 1 -> newant;
 enddefine;
 
-    
+
 /*
 define -- Ant methods
 

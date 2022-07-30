@@ -109,7 +109,7 @@ define global ved_mdir;
         loc fi_+ 1 -> loc;
         vedcharinsert -> cucharout;
         pr(loc); pr(': ');
-        
+
         pr(fast_subscrv(1,linevec)); vedcharright();
         pr(fast_subscrv(2,linevec)); vedlinebelow();
         ;;; put in To: line and Subject: line
@@ -131,7 +131,7 @@ define global ved_mdir;
     vedputmessage(nullstring);
     vedputcommand('gm');
     vedrefresh();
-    
+
 enddefine;
 
 endsection;

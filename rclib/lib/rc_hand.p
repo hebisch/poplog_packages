@@ -61,7 +61,7 @@ define :method make_open(h:ms_hand);
         rc_draw_linepic(h);
     endif;
 enddefine;
-        
+
 
 define :method make_closed(h:ms_hand);
     if ms_hand_open(h) then

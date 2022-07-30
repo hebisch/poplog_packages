@@ -164,7 +164,7 @@ define :define_form global ruleset;
         vars_list = [],
         ;
 
-    sysLBLOCK(true);    
+    sysLBLOCK(true);
     prb_read_header(true)
         -> (rulesetname, dlocal_spec, cycle_limit, vars_spec,
                 lvars_spec, debug, use_section);
@@ -271,7 +271,7 @@ define :define_form global ruleset;
         endif;
 
         ;;;; start a new LBLOCk
-        sysLBLOCK(true);    
+        sysLBLOCK(true);
         ;;; Now read the conditions, after restoring vars_list
         ruleset_vars -> vars_list;
 
@@ -303,7 +303,7 @@ define :define_form global ruleset;
         sysCALL("init_prb_rule");
         countitems + 1 -> countitems;
         ;;;; end the block
-        sysENDLBLOCK(); 
+        sysENDLBLOCK();
         ;;; flush pending stuff so that it doesn't happen in reading conditions.
         sysEXECUTE();
 
@@ -316,7 +316,7 @@ define :define_form global ruleset;
     sysCALL("conslist");
 
     if inaprocedure > 0 then
-        sysENDLBLOCK(); 
+        sysENDLBLOCK();
         sysEXECUTE();   ;;; ruleset should now be in newruleset
         exitfrom(pop11_comp_stream);
     else
@@ -328,7 +328,7 @@ define :define_form global ruleset;
         sysPUSHQ(rulesetname);
         sysPUSH(rulesetname);
         sysUCALL("isruleset");
-        sysENDLBLOCK(); 
+        sysENDLBLOCK();
     endif;
 enddefine;
 

@@ -31,7 +31,7 @@ define ved_cleanup();
     else
         vederror('File protected, not written')
     endif
-    
+
 enddefine;
 
 endsection;

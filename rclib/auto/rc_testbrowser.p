@@ -32,5 +32,5 @@ enddefine;
 /* --- Revision History ---------------------------------------------------
 --- Aaron Sloman, Aug 28 1999
         replaced the_selected_*file with the_selected_string
-    
+
  */

@@ -17,13 +17,13 @@ enddefine;
 define global constant procedure ved_GoMakeTop;
     ;;; like ved_g, but puts located line at top of screen
     ved_g();
-    settopwindow(); 
+    settopwindow();
 enddefine;
 
 define global constant procedure ved_#_/();
     ;;; like search, but puts line with found string at top of screen
     veddo('/'<>vedargument);
-    settopwindow(); 
+    settopwindow();
 enddefine;
 
 endsection;

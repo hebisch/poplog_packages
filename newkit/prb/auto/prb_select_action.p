@@ -34,5 +34,5 @@ define prb_select_action(rule_instance, action);
         endif;
     endfor
 enddefine;
-        
+
 endsection;

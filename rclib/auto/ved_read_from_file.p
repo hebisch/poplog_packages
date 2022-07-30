@@ -23,7 +23,7 @@ define :rc_defaults;
 
     rc_ved_cols_default = 40;
     rc_ved_rows_default = 8;
-    
+
 enddefine;
 
 define vars ved_read_from_file(string, file) -> list;
@@ -59,7 +59,7 @@ define vars ved_read_from_file(string, file) -> list;
 
         ;;; create an item repeater for it
             itemrep = incharitem(newcharin(%dev%));
-        
+
         ;;; print the prompt string followed by a newline
         pr(string);
         pr(newline);

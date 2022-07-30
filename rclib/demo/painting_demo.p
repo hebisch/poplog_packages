@@ -332,10 +332,10 @@ define :method easel_button_1_down(pic:paintbrush, x, y, modifiers);
     lvars oldcolour = current_colour, background = rc_background(rc_window);
 
     background ->> current_colour -> rc_foreground(rc_window);
-    
+
     rc_move_to(pic, rc_coords(pic), "trail");   ;;; Wipe out pic
     rc_move_to(pic, 9000,9000, "trail");        ;;; Move off screen
-    
+
     ;;; Now redraw the brush using the current paint colour
     oldcolour ->> current_colour -> rc_foreground(rc_window);
     rc_move_to(pic, coords_in_easel(x, y), true);
@@ -457,7 +457,7 @@ define create_brushes(x, y, list, win) -> brushes;
     ;;; surrounded by black squares.
     rc_start();
     dlocal rc_linewidth = 2; ;;; for drawing the squares.
-    lvars picspec, brush;   
+    lvars picspec, brush;
     [%
         for picspec in list do
             rc_draw_square(
@@ -485,7 +485,7 @@ enddefine;
 
 define create_pots(x, y, list, win) -> pots;
     dlocal current_colour;
-    lvars colour, pot;  
+    lvars colour, pot;
     [%
         for colour in list do
             instance paintpot;
@@ -573,7 +573,7 @@ define start_easel(x, y, width, height);
          [WIDTH 2 {%left_margin,top_margin%} {%left_margin, -easel_height%}]
         ]
         ;
-        
+
     create_colour_bars(barlist) -> colour_bars; ;;; global variable
 
     create_colour_bars(margins) -> ;
@@ -589,7 +589,7 @@ define start_easel(x, y, width, height);
                     [COLOUR 'black' FONT '9x15bold'
                         {% -button_width div 2 + 3,  -5, 'DISMISS' %}];
             endinstance,
-        
+
             instance window_control;
                 rc_picx = 200 + 50 + button_width; rc_picy = -8;
                 rc_window_action =

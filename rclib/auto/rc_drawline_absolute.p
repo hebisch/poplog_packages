@@ -48,7 +48,7 @@ define rc_drawline_absolute(x1, y1, x2, y2, colour, width);
     endif;
 
     XpwDrawLine(rc_window, round(x1), round(y1), round(x2), round(y2));
-    
+
 enddefine;
 
 endsection;

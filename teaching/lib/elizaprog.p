@@ -606,7 +606,7 @@ turns into (in effect):
 
     enddefine;
 
-    
+
     <name> :: eliza_rules -> eliza_rules ;
 
 */
@@ -632,7 +632,7 @@ define :define_form newrule;
     elseif x /= ";" then
         mishap(x, 1, 'bad syntax in newrule')
     endif;
-    
+
     ;;; declare a label for end of procedure, in case RETURN is used
     ;;; now compile the rule
     sysPROCEDURE(name, 0);
@@ -1018,7 +1018,7 @@ define tryanswerquestion;
                 [do you know whether ?L1 ?First ??L2]
                 [Has ?L1 'done that before?']
                 [will you ??L2 ?]
-                [did you ever ??L2 ?]               
+                [did you ever ??L2 ?]
              ]
 
         elseif member(First, [why where who what when how which])
@@ -2115,8 +2115,8 @@ define :newrule condolence;
       memorial
       memoriam
       tombstone
-        ])  
-    and random(100) < 40    
+        ])
+    and random(100) < 40
     then
         CIRCULATE
             [
@@ -2324,7 +2324,7 @@ define :newrule typo;
         'Perhaps more typing practice is called for'
 
     endif
-            
+
 enddefine;
 
 ;;; Not included in Web version
@@ -2623,7 +2623,7 @@ define transform_output(response) -> response;
     ;;; This can mangle questions like 'where am i?' but fix that later,
     ;;; by altering 'am me' and 'are them' below.
     "." -> L2;  ;;; default is to end with period. Could be "?"
-    
+
     if response matches [??L1 i]
     or    response matches [??L1 i ?L2:period_or_query]
     then
@@ -2653,16 +2653,16 @@ define transform_output(response) -> response;
         [^^L1 i am ^^L2] -> response;
     endwhile;
 
-    
+
     while response matches [??L1 are them ??L2] do
         [^^L1 are they ^^L2] -> response;
     endwhile;
-    
+
     ;;; fix can me, and can them
     while response matches [??L1 can me ??L2] do
         [^^L1 can i ^^L2] -> response;
     endwhile;
-    
+
     while response matches [??L1 can them ??L2] do
         [^^L1 can they ^^L2] -> response;
     endwhile;
@@ -2684,7 +2684,7 @@ enddefine;
 
 
 define global vars procedure eliza_output(answer);
-        
+
     transform_output(answer) -> answer;
     ppr(answer);
     pr(newline);
@@ -2790,7 +2790,7 @@ endsection;
             "define :newrule <name>"
 --- Aaron Sloman, Sep 17 2002
         Altered bham online elizaprog to run once and exit.
-        
+
 --- Aaron Sloman, Oct  6 2000
     Added a few more options, and made the circulation of lists go more
     than one step at a time, using a random step

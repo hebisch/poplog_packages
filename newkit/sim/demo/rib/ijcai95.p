@@ -2,7 +2,7 @@
  > File:            $poplocal/local/newkit/sim/demo/rib/ijcai95.p
  > Purpose:         Robot in a box, demonstrating Sim_agent
  > Author:          Ricardo Poly (and Aaron Sloman), Dec 1994
- > Documentation:   
+ > Documentation:
         A. Sloman and R. Poli,
             SIM_AGENT: A toolkit for exploring agent designs,
             Intelligent Agents Vol II (ATAL-95), Springer-Verlag,
@@ -88,7 +88,7 @@ define :method sim_agent_terminated_trace(object:sim_object, number_run, runs, m
     ;;; After each rulesystem is run, this procedure is given the object, the
     ;;; number of actions run other than STOP and STOPIF actions, the number of times
     ;;; the rulesystem has been run, the maximum possible number (sim_speed).
-    
+
 enddefine;
 
 ;;;
@@ -127,14 +127,14 @@ enddefine;
 ;;; A utility method A.S. 13 Sep 2000
 
 define :method rib_coords(agent:sim_agent) -> (x, y);
-    
+
     rib_x_pos(agent) -> x;
     rib_y_pos(agent) -> y;
 
 enddefine;
 
 define :method updaterof rib_coords(x,y, agent:sim_agent);
-    
+
     x -> rib_x_pos(agent);
     y -> rib_y_pos(agent);
 
@@ -335,7 +335,7 @@ define :method box_sense_rib(a1:sim_agent, a2:sim_agent, dist);
             ;;; Find the projection of the RIB on the wall and the related parms
             crossing_point(line(1),line(2), robot_pos, [^normal_x ^normal_y]) ->
             ( point, pos, distance );
-            
+
             ;;; Check if the wall has been hit or trespassed
             if ( pos >= 0 and pos <= line(3) and distance <= 0.01
                 and distance >= -0.05 ) then
@@ -346,7 +346,7 @@ define :method box_sense_rib(a1:sim_agent, a2:sim_agent, dist);
 
                 rib_x_velocity(a2) * line(2)(1) + rib_y_velocity(a2) * line(2)(2) ->
                 velocity_along_wall;
-                
+
                 rib_x_velocity(a2) * normal_x + rib_y_velocity(a2) * normal_y ->
                 velocity_orthog_wall;
 
@@ -354,7 +354,7 @@ define :method box_sense_rib(a1:sim_agent, a2:sim_agent, dist);
 
                 line(2)(1) * velocity_along_wall + normal_x * velocity_orthog_wall ->
                 rib_x_velocity(a2);
-                
+
                 line(2)(2) * velocity_along_wall + normal_y * velocity_orthog_wall ->
                 rib_y_velocity(a2);
 
@@ -418,7 +418,7 @@ define :method sim_agent_running_trace(agent:sim_agent);
 enddefine;
 
 define :method sim_agent_ruleset_trace(agent:sim_agent, ruleset);
-    
+
 /*
     ['Try ruleset' ^ruleset 'with agent' ^(sim_name(agent)) 'with data:']==>
     prb_print_database();
@@ -574,7 +574,7 @@ vars wall_following_net =
 [network [wall_following_net [connection ax [hid1 hid2 hid3 hid4 hid5 hid6 hid7 hid8 hid9 hid10] [1.07006 -2.98458 -0.672061 -0.201309 0.849293 -6.28495 6.8044 1.38914 -5.14957 3.24073]]]]
 [network [wall_following_net [connection ay [hid1 hid2 hid3 hid4 hid5 hid6 hid7 hid8 hid9 hid10] [-0.290224 0.967176 -0.02786 -0.170044 -0.457602 -7.39155 -3.51529 1.15638 1.72924 3.55404]]]]
       ];
-    
+
 ;;;
 ;;; Neural predicate (filter) for obstacle avoidance.
 ;;; Only proximity (touch) sensors are used in the related rule.
@@ -686,10 +686,10 @@ define ann_wall_following_predicate( rule_conditions, condition_pattern )
         [acceleration ^((net_output(1) - 0.5) * 0.1) ^((net_output(2) - 0.5) * 0.1)] ->
 
         action_pattern;
-        
+
     else
         ;;; Otherwise ask for an example, and use it
-        
+
         lvars example_number;
         flush( ![number_of_examples wall_following_net ?example_number]);
         eval_network( [%
@@ -895,7 +895,7 @@ define :ruleset rib_rules;
 
     [NOT motion rule fired]
       ==>
-    
+
     [POP11
      ;;; 'Firing motion rule' =>
      ;;; [Old pos %rib_coords(sim_myself)%]=>
@@ -1123,7 +1123,7 @@ define rib_train(ncurves);
     get_curve(the_box,false) -> polyline;
     for velocity from 8 by 4 to 16 do
             smoothcurve(sample(polyline, velocity ),0.75) -> curve;
-    
+
         eval_accelerations( curve, velocity ) -> global_curve_store;
         set_state(ribot,front(hd(curve))/400,back(hd(curve))/400,
                       (front(hd(tl(curve))) - front(hd(curve))) / 400,

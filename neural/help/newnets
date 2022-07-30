@@ -22,7 +22,7 @@ slots:
  NN_NET_LOAD_FN         <procedure> - network load function
  NN_NET_INPUTS_FN       <procedure> - number of net inputs function
  NN_NET_OUTPUTS_FN      <procedure> - number of net outputs function
- NN_NET_ARRAY_FN        <procedure> - function used to create arrays                    
+ NN_NET_ARRAY_FN        <procedure> - function used to create arrays
  NN_NET_APPLY_ITEM_FN   <procedure> - apply example function
  NN_NET_APPLY_SET_FN    <procedure> - apply example set function
  NN_NET_LEARN_ITEM_FN   <procedure> - learn example function
@@ -97,12 +97,12 @@ NN_DECLARE_NET:
                                             ;;; saver should take two
                                             ;;; args and return one,
                     identfn(%false,erase(%%)),
-                                            ;;; no loader function          
+                                            ;;; no loader function
                     mynet_ins,              ;;; where the number of
                                             ;;; inputs is kept,
                     mynet_outs,             ;;; where the number of
                                             ;;; outputs is kept,
-                    newarray,               ;;; array creator                           
+                    newarray,               ;;; array creator
                     myapply_example,        ;;; the four main
                     myapply_example_set,    ;;; test and
                     mylearn_example,        ;;; teach

@@ -3,7 +3,7 @@
  > Purpose:         To link to setup the 'teaching' package of poplog
  > Author:          Aaron Sloman, 8 Jan 2005
  > Documentation:   See teach/ help/ sub-directories
- > Related Files:   
+ > Related Files:
  */
 
 /*

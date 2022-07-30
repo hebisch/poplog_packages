@@ -145,7 +145,7 @@ define check_abbreviations();
     endrepeat;
     vedpositionpop();
 enddefine;
-    
+
 
 define ved_bib();
     dlocal vedbreak = false;

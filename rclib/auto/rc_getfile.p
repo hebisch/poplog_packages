@@ -2,7 +2,7 @@
  > File:            $poplocal/local/rclib/auto/rc_getfile.p
  > Purpose:         Find files on disk
  > Author:          Aaron Sloman, May  6 1999 (see revisions)
- > Documentation:   
+ > Documentation:
  > Related Files:   LIB * PUI_POPUPTOOL
  */
 
@@ -94,7 +94,7 @@ endsection;
 
 /* --- Revision History ---------------------------------------------------
 --- Aaron Sloman, May 19 1999
-    Allowed optional container argument for parent rc_window_object 
+    Allowed optional container argument for parent rc_window_object
 --- Aaron Sloman, May  9 1999
     Added "recurse" option.
 */

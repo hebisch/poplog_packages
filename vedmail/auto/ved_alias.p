@@ -10,7 +10,7 @@
 section;
 define lconstant tryaliases();
     lvars oldfile = vedcurrentfile;
-    
+
     veddo('aliases ' sys_>< vedargument);
 
     if vedcurrentfile /== oldfile then

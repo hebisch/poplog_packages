@@ -236,7 +236,7 @@ define vars procedure sim_interval_test(interval, cycle_number) -> boole;
         mishap(errstring, [^interval]);
     endif -> boole;
 enddefine;
-    
+
 
 define lconstant procedure sim_stack_check(object, len, name, cycle);
     lvars object, len, name, cycle, inc, mess, vec = {};
@@ -519,7 +519,7 @@ define sim_clear_database(dbtable);
     IFSECTIONS
         lvars sectioninfo = dbtable("RULE_SYSTEM_SECTION");
 
-    ;;; clear the database  
+    ;;; clear the database
     clearproperty(dbtable);
 
     ;;; restore the clusters and rulesystem, etc.
@@ -586,7 +586,7 @@ define :method sim_agent_messages_out_trace(agent:sim_agent);
 enddefine;
 
 define :method sim_agent_messages_in_trace(agent:sim_agent);
-    
+
     ['New messages IN' ^(sim_name(agent)) ^(sim_in_messages(agent))] ==>
 
 enddefine;
@@ -693,7 +693,7 @@ define vars procedure sim_edit_object_list(objects, cycle) -> objects;
             unless lmember(obj, sim_object_delete_list) then obj
             endunless
           endfor %] -> objects
-    endunless;  
+    endunless;
 
     objects <> sim_object_add_list -> objects
 
@@ -817,7 +817,7 @@ define lconstant restore_dlocal(dlocal_vars, dlocal_vals);
     endfor;
 ;;; sys_grbg_list(dlocal_vals)
 enddefine;
-        
+
 
 define sim_database_assoc(word) -> found;
     prb_database(word) -> found;
@@ -1110,7 +1110,7 @@ define :method sim_run_agent(object:sim_object, objects);
 
         ;;; Find out in which order to run rulesets.
         lvars rulesystem = prb_database("RULE_SYSTEM");
-        
+
         ;;; returnif(rulesytem == []);  ;;; decision now left to sim_run_rulesystem
 
         ;;; rulesystem should be a list possibly empty or containing one list, starting with
@@ -1294,7 +1294,7 @@ define :method sim_send_message(sender:sim_agent, message);
     endif;
 
 enddefine;
-    
+
 
 define :method sim_do_action(agent:sim_object, action);
     ;;; After an agent has run it creates a list of actions
@@ -1432,7 +1432,7 @@ define :method sim_setup(object:sim_object);
             true -> sim_setup_done(object);
             return();
         endif;
-    
+
 
         sim_data(object) -> prb_database;
 
@@ -1458,7 +1458,7 @@ define :method sim_setup(object:sim_object);
             ;;; debug_spec = false,     ;;; ignored for now
             limit_spec = false,
             interval_spec = false;
-        
+
         IFSECTIONS
         lvars the_section = false;
 
@@ -1468,7 +1468,7 @@ define :method sim_setup(object:sim_object);
 
         [%
          if rulesysname then rulesysname endif,
-        
+
          for item in system do
             lvars fam=false, famname=false, control_info = false;
             if item == false then
@@ -1614,7 +1614,7 @@ lvars final_objects = [];
 
 define sim_scheduler(objects, lim);
     lvars objects, object, speed, lim, messages, messagelist = [];
-    
+
     ;;; clear any previously saved objects.
     [] -> final_objects;
 
@@ -1738,7 +1738,7 @@ nil -> proglist;
 
 /* --- Revision History ---------------------------------------------------
 --- Aaron Sloman, Jan 12 2003
-        
+
         At suggestion of Brian logan
         Moved this line after call to sim_post_cycle_actions
         [] ->> sim_object_delete_list -> sim_object_add_list;
@@ -1911,7 +1911,7 @@ Allowed optional vars_vec arg in sim_scheduler.
         for that object in that timeslice.
     If NO object has any rule fired in a cycle of sim_scheduler, then run
         no_objects_runnable_trace
-    
+
 
 --- Aaron Sloman 30th Aug 1995
     Removed local definition of prb_finish from sim_run_agent
@@ -1994,7 +1994,7 @@ Allowed optional vars_vec arg in sim_scheduler.
 
     Also allow sim_*ruleset_limit(rulesetname) to determine the number of cycles in
         prb_run for that ruleset. This helps to allow more fine-grained speed control.
-    
+
     Moved documentation out to help file.
 
     Moved the use of sim_speed to sim_run_agent, where it makes more sense.

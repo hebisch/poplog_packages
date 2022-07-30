@@ -71,7 +71,7 @@ A typical GA includes the following steps:
 
  2.  DECODE each  chromosome to get an individual
 
- 3.  EVALUATE the fitness of each individual    
+ 3.  EVALUATE the fitness of each individual
 
  4.  Generate a new population partly by CLONING (copying), partly by
      RECOMBINING and partly by MUTATING the chromosomes of the
@@ -85,10 +85,10 @@ than one generation.
 
 -- A simple problem --------------------------------------------------
 
-Let us   start with a  simple  example. 
+Let us   start with a  simple  example.
 
 The   problem is  to find the    number in {0,1,...,255}  whose binary
-representation has  the maximum number    of 0-to-1 transitions.   
+representation has  the maximum number    of 0-to-1 transitions.
 
 The solution to this problem  is quite easy to  find for us, it is  85
 (01010101) which has  7 transitions. However, it  is not  easy to find
@@ -120,7 +120,7 @@ small population of 10 individuals.
 SELECTION: We will select  individuals for reproduction and cloning on
 with a probability proportional to their fitness.
 
-CLONING: 30% of the selected  individuals will be just copied. 
+CLONING: 30% of the selected  individuals will be just copied.
 
 RECOMBINATION: We  will  apply recombination to   70% of  the selected
 strings. To recombine two strings we cut them at a random position and
@@ -169,8 +169,8 @@ and then running test_fitness_function on it. E.g.
 Once the fitness function is defined we can run the procedure
 
   genetic_algorithm( <fitness function name>, <population size>, <bits>,
-                <generations>, <recombination probability>, 
-                <mutation probability>,  0, false, 
+                <generations>, <recombination probability>,
+                <mutation probability>,  0, false,
                 <print generation stats>, undef )
 
 which will return the best individual found.   E.g. the following code
@@ -178,7 +178,7 @@ will  run  a GA with  the characteristics  outlined above,  print some
 statistics  for each generation (average  fitness, best fitness, etc.)
 and return the best individual in the variable "best".
 
-   vars best = genetic_algorithm( "test_fitness_function", 30, 8, 50, 
+   vars best = genetic_algorithm( "test_fitness_function", 30, 8, 50,
                                 0.7, 0.01, 0, false, true, undef );
    bit_string(best) ==>
    fitness(best) ==>
@@ -188,7 +188,7 @@ and return the best individual in the variable "best".
 
 Normally  genetic_algorithm() will save the  population on disk every
 ten generations. You can prevent this by enclosing <population size>
-inside a list before passing it to genetic_algorithm(). E.g. 
+inside a list before passing it to genetic_algorithm(). E.g.
 
    genetic_algorithm( "test_fitness_function", [30], ....)
 
@@ -204,7 +204,7 @@ corresponding  filename (a string)  instead of a number  or a list (in
  TEACH * GA_DEJONG.p
     The source code of a small set of more interesting examples
     on how to use LIB GA for function optimisation (minimisation or
-    maximisation) 
+    maximisation)
 
 --- $poplocal/local/teach/ga
 --- The University of Birmingham 1995.  --------------------------------

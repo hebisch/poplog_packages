@@ -59,7 +59,7 @@ define print_to_strings(procedure print_command);
         else char
         endif
     enddefine;
-        
+
     print_command();
 
     ;;; check whether any characters added since last string created.
@@ -67,10 +67,10 @@ define print_to_strings(procedure print_command);
     if (stacklength() ->> newlen) > len then
             consstring(newlen - len);
     endif;
-    
+
 
 enddefine;
 
 
 
-    
+

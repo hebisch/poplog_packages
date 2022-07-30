@@ -240,7 +240,7 @@ define trywriteline(widget, col, row, col_offset, vec, stringnum);
 enddefine;
 
 define :method rc_scrolltext_refresh(obj:rc_scroll_text, start, fin);
-    
+
     lvars
         widget = rc_scroll_text_widget(obj),
         vec = rc_scroll_text_strings(obj),
@@ -575,7 +575,7 @@ define :method rc_button_1_drag(obj:rc_scroll_text, col, row, modifiers);
     endif;
 
     min(maxcol, rc_scroll_text_coloffset(obj)) -> rc_slider_value(slider);
-    
+
     ;;; save the value of col
     if abs(col - lastcol) > 1 then
         col -> rc_scroll_prev_column(obj);
@@ -852,7 +852,7 @@ define lconstant do_keyboard_actions(widget, item, data);
         XptVal widget(XtN mouseColumn, XtN mouseRow, XtN modifiers);
 
     exacc ^int data -> data;
-    
+
     ;;; convert modifier to string
     rc_modifier_codes(modifiers) -> modifiers;
 
@@ -862,7 +862,7 @@ define lconstant do_keyboard_actions(widget, item, data);
         scr_obj = rc_window_object_of(widget);
 
     dlocal 0% , if dlocal_context < 3 then restore_current_window(old_win) endif%;
-    
+
     set_current_active_object(scr_obj);
 
     ;;; get the callback handler, and apply it to the object and coords
@@ -884,7 +884,7 @@ define rc_point_right(x, y, size, col);
     rc_draw_filled_triangle(
         x - size, y - size, x - size, y + size, x + size, y,
         col)
-    
+
 enddefine;
 
 define :method rc_draw_slider_right(s:rc_slider);
@@ -920,7 +920,7 @@ define :method rc_draw_linepic(obj:rc_scroll_text);
 
     lvars surround_x1 = rc_scrolltext_surround_x1(obj);
     if surround_x1 then
-        ;;; draw the background panel   
+        ;;; draw the background panel
         lvars
             surround_x2 = rc_scrolltext_surround_x2(obj),
             surround_y = rc_scrolltext_surround_y(obj),
@@ -988,7 +988,7 @@ define create_scroll_text(name, vec, container, xpos, ypos, rows, cols, fg, bg, 
             ;;; leave the vector of strings, and process the rest
             destpair(vec) -> extras;
         elseif isstring(front(vec)) then
-            {%  
+            {%
                 ;;; this for programs that use this to display directory contents
                 ;;; perhaps no longer needed.
                 for file in vec do
@@ -996,7 +996,7 @@ define create_scroll_text(name, vec, container, xpos, ypos, rows, cols, fg, bg, 
                 endfor
             %}
         else
-            mishap('VECTOR OF STRINGS NEEDED FOR SCROLLTEXT', [^vec])           
+            mishap('VECTOR OF STRINGS NEEDED FOR SCROLLTEXT', [^vec])
         endif;
     else
         mishap('Vector or list of strings needed', [^vec])
@@ -1123,9 +1123,9 @@ define create_scroll_text(name, vec, container, xpos, ypos, rows, cols, fg, bg, 
     ;;; XtMapWidget(composite);
     ;;; XtMapWidget(widget);
 
-    ;;; add the mouse callback handler  
+    ;;; add the mouse callback handler
     XptAddCallback(widget, XtN buttonEvent, do_button_actions, "button", identfn);
-    ;;; add the drag/motion callback handler    
+    ;;; add the drag/motion callback handler
 
     XptAddCallback(widget, XtN motionEvent, do_move_actions, "move", identfn);
 
@@ -1165,7 +1165,7 @@ define create_scroll_text(name, vec, container, xpos, ypos, rows, cols, fg, bg, 
         left_slider,
         row_slider,
         col_slider;
-    
+
     ;;; Prepare rectangular background for the panel
     rc_drawline_relative(
         surround_x1, surround_y, surround_x2, surround_y, scol, surround_height);
@@ -1185,7 +1185,7 @@ define create_scroll_text(name, vec, container, xpos, ypos, rows, cols, fg, bg, 
 
     ;;; Slider on right showing how far text has scrolled. Limiting position
     ;;; has one visible blank line
-    
+
     if rows < len then
         if rc_scroll_slider_default_type == "panel" then
             rc_panel_slider
@@ -1275,7 +1275,7 @@ endsection;
 --- Aaron Sloman, Aug 30 2002
         added uses interpret_specs
 --- Aaron Sloman, Aug 26 2002
-        
+
     added rc_scrolltext_refresh(obj:rc_scroll_text, start, fin);
 
     made rc_scrollup stop if last line has moved above bottom of

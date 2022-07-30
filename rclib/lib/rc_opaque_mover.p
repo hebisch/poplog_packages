@@ -55,7 +55,7 @@ define :method rc_set_drawing_colour(pic:rc_opaque_movable, colour, window);
             mishap('FALSE, STRING or PROCEDURE needed for rc_opaque_bg',
                 [^bg ^pic])
         endif
-        
+
     else
         colour -> rc_foreground(window)
     endif;
@@ -85,7 +85,7 @@ define :method rc_draw_linepic(pic:rc_opaque_rotatable);
     rc_coords(pic) -> (rc_oldx(pic), rc_oldy(pic));
     rc_axis(pic) -> rc_oldaxis(pic);
 enddefine;
-        
+
 
 
 define :method rc_draw_oldpic(pic:rc_opaque_movable);
@@ -98,7 +98,7 @@ define :method rc_draw_oldpic(pic:rc_opaque_movable);
         oldforeground = rc_foreground(rc_window);
 
     dlocal
-        
+
         0 %,if dlocal_context fi_< 3 then
                 oldforeground -> rc_foreground(rc_window)
             endif%;
@@ -124,7 +124,7 @@ define :method rc_draw_oldpic(pic:rc_opaque_movable);
             rc_oldx(pic), rc_oldy(pic),
             rc_pic_lines(pic), rc_pic_strings(pic), pic)
 
-        endprocedure();     
+        endprocedure();
     endif;
 
     ;;; prevent redrawing

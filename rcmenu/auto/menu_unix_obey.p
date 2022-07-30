@@ -32,11 +32,11 @@ define global vars procedure menu_unix_obey(list);
         else
              vedgenshell(hd(list), false);
         endif
-    enddefine;              
+    enddefine;
 
     ;;; menu_vedinput will do things now or later, as needed.
     menu_vedinput(menu_unix_obey_do(%list%))
 enddefine;
-    
+
 
 endsection;

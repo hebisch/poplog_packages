@@ -506,7 +506,7 @@ turns into (in effect):
 
     enddefine;
 
-    
+
     <name> :: eliza_rules -> eliza_rules ;
 
 */
@@ -532,7 +532,7 @@ define :define_form newrule;
     elseif x /= ";" then
         mishap(x, 1, 'bad syntax in newrule')
     endif;
-    
+
     ;;; declare a label for end of procedure, in case RETURN is used
     ;;; now compile the rule
     sysPROCEDURE(name, 0);
@@ -1924,7 +1924,7 @@ endsection;
 
 --- Aaron Sloman, Sep 21 2002
         Changes made after eliza1 went online
-        
+
 --- Aaron Sloman, Oct  6 2000
     Added a few more options, and made the circulation of lists go more
     than one step at a time, using a random step

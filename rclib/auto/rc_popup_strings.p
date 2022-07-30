@@ -2,7 +2,7 @@
  > File:            $poplocal/local/rclib/auto/rc_popup_strings.p
  > Purpose:         display a list or vector of strings in a scrolling text widget
  > Author:          Aaron Sloman, May  6 1999 (see revisions)
- > Documentation:   
+ > Documentation:
  > Related Files:   LIB * PUI_POPUPTOOL
  */
 
@@ -62,7 +62,7 @@ define rc_popup_strings(x, y, list, strings, rows, cols, font) -> selection;
     else
         if isvector(list) then list
         else
-            {%  
+            {%
                 for file in list do
                     if sysisdirectory(file) then file dir_>< '/' else file endif
                 endfor %}
@@ -77,7 +77,7 @@ define rc_popup_strings(x, y, list, strings, rows, cols, font) -> selection;
         define lconstant selection_accept(obj, val, button);
             true -> done;
         enddefine;
-    
+
 
         lvars fields =
             [

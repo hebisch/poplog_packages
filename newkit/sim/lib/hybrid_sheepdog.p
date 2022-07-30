@@ -202,7 +202,7 @@ global vars
     agentRWidth = 250,
     ;;; Minimal distance to any other agents
     agentSpace = 30,
-    
+
     ;;; Size of agents and generated path
     agentDfltSize = 10,
     treeDfltSize = 15,
@@ -254,7 +254,7 @@ global vars
     edgeColour = 'gold',
     ;;; A colour of a line displaying move direction
     directionColour = 'aquamarine',
-    
+
     ;;; Sheep profile
     ;;; A global array to contain precalculated values used to determine
     ;;; how a perceived object's importance varies with distance.
@@ -315,7 +315,7 @@ constant
     IDX_ROOT = 1,
     IDX_GOAL = 2,
     ;
-    
+
 /*
 -- Agent class definitions
 */
@@ -394,7 +394,7 @@ define :class Dog;
     ;;; A temporary waypoint array used in calculations
     slot wpTmpList = false;
     slot wpTmpNum = 0;
-    
+
     ;;; Visual objects lists
     ;;; Vertices of a graph
     slot vtList = false;
@@ -403,7 +403,7 @@ define :class Dog;
     slot edList = false;
     slot edNum = 0;
     slot direction = false;
-    
+
     ;;; Dog profile
     slot visualRange = dogVisualRange;
     slot speed = 0;
@@ -421,7 +421,7 @@ define :class Dog;
     ;;; the dog and a current sheep perspectives
     slot obstacleLocalListDog = [];
     slot obstacleLocalListSheep = [];
-    
+
     ;;; Pointer to the pen
     slot sheepPen = false;
     ;;; List of all sheep staying out of the pen
@@ -451,13 +451,13 @@ enddefine;
 
 define :class Obstacle;
     is trial_agent;
-    
+
 enddefine;
 
 
 define :class Tree;
     is  Obstacle;
-    
+
     ;;; Trees are larger than the sheep
     slot trial_size == treeDfltSize;
 
@@ -637,13 +637,13 @@ define addAgentToWindow(inList, winObj) -> outList;
             if not(sim_name(a)) then
                 word -> sim_name(a);
             endif;
-            
+
             ;;; tell the window about it
             if rc_event_types(winObj) == [] then
                 rc_mousepic(winObj)
             endif;
             rc_do_addpic_to_window(a, winObj, true);
-            
+
             rc_move_to(a, getCoords(a), true);
         endprocedure) -> outList;
 enddefine;
@@ -753,22 +753,22 @@ define :method create(
     x1, y1,
     x2, y2,
     r);
-    
+
     lvars dx, dy, tmp;
-    
+
     ;;; {x1, y1, x2, y2} must be integers
     round(x1), round(y1), round(x2), round(y2) -> (x1, y1, x2, y2);
     ;;; Store coordinates of a destination waypoint and
     ;;; a square of a "width" of a path
     x2, y2, r*r -> (p.x, p.y, p.rr);
-    
+
     ;;; Perform a transformation of an area
     ;;; There can be 4 cases of non inclined rectangular path, and
     ;;; 4 cases of inclined one
-    
+
     if x1 = x2 then
         ;;; Non inclined path, cases #1-2
-        
+
         if y1 > y2 then y1, y2 -> (y2, y1); endif;
         y1     ->> p.b1 -> p.b4;
         y2     ->> p.b2 -> p.b3;
@@ -778,7 +778,7 @@ define :method create(
         false
     elseif y1 = y2 then
         ;;; Non inclined path, case #3-4
-        
+
         if x1 > x2 then x1, x2 -> (x2, x1); endif;
         x1     ->> p.a1 -> p.a2;
         x2     ->> p.a3 -> p.a4;
@@ -790,7 +790,7 @@ define :method create(
         ;;; Inclined path, cases #1-4
         ;;; Determine the parameters of equation fn(x) = an*x + bn
         ;;; for four edges (a1, b1) ... (a4, b4)
-        
+
         x2 - x1 -> dx; ;;; cannot be 0
         y2 - y1 -> dy; ;;; cannot be 0
         sqrt(dx*dx + dy*dy) -> tmp;
@@ -832,7 +832,7 @@ enddefine;
 define :method contains1(
     p:Path,
     x, y) -> bool;
-    
+
     if p.isInclined then
         y < p.a1*x + p.b1 and y < p.a2*x + p.b2 and y > p.a3*x + p.b3 and y > p.a4*x + p.b4
     else
@@ -844,7 +844,7 @@ enddefine;
 define :method isInArea2(
     p:Path,
     x2, y2) -> bool;
-    
+
     x2 - p.x, y2 - p.y -> (x2, y2);
     x2*x2 + y2*y2 < p.rr -> bool;
 enddefine;
@@ -856,7 +856,7 @@ enddefine;
 define :method contains2(
     p:Path,
     x, y) -> bool;
-    
+
     if p.isInclined then
         y < p.a1*x + p.b1 and y < p.a2*x + p.b2 and y > p.a3*x + p.b3 and y > p.a4*x + p.b4 or
         isInArea2(p, x, y)
@@ -875,7 +875,7 @@ define :method isExpandable(
     x1, y1,
     x2, y2,
     dA, dO) -> bool;
-    
+
     lconstant p1 = instance Path;
     endinstance;
     lconstant p2 = instance Path;
@@ -913,13 +913,13 @@ define :method getNearest(
     x1, y1,
     x2, y2,
     dA, dO) -> dist;
-    
+
     lconstant p1 = instance Path;
     endinstance;
     lconstant p2 = instance Path;
     endinstance;
     lvars o, d;
-    
+
     ;;; To speed up calculations a search is carried out for a path,
     ;;; which has the "largest" possible size, defined by a maximal obstacle size.
     ;;; If any obstacle lies within this path (p1), a new "smaller" one (p2) is
@@ -950,7 +950,7 @@ define :method getNearestObject(
     this:Animal,
     oList,
     x, y) -> obj;
-    
+
     lvars o, d, dist;
 
     false -> obj;
@@ -975,7 +975,7 @@ define :method graphHeuristicFunc(
     this:Animal,
     x1, y1,
     x2, y2) -> c;
-    
+
     ;;; simplified
     round(sim_distance_from(x1, y1, x2, y2)) -> c;
 enddefine;
@@ -992,7 +992,7 @@ define :method graphSearchA(
     dA, dO,
     wpL1, wpNum1,
     wpL2) -> wpNum2;
-    
+
     lvars procedure
         C       = newanyarray([1 ^wpNum1 1 ^wpNum1], initshortvec, subscrshortvec),
         Open    = newanyarray([1 ^wpNum1], initshortvec, subscrshortvec),
@@ -1010,15 +1010,15 @@ define :method graphSearchA(
     while true do
         ;;; The best path to nCurrent goes through rCurrent.
         rCurrent -> Close(nCurrent);
-    
+
         ;;; Break the loop if nCurrent is the goal.
         if nCurrent = IDX_GOAL then
             quitloop(1);
         endif;
-        
+
         ;;; then remove nCurrent from Open.
         0 -> Open(nCurrent);
-        
+
         ;;; Expand the current node nCurrent,
         ;;; iterate for all possible destination nodes j
         for 1 -> j step j + 1 -> j till j > wpNum1 do
@@ -1027,7 +1027,7 @@ define :method graphSearchA(
             if nCurrent /= j and Close(j) = 0 then
                 wpL1(nCurrent) -> wpn;
                 wpL1(j) -> wpj;
-                
+
                 ;;; Check if j is expandable.
                 if isExpandable(
                     this,
@@ -1041,7 +1041,7 @@ define :method graphSearchA(
                         this,
                         getCoords(wpn),
                         getCoords(wpj)) + cCurrent -> c;
-                    
+
                     ;;; Extract a node, through which passes the best path to j.
                     Open(j) ->  k;
                     ;;; Redirect the best path to j if there was no
@@ -1049,7 +1049,7 @@ define :method graphSearchA(
                     if k = 0 or C(k, j) > c then
                         nCurrent -> Open(j);
                     endif;
-                    
+
                     c
                 else
 
@@ -1057,7 +1057,7 @@ define :method graphSearchA(
                 endif -> C(nCurrent, j);
             endif;
         endfor;
-        
+
         ;;; Find a node nCurrent with the lowest cost value.
         0 -> nCurrent;
         INF -> cCurrent;
@@ -1070,7 +1070,7 @@ define :method graphSearchA(
                 endif;
             endif;
         endfor;
-        
+
         ;;; Break the loop if Open is empty.
         if nCurrent = 0 then
             quitloop(1);
@@ -1127,7 +1127,7 @@ define :method graphGenerateInit(
     x1, y1,
     x2, y2,
     wpL) -> wpNum;
-    
+
     lvars wp;
 
     wpL(IDX_ROOT) -> wp;
@@ -1148,7 +1148,7 @@ define :method graphGenerate(
     obj,
     nCount, rMin, rWidth,
     wpL, wpIdx) -> wpNum;
-    
+
     lconstant MAX_TRIALS = 100;
     lvars wp, j;
 
@@ -1160,7 +1160,7 @@ define :method graphGenerate(
         for 1 -> j step j + 1 -> j till j > MAX_TRIALS do
             generatePoint(rMin, rWidth) -> (wp.x, wp.y);
             intof(wp.x) + obj.rc_picx, intof(wp.y) + obj.rc_picy -> (wp.x, wp.y);
-            
+
             if not(collisionCheck(oList, getCoords(wp), rMin)) then
                 quitloop(1);
             endif;
@@ -1179,7 +1179,7 @@ define :method graphGenerateList(
     oList,
     nCount, rMin, rWidth,
     wpL, wpIdx) -> wpNum;
-    
+
     lvars o;
 
     wpIdx -> wpNum;
@@ -1204,28 +1204,28 @@ define :method waypointTransform(
     this:Animal,
     wpL1, wpNum1,
     wpL2, wpIdx2) -> wpNum2;
-    
+
     lvars
         dc, j, wp1, wp2, costDelta, x1, y1, c1, x2, y2, c2, dx, dy;
-        
+
     ;;; Check if there is enough free space (waypoints) in wpL2.
     if wpNum1 = 0 or wpNum1 > waypointMax - wpIdx2 + 1 then
         0 -> wpNum2;
         return();
     endif;
     wpIdx2 -> wpNum2;
-    
+
     ;;; root: j = wpNum1, cost = cost(wpL1(wpNum1)) = minimum
     ;;; goal: j = 1, cost = cost(wpL1(1)) = maximum
-    
+
     wpL1(1) -> wp1;
     getCoords(wp1), wp1.cost -> (x1, y1, c1);
-    
+
     wpL2(wpNum2) -> wp2;
     if wpNum2 > 1 then wp2.cost - wp1.cost else 0 endif -> costDelta;
     x1, y1, c1 -> (wp2.x, wp2.y, wp2.cost);
     true -> wp2.isNode;
-    
+
     ;;; If wpIdx2 > 1 then all cost values from the remaining old path wpL2
     ;;; must be "rescaled" in order to avoid potentially harmful discontinuities
     ;;; in the "merging" waypoint.
@@ -1243,7 +1243,7 @@ define :method waypointTransform(
     for 2 -> j  step j + 1 -> j till j > wpNum1 do
         wpL1(j) -> wp1;
         getCoords(wp1), wp1.cost -> (x2, y2, c2);
-        
+
         dc*(x2 - x1)/(c2 - c1), dc*(y2 - y1)/(c2 - c1) -> (dx, dy);
         ;;; Calculate the cost value of a new waypoint
         c1 - dc -> c1;
@@ -1305,7 +1305,7 @@ define :method waypointFindNext(
     dA, dO,
     wpL, wpNum,
     wpPrevIdx) -> wpNextIdx;
-    
+
     lvars jMax, jMin, j, wp;
 
     ;;; Determine upper and lower limit of the search.
@@ -1338,7 +1338,7 @@ define :method waypointFind(
     this:Dog,
     obj,
     oList) -> (wp, d);
-    
+
     lvars wpNextIdx;
 
     waypointFindNext(
@@ -1353,9 +1353,9 @@ define :method waypointFind(
     if wpNextIdx > 0 then
         wpNextIdx -> this.wpIdx;
     endif;
-    
+
     (this.wpPList)(this.wpIdx) -> wp;
-    
+
     ;;; Return 0 if there is no any visible waypoint.
     if wpNextIdx > 0 then
         getDistance(obj, wp)
@@ -1367,24 +1367,24 @@ enddefine;
 define :method waypointPlanIndex(
     this:Dog,
     range) -> index;
-    
+
     lvars wpL, cLim, c, jHi, jLo;
-    
+
     (this.wpPList) -> wpL;
-    
+
     this.wpIdx -> index;
     (wpL(index)).cost -> c;
     c + range -> cLim;
     index, 1 -> (jHi, jLo);
-    
+
     ;;; binary search, wpPList is sorted in order of increasing cost value
     while true do
         intof((jHi + jLo)/2) -> index;
-    
+
         if jHi <= jLo + 1 then
             quitloop(1);
         endif;
-        
+
         (wpL(index)).cost -> c;
         index -> if c < cLim then jHi else jLo endif;
     endwhile;
@@ -1398,7 +1398,7 @@ enddefine;
 define :method verticesInit(
     this:Dog,
     winObj:rc_window_object);
-    
+
     lvars j, str, vt;
 
     newarray([1 ^vertexMax], 0) -> vtList(this);
@@ -1410,7 +1410,7 @@ define :method verticesInit(
             rc_pic_strings = [FONT '5x8' COLOUR ^vertexColour {-5 -15 ^str}];
             name = str;
         endinstance -> vt;
-        
+
         rc_do_addpic_to_window(vt, winObj, true);
         rc_move_to(vt, 10000, 0, false);
         vt -> (vtList(this))(j);
@@ -1426,7 +1426,7 @@ define :method verticesShow(
     lvars j, vt, wp;
 
     min(vertexMax, wpNum) -> vtNum(this);
-    
+
     for 1 -> j step j + 1 -> j till j > vertexMax do
         (this.vtList)(j) -> vt;
         wpL(j) -> wp;
@@ -1442,7 +1442,7 @@ enddefine;
 define :method egdesInit(
     this:Dog,
     winObj:rc_window_object);
-    
+
     lvars j, str, ed;
 
     newarray([1 ^edgeMax], 0) -> edList(this);
@@ -1452,7 +1452,7 @@ define :method egdesInit(
         instance VisualObj;
             name = str;
         endinstance -> ed;
-        
+
         rc_do_addpic_to_window(ed, winObj, true);
         rc_move_to(ed, 10000, 0, false);
         ed -> (edList(this))(j);
@@ -1464,7 +1464,7 @@ define :method egdesShow(
     winObj:rc_window_object,
     show,
     wpL, wpNum);
-    
+
     lvars j, k, ed, wp, x1, y1, x2, y2;
 
     wpL(1) -> wp;
@@ -1472,7 +1472,7 @@ define :method egdesShow(
     0 -> k;
     for 2 -> j step j + 1 -> j till j > wpNum do
         wpL(j) -> wp;
-        
+
         if wp.isNode then
             getCoords(wp) -> (x2, y2);
 
@@ -1487,7 +1487,7 @@ define :method egdesShow(
     endfor;
 
     k -> this.edNum;
-    
+
     for k + 1 -> j step j + 1 -> j till j > edgeMax do
         (this.edList)(j) -> ed;
         rc_move_to(ed, 10000, 0, true);
@@ -1498,10 +1498,10 @@ enddefine;
 define :method directionInit(
     this:Dog,
     winObj:rc_window_object);
-    
+
     instance VisualObj;
     endinstance -> this.direction;
-        
+
     rc_do_addpic_to_window(this.direction, winObj, true);
     rc_move_to(this.direction, 10000, 0, false);
 enddefine;
@@ -1512,7 +1512,7 @@ define :method directionShow(
     show,
     x1, y1,
     x2, y2);
-    
+
     rc_move_to(this.direction, 10000, 0, true);
     if show then
         [ [WIDTH 2 COLOUR ^directionColour {^x1 ^y1} {^x2 ^y2}] ]
@@ -1529,19 +1529,19 @@ enddefine;
 define :method isInPen(
     this:Pen,
     x, y) -> bool;
-    
+
     lconstant p = instance Path;
     endinstance;
     lvars dx, dy;
-    
+
     radialFunc(this.orientation, this.size) -> (dx, dy);
-    
+
     create(
         p,
         this.rc_picx - dx, this.rc_picy - dy,
         this.rc_picx + dx, this.rc_picy + dy,
         this.size);
-        
+
     contains1(p, x, y) -> bool;
 enddefine;
 
@@ -1557,9 +1557,9 @@ enddefine;
 define :method collectObjects(
     this:Dog,
     allAgents);
-    
+
     lvars o;
-    
+
     [%  for o in allAgents do
             if isObstacle(o)
             then
@@ -1574,14 +1574,14 @@ define :method collectObjects(
                 o
             endif;
         endfor  %] -> this.obstacleLocalListDog;
-    
+
     [%  for o in this.obstacleLocalListDog do
             if  not(istrial_sheep(o))
             then
                 o
             endif;
         endfor  %] -> this.obstacleLocalListSheep;
-    
+
     [%  for o in allAgents do
             if istrial_sheep(o) and not(isInPen(this.sheepPen, getCoords(o)))
             then
@@ -1600,12 +1600,12 @@ define :method moveDog(
     this:Dog,
     x, y,
     s);
-    
+
     lvars dx, dy, d;
 
     rc_sync_display();
     returnif(rc_under_mouse_control(this));
-    
+
     x - this.rc_picx, y - this.rc_picy -> (dx, dy);
     sqrt(dx*dx + dy*dy) -> d;
     min(s, d) -> s;
@@ -1614,7 +1614,7 @@ define :method moveDog(
         s/d -> d;
         dx*d, dy*d -> (dx, dy);
         rc_move_to(this, this.rc_picx + dx, this.rc_picy + dy, true);
-        
+
         sim_degrees_diff(arctan2(dx, dy), this.rc_axis) -> d;
         if abs(d) > 90 then
             sign(d)*90 -> d;
@@ -1627,7 +1627,7 @@ enddefine;
 define :method sheepSafeDist(
     this:trial_sheep,
     dog:Dog) -> d;
-    
+
     sheepSafeDistMin*(
         (sheepSafeDistFac - 1)*(dog.speed/dogSpeedMax) +
         (sheepSafeDistFac - 1)*(dog.bark/dogBarkMax) +
@@ -1638,12 +1638,12 @@ define :method moveSheep(
     this:trial_sheep,
     angle,
     speed);
-    
+
     lvars o, list, s, a, b, da, j, angleTest, d, x, y;
 
     rc_sync_display();
     returnif(rc_under_mouse_control(this));
-    
+
     [%
         for o in all_agents do
             if o /= this and not(isDog(o)) then o endif;
@@ -1659,33 +1659,33 @@ define :method moveSheep(
     while true do
         this.rc_picx + speed*cos(angleTest) -> x;
         this.rc_picy + speed*sin(angleTest) -> y;
-    
+
         getNearest(
             this,
             list,
             getCoords(this),
             x, y,
             da, searchDO) -> d;
-            
+
         if b and not(isInPen(pen, x, y)) then
             0
         else
             min(intof(max(d, 0)), speed)
         endif -> d;
-        
+
         if s < d then
             angleTest, d -> (a, s);
         endif;
         if s = speed or j >= sheepDispAngleSteps then
             quitloop(1);
         endif;
-        
+
         (angle + j*sheepDispAngleDelta) mod 360 -> angleTest;
         if j > 0 then -(j + 1) else -j endif -> j;
     endwhile;
-    
+
     a, s -> (angle, speed);
-    
+
     if speed > 0 then
         angle -> this.trial_heading;
         rc_set_axis(this, angle, true);
@@ -1719,7 +1719,7 @@ define :ruleset rulesetDogPerception;
     ==>
         [POP11
             lvars x, y, d;
-        
+
             this.sheepCurrentX, this.sheepCurrentY -> (x, y);
             getCoords(this.sheepCurrent) -> (this.sheepCurrentX, this.sheepCurrentY);
             if this.sheepCurrentVisible then
@@ -1727,12 +1727,12 @@ define :ruleset rulesetDogPerception;
             else
                 0
             endif -> this.sheepCurrentSpeed;
-        
+
             getDistance(
                 this,
                 this.sheepCurrent
             ) -> this.sheepCurrentDist;
-            
+
             this.sheepCurrentDist < this.visualRange and
             isExpandable(
                 this,
@@ -1741,7 +1741,7 @@ define :ruleset rulesetDogPerception;
                 getCoords(this.sheepCurrent),
                 searchDA, searchDO
             ) -> this.sheepCurrentVisible;
-            
+
 ;;;[Perception d %this.sheepCurrentDist% s %this.sheepCurrentSpeed% v %this.sheepCurrentVisible%]=>
         ]
 
@@ -1775,7 +1775,7 @@ define :ruleset rulesetDogBehaviour;
         ]
         [behaviour plan ?index ?done]
         [behaviour ?activity]
-    
+
     RULE find
         [behaviour ?activity][->> item1]
         [WHERE activity = "rulesetDogFind"]
@@ -1787,7 +1787,7 @@ define :ruleset rulesetDogBehaviour;
                 printf(
                     'Behaviour find, current sheep: visible = %P distance = %P\n',
                     [%this.sheepCurrentVisible, this.sheepCurrentDist%]);
-                    
+
                 1, false -> (index, done);
                 "rulesetDogSteer" -> activity;
             else
@@ -1797,7 +1797,7 @@ define :ruleset rulesetDogBehaviour;
         [DEL ?item1 ?item2]
         [behaviour ?activity]
         [behaviour plan ?index ?done]
-    
+
     RULE steer
         [behaviour ?activity][->> item1]
         [WHERE activity = "rulesetDogSteer"]
@@ -1811,7 +1811,7 @@ define :ruleset rulesetDogBehaviour;
                 printf(
                     'Behaviour steer, current sheep: visible = %P is in pen = %P\n',
                     [%this.sheepCurrentVisible, b%]);
-                    
+
                 1, false -> (index, done);
                 "rulesetDogFind" -> activity;
                 if b then
@@ -1846,7 +1846,7 @@ define :ruleset rulesetDogPlan;
             else
                 waypointPlanIndex(this, this.visualRange - searchDAPath)
             endif -> index;
-            
+
             false -> done;
         ]
         [DEL ?item1]
@@ -1861,7 +1861,7 @@ define :ruleset rulesetDogPlan;
         [SAY 'searching for the plan ( index =' ?index ') ...']
         [POP11
             lvars range, isLocal, goal, list;
-            
+
             if activity = "rulesetDogFind" then
                 if this.sheepCurrent = false then
                     selectSheep(this) -> this.sheepCurrent;
@@ -1870,12 +1870,12 @@ define :ruleset rulesetDogPlan;
             else
                 this.sheepCurrent, this.sheepPen, this.obstacleLocalListSheep
             endif -> (this.currentRoot, this.currentGoal, list);
-            
+
             this.visualRange - searchDAPath -> range;
             getDistance(this.currentRoot, this.currentGoal) < range and
             this.pathProblemTm > 0 or
             index > 1 -> isLocal;
-            
+
             if not(isLocal) then
                 this.obstacleList -> list;
             endif;
@@ -1934,13 +1934,13 @@ define :ruleset rulesetDogPlan;
                 this.wpGList, this.wpGNum,
                 this.wpPList, index
             ) -> this.wpPNum;
-            
+
             this.wpPNum > 0 -> done;
 
             if done then
                 this.wpPNum -> this.wpIdx;
                 0 -> this.pathProblemTm;
-                
+
                 verticesShow(
                     this,
                     sheep_win,
@@ -1955,7 +1955,7 @@ define :ruleset rulesetDogPlan;
         ]
         [DEL ?item1]
         [behaviour plan ?index ?done]
-    
+
     RULE switch
         [behaviour plan ?index ?done]
         [WHERE done = true]
@@ -1988,12 +1988,12 @@ define :ruleset rulesetDogFind;
                 this,
                 this,
                 this.obstacleLocalListDog) -> (wp, d);
-            
+
             if d < dogFindDistMin then
                 printf('Find path problem: distance = %P\n', [%d%]);
                 this.timer -> this.pathProblemTm;
             endif;
-            
+
             getCoords(wp), speedFind(this) -> (x, y, s);
         ]
         [exec ?x ?y ?s]
@@ -2029,13 +2029,13 @@ define :ruleset rulesetDogSteer;
                 printf('Steer path problem: distance = %P\n', [%d%]);
                 this.timer -> this.pathProblemTm;
             endif;
-            
+
             if d > 0 then
                 dogSheepDist/d -> l;
                 getCoords(wp) -> (x, y);
                 getCoords(this.sheepCurrent) -> (xS, yS);
                 xS + l*(xS - x), yS + l*(yS - y) -> (x, y);
-                
+
                 getNearest(
                     this,
                     this.obstacleLocalListDog,
@@ -2043,14 +2043,14 @@ define :ruleset rulesetDogSteer;
                     x, y,
                     searchDA, searchDO) -> l;
                 min(dogSheepDist, max(0, l - dogObstacleDistMin))/dogSheepDist -> l;
-    
+
                 xS + l*(x - xS), yS + l*(y - yS), dogSpeedMax
             else
                 0, 0, 0
             endif -> (x, y, s);
         ]
         [exec ?x ?y ?s]
-    
+
     RULE problem
         [WHERE this.pathProblemTm > 0]
     ==>
@@ -2074,7 +2074,7 @@ define :ruleset rulesetDogExec;
     ==>
         [POP11
             moveDog(this, x, y, s);
-            
+
             directionShow(
                 this,
                 sheep_win,
@@ -2098,7 +2098,7 @@ enddefine;
 
 define :rulesystem rulesystemDog;
     [DLOCAL [prb_allrules = false]];
-    
+
     debug = false;
     cycle_limit = 1;
 
@@ -2645,7 +2645,7 @@ define :method sheep_button_3_up(pic:rc_window_object, x, y, modifiers);
     if sheep_stopped then
 
         rc_async_apply(run_sheep(%20000%), true);
-    
+
     else
         ;;; Use this to terminate run
         true -> sheep_stopped;
@@ -3235,7 +3235,7 @@ enddefine;
 
 define :method setupPen(this:Pen, winObj:rc_window_object, inList) -> outList;
     ;;; first create instances of all the posts
-    
+
     define :instance post1:Post;
         rc_pic_strings = [FONT '6x13' {-3 -3 '1'}];
         rc_picx = size(this);   rc_picy = -size(this);
@@ -3328,17 +3328,17 @@ define :method setupTrees(this:Pen, winObj:rc_window_object, inList) -> outList;
     trnAgentList(
         createTreeGroup1(18, 0, l1, 140, 20, []),
         (this.orientation - l1/2 + 270) mod 360, 0, 0) -> list1;
-        
+
     280 -> l2;
     trnAgentList(
         createTreeGroup1(30, 0, l2, 240, 20, []),
         (this.orientation - l2/2 + 90) mod 360, 0, 0) -> list2;
-    
+
 /*  280 -> l3;
     trnAgentList(
         createTreeGroup1(40, 0, l3, 340, 20, []),
         (this.orientation - l3/2 + 270) mod 360, 0, 0) -> list3;
-*/      
+*/
     addAgentToWindow(
         list1 <> list2/* <> list3*/,
         winObj) <> inList -> outList;
@@ -3361,31 +3361,31 @@ define :method setupAnimals(this:Pen, winObj:rc_window_object, inList) -> outLis
         trial_hunger = 0;
         rc_pic_strings = [[FONT '6x13' {0 0 'a'}]];
     enddefine;
-    
+
     define :instance sleepy:trial_sheep;
         trial_hunger = 0;
         rc_pic_strings = [[FONT '6x13'{0 0 'b'}]];
     enddefine;
-    
+
     define :instance sneezy:trial_sheep;
         rc_pic_strings = [[FONT '6x13' {0 0 'c'}]];
     enddefine;
-    
+
     define :instance bashful:trial_sheep;
         rc_pic_strings = [[FONT '6x13' {0 0 'd'}]];
     enddefine;
-    
+
     define :instance doc:trial_sheep;
         rc_pic_strings = [[FONT '6x13' {0 0 'e'}]];
         trial_hunger = 0;
     enddefine;
-    
+
 
     ;;; Now the sheepdog
     define :instance Miszka:Dog;
     enddefine;
     setupDog(Miszka, this, winObj);
-    
+
     disperseAgents(
         agentRMin, agentRWidth,
         [sheepy sleepy sneezy bashful doc Miszka],
@@ -3427,7 +3427,7 @@ define sheep_setup();
     rc_mousepic(sheep_win, [button dragonly]);
 
     "sheep_button_3_up" -> rc_button_up_handlers(sheep_win)(3);
-    
+
     ;;; the pen
     setupPen(pen, sheep_win, []) -> all_agents;
 

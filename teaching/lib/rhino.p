@@ -280,7 +280,7 @@ define play(rhinos);
                     endprocedure)
     enddefine;
 
-    
+
     define dlocal rhinorefresh();
         vedrefresh();
         vedputmessage(rhinos >< rhinomessage);
@@ -323,6 +323,6 @@ define play(rhinos);
 enddefine;
 
 /* --- Revision History ---------------------------------------------------
---- Aaron Sloman, Jun 20 1997   
+--- Aaron Sloman, Jun 20 1997
     Changed to determine ved key via vedgetproctable.
  */

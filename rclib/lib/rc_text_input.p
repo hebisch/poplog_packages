@@ -294,7 +294,7 @@ define :method prepare_for_printing(num, pic:rc_number_input) -> num;
         ;;; Ensure adequate decimal points shown.
         dlocal pop_pr_places, pop_pr_quotes = false;
 
-        if places == 0 then places  
+        if places == 0 then places
         else `0` << 16 || places
         endif -> pop_pr_places;
 
@@ -306,7 +306,7 @@ enddefine;
 
 define :method updaterof rc_informant_value(newval, pic:rc_text_input);
     ;;; returnif(self_caller());
-    
+
     lvars
         old_win = rc_current_window_object,
         textin_win = rc_informant_window(pic);
@@ -343,7 +343,7 @@ define :method updaterof rc_informant_value(val, pic:rc_number_input);
     endif;
 
     call_next_method(val, pic);
-    
+
     ;;; just in case a string was stored as value
     lvars newval = rc_informant_value(pic);
     unless isnumber(newval) then
@@ -368,7 +368,7 @@ define :method updaterof rc_text_value(newval, pic:rc_text_input);
 enddefine;
 
 define :method constant consolidate_or_activate(pic:rc_text_input);
-    ;;; switch between active and non-active mode   
+    ;;; switch between active and non-active mode
     lvars
         ISactive = rc_text_input_active(pic);
 
@@ -739,7 +739,7 @@ define :method rc_DRAW_TEXT_INPUT(pic:rc_text_input);
     endif;
 
     lvars ycentre = (box_height / 2.0)*sign(rc_yscale);
-    
+
     ;;; Obliterate previous picture
     rc_drawline_relative(
         2/rc_xscale, ycentre , box_len*sign(rc_xscale), ycentre, bg, box_height);
@@ -798,7 +798,7 @@ define :method rc_DRAW_TEXT_INPUT(pic:rc_text_input);
         ;;; Now compute how much of string can be shown
         max_visible = round(box_len/char_w) - 1;
 
-    ;;; [max_visible ^max_visible box_len ^box_len char_w ^char_w]=>    
+    ;;; [max_visible ^max_visible box_len ^box_len char_w ^char_w]=>
     ;;; Draw the text with location pointer
     if extendable == true or length_needed <= box_len
     then
@@ -847,9 +847,9 @@ define :method rc_SHOW_TEXT_LABEL(pic:rc_text_input);
         %rc_font(rc_window)%,
         %rc_foreground(rc_window)%,
     ;
-    
+
     lvars string = rc_label_string(pic);
-    
+
     returnif(string == nullstring); ;;; no string to draw
 
     ;;; Set up label font and label colour if necessary
@@ -1000,7 +1000,7 @@ define create_input_field(x, y, width, height, content, extendable, font, proc) 
     endif;
     create_text_input_field(x, y, width, height, content, extendable, font, creator<>proc) -> field;
 enddefine;
-    
+
 
 vars rc_text_input = true;  ;;; for uses
 

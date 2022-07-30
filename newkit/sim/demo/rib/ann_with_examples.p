@@ -192,7 +192,7 @@ vars driver =
        [network [robot [example [1 0 1 0 0 0 0 0] [0 0 1 0] ]]]
        [network [robot [example [1 1 0 0 0 0 0 0] [0 1 0 0] ]]]
        ];
-*/      
+*/
 
 ;;;
 ;;; Function like add(), but adding things at the end of the database
@@ -355,32 +355,32 @@ define eval_network( input_list, network ) -> output_list;
         ;;; otherwise, if the network has been trained, use it
         ;;;
         /**/
-    
+
     elseif present( [network [^network [already_taught]]] ) then
         ;;; Consider each unit in turn
         foreach ! [network [^network [unit ?unit_name ?unit_type ==]]] do
             if unit_type == "input" then
-                
+
                 ;;; Feed the input data in the input slot of input neurons and
                 ;;; evaluate their activation
                 hd(input_list) -> access_input(it);
                 tl(input_list) -> input_list;
                 eval_unit_activation( unit_name, network );
             else
-            
+
             ;;; Evaluate the input and the activation of hidden/output neurons
             eval_unit_input( unit_name, network );
             eval_unit_activation( unit_name, network );
             endif;
         endforeach;
-        
+
         ;;; Return a list of the activations of the output neurons
         [%
           foreach ! [network [^network [unit ?unit_name output = ?activation ==]]] do
               activation;
           endforeach;
       %] -> output_list;
-        
+
         ;;;
         ;;; otherwise, if the USER has been trained, use her/him :)
         ;;;
@@ -544,7 +544,7 @@ define ann_print_for_nncf( network );
     length(net_element) -> len_net_element;
     pr(net_element(1));
     unless net_element(1) == "already_taught" then pr('('); endunless;
-    
+
     for count_net_element from 2 to len_net_element do
         net_element(count_net_element) -> item;
         if islist( item ) then
@@ -625,7 +625,7 @@ define ann_train( network, iterations, restart_training ) -> rmse;
     foreach [network [^network [example ==]]] do
         counter fi_+ 1 -> counter;
     endforeach;
-    
+
     lvars tss;
     present(! [network [^network [tss ?tss]]]) -> ;
 

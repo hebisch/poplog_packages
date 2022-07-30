@@ -41,7 +41,7 @@ define :method rc_panel_field_value(panel:rc_panel, labels) -> val;
         endif;
         return();
     endif;
-    
+
 enddefine;
 
 define :method updaterof rc_panel_field_value(val, panel:rc_panel, labels);
@@ -51,14 +51,14 @@ define :method updaterof rc_panel_field_value(val, panel:rc_panel, labels);
     unless panel == rc_current_window_object then
         panel -> rc_current_window_object;
     endunless;
-    
+
     if null(labels) or listlength(labels) /== 2 then
         mishap('Inappropriate path for panel_field_value updater', [%labels%]);
     else
 
         lvars item = rc_panelcontents(panel, labels);
 
-    
+
         ;;; Veddebug(item);
         if front(back(labels)) == "all_items" then
             ;;; item should be a list of all the components
@@ -82,7 +82,7 @@ define :method updaterof rc_panel_field_value(val, panel:rc_panel, labels);
             endunless;
         elseif isrc_radio_button(item) then
             val -> rc_button_value(item);
-            
+
         elseif isrc_button(item) then
             ;;; check that it makes sense to update. not if this mishaps
             rc_panelcontents(panel, labels) -> ;

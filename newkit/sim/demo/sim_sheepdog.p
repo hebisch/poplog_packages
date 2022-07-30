@@ -1425,7 +1425,7 @@ define :method tree_detect(agent:trial_dog) -> answer;
                     tree_dist -> dist;
                     tree -> nearest;
                     if tree_dist < 100 then
-                        
+
                         true -> answer;
 
                         tree -> agent.trial_problemtree;
@@ -2211,7 +2211,7 @@ define :method sheep_button_3_up(pic:rc_window_object, x, y, modifiers);
     if sheep_stopped then
 
         rc_async_apply(run_sheep(%20000%), true);
-    
+
     else
         ;;; Use this to terminate run
         true -> sheep_stopped;
@@ -2568,7 +2568,7 @@ PURPOSE  : Deals with situations where the dog is in the pen
 
 define :ruleset dog_pen_rules;
     [DLOCAL [prb_allrules = false]];
-    
+
 RULE start
     [target []]
     ==>
@@ -2781,7 +2781,7 @@ RULE reset_counter
 
 RULE start_counter
     ;;; initially there's no counter value, so start it
-    
+
     ==>
     [counter 0]
     [LVARS [[lastx lasty] = trial_coords(sim_myself)]]
@@ -2825,8 +2825,8 @@ RULE remember_behaviour
     ==>
     [NOT last_behaviour ==]
     [last_behaviour ?behaviour]
-    
-        
+
+
 enddefine;
 
 /*
@@ -2847,7 +2847,7 @@ define :ruleset join;
 ;;;Some Context flipping Rules
 
 RULE notready
-    ;;; added by A.S.   
+    ;;; added by A.S.
     [WHERE sim_myself.trial_goal == [] or sheep == []]
     ==>
     [STOP]
@@ -3484,7 +3484,7 @@ RULE treenearer
         istrial_agent(tree) and istrial_agent(sheep)
         and
         sim_distance(sim_myself, tree) < sim_distance(sim_myself, sheep) ]
-    
+
         ==>
 
     [POP11

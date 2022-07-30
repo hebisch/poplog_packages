@@ -5,7 +5,7 @@
                     panel entity.
  > Author:          Aaron Sloman, Aug 10 2002 (see revisions)
  > Documentation:   HELP RCLIB, HELP RC_CONTROL_PANEL
- > Related Files:   
+ > Related Files:
  */
 
 
@@ -26,8 +26,8 @@ define :method rc_set_panel_entity(val, panel:rc_panel, labels);
 
     ;;; make sure the panel is rc_ current_window object
 
-    dlocal rc_current_window_object;    
-    
+    dlocal rc_current_window_object;
+
     unless panel == rc_current_window_object then
         panel -> rc_current_window_object;
     endunless;
@@ -74,7 +74,7 @@ define :method rc_set_panel_entity(val, panel:rc_panel, labels);
                         unless isboolean(val) then
                             mishap('Boolean value needed for updating',
                                         [%val, object,  labels, panel%]);
-                        endunless;                          
+                        endunless;
                         val -> rc_button_value(object)
                     elseif isrc_display_button(object) then
                         ;;; includes toggle and counter buttons

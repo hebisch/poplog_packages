@@ -263,7 +263,7 @@ define test_fitness_function( chrom );
     endfor;
     fit -> fitness(chrom);
 enddefine;
-    
+
 /*
 vars c = conschromosome( undef, { 1 0 1 0 }, 4 );
 test_fitness_function( c );
@@ -315,9 +315,9 @@ define population_stats( pop );
     best_chrom -> best_chromosome(pop);
     worst_chrom -> worst_chromosome(pop);
 enddefine;
-    
-    
-    
+
+
+
 /*
 vars p = make_random_population( 10, 20, "test_fitness_function" );
 evaluate_population(p);
@@ -491,7 +491,7 @@ define recombination( intermediate_pop, cross_probability ) -> recombined_pop;
       ;;; Select two parents (no check for parent1 == parent2)
       chromosomes(intermediate_pop)(random(chrom_num)) -> parent1;
       chromosomes(intermediate_pop)(random(chrom_num)) -> parent2;
-    
+
       ;;; Mate them
       cross( parent1, parent2, random(cross_site_num) );
       endrepeat;
@@ -528,7 +528,7 @@ define mutation( recombined_pop, mut_probability ) -> mutated_pop;
 
     ;;; Then, mutate its bits in place
     repeat total_mutations times
-    
+
     ;;; Select a random chromosome and mutate a random bit of it
     random(chrom_num) -> parent;
     mutate(chromosomes(mutated_pop)(parent),random(bit_num))
@@ -822,7 +822,7 @@ define genetic_algorithm( fit_function, pop_size, chrom_parms,
         if ( print_stats ) then
         stats( generation, new_pop, solution_printer );
     endif;
-    
+
     ;;; Additional stopping criterion
     if ( stopping_criterion( current_pop, new_pop, epsilon,
                  best_chrom ) ) then

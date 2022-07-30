@@ -50,7 +50,7 @@ define vars rc_dial(x, y, orient, angwidth, range, len, width, colour, bg) -> po
                 marks:ismarkspec, labels:islabelspec,
                 captions:iscaptionspec;
 
-    
+
     dlocal popradians = false;
 
     rc_check_window(win);
@@ -58,7 +58,7 @@ define vars rc_dial(x, y, orient, angwidth, range, len, width, colour, bg) -> po
     lvars y_up = rc_yscale < 0 ;
 
     if isword(orient) then uppertolower(orient) -> orient endif;
-    
+
     if orient == "up" then
         if y_up then 0 else 180 endif
     elseif orient == "down" then
@@ -73,7 +73,7 @@ define vars rc_dial(x, y, orient, angwidth, range, len, width, colour, bg) -> po
     endif -> orient;
 
     if isword(angwidth) then uppertolower(angwidth) -> angwidth endif;
-    
+
     if angwidth == "semi" then 180
     elseif angwidth == "quarter" then 90
     elseif angwidth == "circle" then 360
@@ -81,7 +81,7 @@ define vars rc_dial(x, y, orient, angwidth, range, len, width, colour, bg) -> po
     else
         mishap('Number or angwidthation word wanted', [^angwidth]);
     endif -> angwidth;
-    
+
 
     ;;; Fix offset of dial, previously done differently.
     lvars
@@ -94,7 +94,7 @@ define vars rc_dial(x, y, orient, angwidth, range, len, width, colour, bg) -> po
         x, y, orient, minang, maxang, len, width, colour, bg,
             range, marks, labels, captions,
                 wid, specs, typespec) -> pointer;
-    
+
 
     ;;; now install it in window and draw it
     rc_install_pointer(pointer, win);

@@ -16,7 +16,7 @@ This file describes the options available on the Training Options Menu.
  -- 'Show target result'
 
 
--- 'Current network' --------------------------------------------------         
+-- 'Current network' --------------------------------------------------
 
 The variable NN_CURRENT_NET is used to hold the name of the current
 neural network. The current net is used as the default value whenever

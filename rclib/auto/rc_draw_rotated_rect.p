@@ -37,7 +37,7 @@ define rc_draw_rotated_rect(x, y, ang, len, height, colour);
         rc_transxyout = rc_rotate_coords_rounded,
         ;
     rc_draw_filled_centred_rect(0, 0, len, height, colour);
-    
+
 enddefine;
 
 endsection;

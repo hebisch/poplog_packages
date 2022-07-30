@@ -136,7 +136,7 @@ define :method vars rc_insert_strings_scrolltext(obj:rc_scroll_text, strings, lo
         if start == 1 then
             ;;; just overwrite num
         elseif start <= num then
-            ;;; push up num - start items           
+            ;;; push up num - start items
             move_subvector(num+1, vec, 1, vec, start);
         else
             ;;; start > num
@@ -157,7 +157,7 @@ define :method vars rc_insert_strings_scrolltext(obj:rc_scroll_text, strings, lo
     lvars
         new_index = rc_scroll_text_rowoffset(obj) + rc_slider_value(rc_scroll_select_slider(obj)),
         new_val = vec(new_index);
-    
+
     unless new_val == oldval then
         new_index -> rc_informant_value(obj);
     endunless;

@@ -83,7 +83,7 @@ define :method rc_shift_window_frame_by(x, y, win_obj:rc_window_object);
     fill(rc_get_current_globals(rc_window), vec1) ->;
 
     fill(rc_xorigin, rc_yorigin, rc_xscale, rc_yscale, vec2) ->;
-    
+
 enddefine;
 
 

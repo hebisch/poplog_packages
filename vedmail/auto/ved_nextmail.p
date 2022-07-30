@@ -45,7 +45,7 @@ define lconstant path_and_num() -> (path, numchars);
         numchars + mult*n -> numchars;
         mult*10 -> mult
     endfor;
-    
+
     allbutlast(length(list), vedpathname) -> path
 enddefine;
 

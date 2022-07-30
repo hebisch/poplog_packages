@@ -70,7 +70,7 @@ define vars procedure field_before(s1, s2, startloc, endloc, caseless) -> result
     ;;; Stop if at end of string2
     returnif(lim2 == 0)(false -> result);
 
-    if caseless == 0 then   
+    if caseless == 0 then
         ;;; Check  numerical fields for numerical comparison
         lblock
         lvars
@@ -103,7 +103,7 @@ define vars procedure field_before(s1, s2, startloc, endloc, caseless) -> result
         endlblock;
     else
         ;;; use only alphabetic comparison
-        lblock; 
+        lblock;
         lvars char1, char2;
         repeat
             ;;; check if one or other field is exhausted
@@ -260,7 +260,7 @@ define vars ved_sortmr();
 
     define lconstant orderstrings(string1, string2)->bool;
         lvars string1, string2, bool;
-        
+
         field_before(
             string1, string2,
             start_from, end_at, caseless) -> bool;

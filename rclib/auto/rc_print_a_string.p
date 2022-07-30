@@ -12,7 +12,7 @@ section;
 compile_mode :pop11 +strict;
 
 define vars rc_print_a_string(x, y, string, colour, font);
-    
+
     dlocal
         %rc_foreground(rc_window)%,
         %rc_font(rc_window)%;

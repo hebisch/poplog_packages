@@ -876,7 +876,7 @@ endif;
 define prb_forget_rules();
     ;;; Used to clear memory of remembered rule instances, e.g.
     ;;; when changing rulesets
-    
+
     if ispair(prb_remember) then sys_grbg_list(prb_remember) endif;
 
     [] -> prb_remember
@@ -972,7 +972,7 @@ define global constant procedure prb_database_keys(dbtable) /* -> keys */;
         procedure(/*key,val*/);
             lvars /* key, val*/ ;
             ;;; ignore val, leaving key on the stack
-            -> ;            
+            -> ;
             if fast_lmember(dup(), $-prb$-private_keys) then
                 -> ;    ;;; remove the key
             endif;
@@ -1053,7 +1053,7 @@ define prb_add_db_to_db(db1, db2, /*copying*/);
         true -> copying
     endif;
     db2 -> targetdb;    ;;; use procedure variable for speed
-    
+
     if copying then
         fast_appproperty(
             db1,
@@ -1242,7 +1242,7 @@ define procedure prb_present_keys(pattern, keys) -> item;
 
 enddefine;
 
-        
+
 
 
 define global procedure prb_in_data(pattern, data) -> item;
@@ -1291,7 +1291,7 @@ define global procedure prb_del1(pattern, data) -> (item, data);
                 next -> temp
             endif
         enduntil;
-        
+
     elseif prb_in_data(pattern, data) ->> item then
         ;;; do the copying deletion, of ONE item.
         delete(item, data, 1) -> data;
@@ -1419,12 +1419,12 @@ define lconstant procedure prb_subflush_fixed(pattern, hashkey);
                 next -> temp
             endif
         enduntil;
-    
+
     elseif prb_in_data(pattern, data) then
         ;;; There is at least one matching occurrence
 
         ;;; Do the copying deletion of all matching occurrences.
-        
+
         [%fast_for item in data do
                 oldmatchvars -> popmatchvars;
                 if sysmatch(pattern, item) then
@@ -1459,7 +1459,7 @@ define vars procedure prb_flush(pattern);
     ;;; Remove all occurrences of items matching pattern from prb_database
     lvars pattern, hashkey, newpatt, recording = false;
 
-    IFTRACING   
+    IFTRACING
     if prb_chatty and prb_divides_chatty(DATABASE_CHANGE) then
         true -> recording
     endif;
@@ -1474,7 +1474,7 @@ define vars procedure prb_flush(pattern);
             prb_database(hashkey) -> prb_found;
         endif;
         [] -> prb_database(hashkey)
-        
+
     elseif prb_no_variables(pattern) then
         ;;; It has no variables that can be set by the matcher,
         ;;; and no occurrences of "=" or "=="
@@ -1606,7 +1606,7 @@ prb_print_rule -> class_print(prbrule_key);
 define vars procedure prb_check_section(rule);
     ;;; Can be redefined as erase if not used.
     lvars rule, sect;
-    
+
     ;;; Check if necessary to change section for this rule type
         if current_section /== (prb_rule_section(rule) ->> sect) and sect then
             sect -> current_section;
@@ -1873,7 +1873,7 @@ define lconstant prb_check_pop_code(pattern, result_expected) -> boole;
         ;;; so run it
         lblock lvars proc = fast_front(pattern);
         if isprocedure(proc) then
-            
+
             proc();
             if result_expected then -> boole;
             else true -> boole
@@ -2010,7 +2010,7 @@ define vars prb_forevery(patternlist, proc);
             counter = counter fi_+ 1,   ;;; index into patternlocations
             prb_found,
             last_item_matched;
-        
+
         IFTRACING
         dlocal pop_=>_flag;
 
@@ -2129,7 +2129,7 @@ define vars prb_forevery(patternlist, proc);
             [% prb_match_apply(prb_database, patt, identfn) %] -> list;
 
             if list == [] then
-                false -> list;  
+                false -> list;
                 IFTRACING
                 if prb_self_trace then
                     prb_condition_failed_trace(sim_myself, patt, this_rule)
@@ -2167,7 +2167,7 @@ define vars prb_forevery(patternlist, proc);
             proc(patternlocations, counter fi_- 1);
         else
             ;;; Some more patterns to match. Continue to recurse
-            
+
             fast_destpair(patternlist) ->(pattern, patternlist);
             lvars fullpattern = pattern;
 
@@ -2215,7 +2215,7 @@ define vars prb_forevery(patternlist, proc);
                     front(pattern) -> key;
                 endwhile;
 
-                
+
                 if (prb_condition_type(key) ->> condition_procedure) then
                     ;;; should allow autoloading of new condition types
                     ;;; User-defined condition so run it. (It could be a procedure name)
@@ -2319,7 +2319,7 @@ define vars prb_forevery(patternlist, proc);
                     lblock lvars patt;
                         for patt in fast_back(pattern) do
                             oldmatchvars -> popmatchvars;
-                            prb_forevery_sub(patt::patternlist) 
+                            prb_forevery_sub(patt::patternlist)
                             ;;; if it returns, try another
                         endfor;
                     endlblock;
@@ -2413,7 +2413,7 @@ define vars prb_forevery(patternlist, proc);
                     ;;; reset popmatchvars (as with NOT_EXISTS)
                     oldmatchvars -> popmatchvars;
                     prb_forevery_sub(patternlist)
-                        
+
                 elseif key == "FILTER" then
                     false -> last_item_matched;
                     ;;; of form [FILTER pred patt1 patt2 ... pattn]
@@ -2442,7 +2442,7 @@ define vars prb_forevery(patternlist, proc);
                                 all_matches(patt)
                             endfor
                         %] -> items;
-                        lvars len = stacklength();                  
+                        lvars len = stacklength();
                         [%pred(pattern, items)%] -> vec;
                         ;;; pred may return false or a list (See HELP PRB_FILTER)
                         unless stacklength() == len then
@@ -2592,7 +2592,7 @@ define global procedure read_in_items();
             item
         endif
     endrepeat;
-        
+
 enddefine;
 
 define global procedure read_list_of_items() -> result;
@@ -2838,7 +2838,7 @@ define prb_read_VARS(usevector, name, lexical) -> varspec;
     lvars codelist = [] , varlist, item, var, initialised = false;
     readitem() ->;  ;;; the "["
     readitem() ->;  ;;; the keyword "VARS", "LVARS", "DLOCAL"
-    
+
     [%
         until (hd(proglist) ->> item) == "]"  do
             if item == "[" then
@@ -3133,7 +3133,7 @@ define vars procedure prb_readaction(vars_spec) -> action;
         ;;; replace the tail with a list containing only the compiled
         ;;; procedure
         tl(tl(proglist)) -> proglist;
-        
+
 ;;;     read_in_items() -> action;
         sysPUSHQ("POP11");
         prb_compile_procedure(false, false, "]", false);
@@ -3169,7 +3169,7 @@ define prb_read_conditions(vars_spec) -> (list, item);
             back(vars_spec) -> vars_spec
         endif
     endif;
-        
+
     [%
         repeat
             prb_readcondition(vars_spec) -> item;
@@ -3415,7 +3415,7 @@ define lconstant restore_dlocal(dlocal_vars, dlocal_vals, grbg);
     endfor;
     ;;;if grbg then sys_grbg_list(dlocal_vals) endif;
 enddefine;
-    
+
 
 global vars rule_instance;  ;;; used non locally in prb_eval and prb_eval_list(bad!)
 
@@ -3455,7 +3455,7 @@ define vars procedure prb_applicable(rules) -> possibles;
             ;;; But indicate that something was found
 
                 this_rule -> prb_rule_found;
-            
+
             elseif (not(prb_allrules) or not(prb_sortrules)) and prb_repeating then
             ;;; if only one action at a time, or there's no user-defined sorting
             ;;; procedure, do the actions now. Requires a dummy rule instance.
@@ -3542,7 +3542,7 @@ define vars procedure prb_applicable(rules) -> possibles;
                     endif
 #_ELSE
                     #_< {} >_#      ;;; a constant empty vector
-                
+
 #_ENDIF
                     ) ->> instance -> prb_rule_found;
 
@@ -4295,7 +4295,7 @@ define procedure prb_do_rules(rules);
 
     ;;;; false -> prb_rule_found;   ;;; done in prb_run_with_matchvars
     prb_applicable(rules) -> possibles;
-    
+
 
     IFTRACING
     if prb_chatty then  ;;; previously "or prb_divides_chatty(APPLICABLE) then"
@@ -4542,7 +4542,7 @@ define vars prb_run_with_matchvars(rules, database, limit);
         ;;; If there's information about popmatchvars, set it up
         ;;; for this rulefamily.
         prb_check_vars_vec(prb_family_matchvars(prb_current_family)) -> rfvarsvec;
-        prb_check_stack('in family ', prb_current_family, 2);   
+        prb_check_stack('in family ', prb_current_family, 2);
 
         ;;; Check if rulefamily spec included [DLOCAL ...]
 
@@ -4564,7 +4564,7 @@ define vars prb_run_with_matchvars(rules, database, limit);
     ;;; check that prb_repeating and prb_copy_modify are not both
     ;;; false
     if not(prb_repeating) and not(prb_copy_modify) then
-    
+
         IFTRACING
         'PRB_REPEATING is false, so PRB_COPY_MODIFY is being set true' => ;
         true -> prb_copy_modify
@@ -4615,14 +4615,14 @@ define vars prb_run_with_matchvars(rules, database, limit);
             ;;; changes the current ruleset.
             lvars ruleschanged = false;
 
-            
+
             unless prb_current_family then
                 if prb_ruleset_name then
                     ;;; may have been recompiled, so get current value
                     recursive_valof(prb_ruleset_name) -> prb_rules;
                 endif
             endunless;
-            
+
 
             if prb_rules /== oldrules then
                 true -> ruleschanged;
@@ -4643,7 +4643,7 @@ define vars prb_run_with_matchvars(rules, database, limit);
                             prb_ruleschanged_trace(prb_ruleset_name, prb_family_name)
                         endif;
                 endif;
-                        
+
                 unless ispair(prb_rules) then
                     mishap('LIST OF RULES NEEDED. Is LIB RULESETS loaded?',
                         [^prb_rules])

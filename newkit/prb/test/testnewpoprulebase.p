@@ -90,7 +90,7 @@ RULE rule2  ;;; in testrules
 
 RULE rule3  ;;; in testrules
 
-    [NOT is a b]    
+    [NOT is a b]
     ==>
     [is a b]
     [is b c]

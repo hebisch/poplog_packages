@@ -21,7 +21,7 @@ This option specifies whether a log file should be written. The boolean
 value is held in the variable LOGFILEWRITE. This is an active variable
 which adds/deletes the function NN_LOGFILE to/from the list NN_EVENTS.
 However, a log file will not be written if the frequency of writing
-(held in LOGFREQUENCY) is 0.                    
+(held in LOGFREQUENCY) is 0.
 
 
 -- 'Logfile name' -----------------------------------------------------

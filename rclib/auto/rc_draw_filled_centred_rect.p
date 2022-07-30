@@ -53,7 +53,7 @@ define rc_draw_filled_centred_rect(x, y, width, height, colour);
         %rc_foreground(rc_window)%;
 
     if colour then colour -> rc_foreground(rc_window) endif;
-    
+
     lvars
         halfwidth = width/2.0,
         halfheight = height/2.0,

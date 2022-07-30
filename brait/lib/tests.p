@@ -313,7 +313,7 @@ define:method controller(me:vehicle, sensor_data);
         20 -> left_motor_speed(me);
         10 -> right_motor_speed(me);
     endif;
-    
+
 enddefine;
 
 create_vehicle(

@@ -39,7 +39,7 @@ define rc_draw_centred_rect(x, y, width, height, colour, linewidth);
         rc_linewidth;
     if colour then colour -> rc_foreground(rc_window) endif;
     if linewidth then linewidth -> rc_linewidth endif;
-    
+
     lvars
         halfwidth = width/2.0,
         halfheight = height/2.0;

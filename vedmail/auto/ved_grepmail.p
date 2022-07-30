@@ -87,7 +87,7 @@ define global ved_grepmail();
     setup_vedmailfile();    ;;; make sure vedmailfile is set up
     lvars oldtime = sys_real_time();
     ;;; false -> vedediting;
-    
+
     veddo(
         concat_strings(
             {'sh grep '

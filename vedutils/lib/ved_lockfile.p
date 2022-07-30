@@ -231,7 +231,7 @@ ved_unlockfile(), .rawcharin ->;
 /* --- Revision History ---------------------------------------------------
 --- Aaron Sloman, Mar 29 2006
         Changed discappend not to check locks on devices
-        
+
 --- Aaron Sloman, Jan 30 2000
     Changed to turn off autosaving during locking. Is that enough? Could
     autosaving already be in progress?

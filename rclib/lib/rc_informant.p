@@ -129,13 +129,13 @@ define :method rc_information_changed(obj:rc_informant);
 
         if islist(reactor) then
             ;;; This version is defined in rc_control_panel
-            
+
             rc_update_fields(val, reactor)
         else
             ;;; it should be a procedure
             reactor(obj, val);
         endif;
-    enddefine;  
+    enddefine;
 
     do_reactor(rc_current_window_object, rc_reactor_depth);
 
@@ -184,7 +184,7 @@ define rc_informant_with_label(label, list) -> item;
         valof("rc_button_label") -> buttonlabel;
         false -> nobuttons;
     endif;
-    
+
     for item in list do
         if label = rc_informant_label(item)
         or (isbutton(item) and label = buttonlabel(item)) then
@@ -217,12 +217,12 @@ endsection;
 --- Aaron Sloman, Aug 10 2002
     Generalised rc_informant_with_label(label, list) -> item;
     to treat button labels as equivalent to informant labels
-        
+
 --- Aaron Sloman, Aug  2 2002
     Added
         rc_informant_label = newproperty([], 32, false, "tmparg")
         rc_informant_with_label(label, list) -> item;
-        
+
 --- Aaron Sloman, Mar 19 2001
     Fixed method rc_information_changed to behave properly in
     xved, including preventing unwanted cursor warping when reactors

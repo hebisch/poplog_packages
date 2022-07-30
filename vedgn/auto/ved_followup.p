@@ -198,7 +198,7 @@ endsection;
         Full name <mailname@address>
 
 --- Aaron Sloman, Jan  6 2001
-    
+
     Changed ENTER followup to insert compulsory From: line,
     in a portable fashion, I hope.
 

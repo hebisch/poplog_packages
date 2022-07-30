@@ -175,7 +175,7 @@ define rc_opaque_slider(x1, y1, x2, y2, range, radius, linecol, slidercol, strin
             if wid then wid endif) -> slider;
 
     rc_slider_barcol(slider) -> rc_opaque_bg(slider);
-    
+
     if wid then
         ;;; put blob in right place with clean bar
         rc_draw_slider_bar(slider);

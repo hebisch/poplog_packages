@@ -141,5 +141,5 @@ endsection;
 
 /* --- Revision History ---------------------------------------------------
 --- John Williams, Oct 18 1990
-        Fixed "Help" key. Also sets -vedkeymapname- 
+        Fixed "Help" key. Also sets -vedkeymapname-
  */

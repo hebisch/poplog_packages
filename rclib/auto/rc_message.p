@@ -44,7 +44,7 @@ define lconstant destroy_message(win_obj, x, y, modifier);
     define kill_it();
 
         lvars old1 = rc_current_window_object;
-    
+
         rc_kill_window_object(win_obj);
 
         ;;; forget window globals

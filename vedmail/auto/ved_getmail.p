@@ -141,7 +141,7 @@ define ved_getmail();
         and not(vedpresent(lastmailfile))
         and sys_file_exists(outfile)
         and lastmailsize + mailboxsize < vedmailmax
-            
+
         then
             ;;; merge new and old files
             vedputmessage('Mergeing new mail with ' <> lastmailfile);

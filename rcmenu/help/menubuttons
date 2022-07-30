@@ -40,7 +40,7 @@ define :menu case;
     ['WdEnd' vedendwordright]
     ['NextLine' vednextline]
     ['PrevLine' vedcharup]
-    
+
 ;;; [ChangeRange ved_ccr]   ;;; not in library
     ['MENUS...' [MENU toplevel]]
 enddefine;
@@ -434,7 +434,7 @@ endsection;
 --- Aaron Sloman, Mar  9 2000
     Removed command to compile puilib
     Introduced rc_edittool and used it to replace pop_ui_edittool
-    
+
 --- Aaron Sloman, Sep 27 1999
     Added ved_procbrowser
 --- Aaron Sloman, Aug 11 1999
@@ -572,7 +572,7 @@ define :menu keys;
     ['PageDown' [POPNOW vednextscreen()]]
     ['HalfUp' [POPNOW menu_do_scroll(-1, "vert")]]
     ['HalfDown' [POPNOW menu_do_scroll(1, "vert")]]
-    ['Help Keys' 'help vedncdxtermkeys']    
+    ['Help Keys' 'help vedncdxtermkeys']
     ;;; ['Help Sun4Keys' 'help vedsunxtermkeys']
     ['HELP vedkeys' 'help vedkeys']
     ['HELP DefKey' 'help DK']
@@ -736,7 +736,7 @@ section;
 define :menu mark;
     'Mark Ops'
     {cols 2}
-    'Menu mark: marked range'   
+    'Menu mark: marked range'
     ['HELP mark' 'menu_doc help mark']
     ['TEACH mark' 'menu_doc teach mark']
     ['MarkStart' vedmarklo]
@@ -1122,7 +1122,7 @@ define :menu toplevel;
     'Toplevel'
     menu_toplevel_location
     {cols 1}
-    
+
      'Toplevel'
     ['TUTOR' 'teach quickved']
     ['ExitAll' 'qq']
@@ -1218,7 +1218,7 @@ define :menu unix;
     else
         ['MyProcs' 'sh ps -fu $USER']
     endif;;;
-    ;;; this one may not be relevant to everyone    
+    ;;; this one may not be relevant to everyone
     ['LocalXterm'
         [POP11 menu_xterm(false, 'csh')]]
     ;;; This is an example: replace Lap and lap with some other
@@ -1474,7 +1474,7 @@ define ved_winsize;
     vedputmessage(vedstartwindow sys_>< nullstring);
     vedsetcursor()
 enddefine;
-        
+
 
 section;
 
@@ -1563,7 +1563,7 @@ endsection;
  > Purpose:         Easy font changes, and related activities
  > File:            $poplocal/local/menu/menus/menu_xvedfonts.p
  > Author:          Aaron Sloman, Oct  1 1998
- > Documentation:   
+ > Documentation:
  > Related Files:   HELP * VED_WINDOW, REF * XVED
  */
 

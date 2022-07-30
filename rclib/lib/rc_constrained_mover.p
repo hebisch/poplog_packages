@@ -190,7 +190,7 @@ define rc_project_point(x, y, x1, y1, linecos, linesin) -> (x,y);
     ;;; to the line, the more accurate the result. This is probably good enough
     ;;; for constraining a point moved by the mouse to lie on the line, e.g.
     ;;; finding a slider location.
-    lvars dist = rc_distance(x1, y1, x, y); 
+    lvars dist = rc_distance(x1, y1, x, y);
     x1+dist*linecos, y1+dist*linesin -> (x,y)
 enddefine;
 

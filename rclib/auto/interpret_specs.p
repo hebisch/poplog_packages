@@ -50,7 +50,7 @@ define vars expand_spec_field_name(name) -> proc;
         mishap('FIELD NAME OR ABBREVIATION NEEDED', [^name])
     endunless
 enddefine;
-    
+
 
 define lconstant set_spec_slots( item, slot_inits ) with_props 2;
     ;;; adapted from objectclass set_slots to allow the procedure

@@ -2,8 +2,8 @@
  > File:            $poplocal/local/rclib/auto/rc_xterm.p
  > Purpose:         Prompt for a command to run in an xterm window
  > Author:          Aaron Sloman, May  9 1999
- > Documentation:   
- > Related Files:   
+ > Documentation:
+ > Related Files:
  */
 
 /*

@@ -490,7 +490,7 @@ define lconstant decoration_parameters(pic) -> (x, y, len, startorient, endorien
     if rc_dial_counter_clockwise and rc_yscale > 0 then
         (startorient,endorient) -> (endorient,startorient)
     endif;
-    
+
 enddefine;
 
 define :method rc_draw_dial_marks(pic:rc_constrained_pointer, marks);
@@ -668,7 +668,7 @@ define :method rc_draw_constrained_pointer(pic:rc_constrained_pointer);
             ;;; Veddebug('Drawing blob sector');
             rc_draw_blob_sector(0, 0, len, arc_start, draw_arc, bg);
             ;;; Veddebug('Drawn blob sector');
-            
+
             ;;; for debugging
             ;;; rc_draw_blob(0, baseoffset, 5,'black');
             ;;; rc_draw_blob(0, 0, 5,'red');
@@ -692,10 +692,10 @@ define :method rc_draw_constrained_pointer(pic:rc_constrained_pointer);
                     ;;; Veddebug('drawing base');
                     rc_drawline_relative(-len, halfwidth, len, halfwidth, bg, baseoffset+2);
                 endif;
-            
+
                 ;;; Veddebug(['drawn rectangle']);
             endif;
-        endif;  
+        endif;
 
         ;;; Call user definable frame drawer
         rc_draw_pointer_frame(pic);
@@ -808,7 +808,7 @@ define :method rc_undraw_dial(pic:rc_constrained_pointer);
         ;;; rc_draw_rotated_rect(x+xinc,y+yinc, arc_start, 2*len, width+2, 'red');
         ;;; Veddebug(['drawn rectangle' angle ^arc_start]);
     endif;
-    
+
     lvars
         marks = rc_pointer_marks(pic),
         labels = rc_pointer_labels(pic),
@@ -938,10 +938,10 @@ define :method rc_set_axis(pic:rc_constrained_pointer, ang, mode);
 
             ;;; false -> in_rc_set_axis ;
             call_next_method(pic, (180 - rc_rotater_orient(pic) - newang), true);
-            
+
         endif;
     endunless;
-    
+
 enddefine;
 
 define :method rc_pointer_value(pic:rc_constrained_pointer) -> val;
@@ -978,11 +978,11 @@ define :method updaterof rc_pointer_value(newval, pic:rc_constrained_pointer);
         angmax = rc_max_ang(pic),
         ;
 
-    ;;; [vang ^vang] => 
+    ;;; [vang ^vang] =>
 
     if vang < angmin then angmin  -> vang
     elseif vang > angmax  then angmax -> vang endif;
-    
+
     ;;; now get the actual angle from the virtual angle
     lvars ang = (180 - rc_rotater_orient(pic) - vang);
 
@@ -1042,7 +1042,7 @@ define expand_dial_spec_abbreviations(spec) -> spec;
     lvars item, n;
     if isvector(spec) then
         fast_for n from 1 by 2 to datalength(spec) do
-            
+
             rc_dial_spectrans(subscrv(n, spec)) -> item;
             if item then item -> subscrv(n, spec) endif
         endfor;
@@ -1102,7 +1102,7 @@ define -- creation of dials
 define rc_install_dial_features(range, marks, labels, captions, pointer);
     lvars
         rangemin = 0, rangemax = false, rangestep = false, defaultval = 0;
-    
+
     if isnumber(range) then
         range -> rangemax
     elseif isvector(range) then
@@ -1413,5 +1413,5 @@ CONTENTS
 
     split rc_constrained_pointer into rc_constrained_pointer_init and
     rc_install_pointer
-    
+
  */

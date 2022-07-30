@@ -124,9 +124,9 @@ define polyspi(side, inc, ang, num, bg, fg);
     ;;; The angle turned (to left) is ang (in degrees).
     ;;; The total number of sides is num.
     ;;; This is invoked by the operation -rc_poly- below
-    
+
     10->> rc_scratch_x -> rc_scratch_y;
-    
+
     lvars side, inc, ang, num;
     dlocal popradians = false;
     dlocal rc_current_window_object = rc_scratch_window ;
@@ -488,7 +488,7 @@ vars
             :
 
             ['SUGGESTIONS' poly_advise]
-            
+
             {blob 'KILL PANEL'
                 [POP11
                     rc_kill_tearoffs();

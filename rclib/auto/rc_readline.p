@@ -54,7 +54,7 @@ define rc_readline(x, y, strings, prompt, specs, title) -> list;
     else
         [] -> list;
     endif;
-        
+
 enddefine;
 
 

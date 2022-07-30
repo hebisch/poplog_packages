@@ -390,7 +390,7 @@ define:method controller(me:vehicle, sensor_data);
     if current <= length(list) then
         list(current) -> target;
     else
-        false -> target;    
+        false -> target;
     endif;
 
     if target = sound then
@@ -510,7 +510,7 @@ make_dial_panel(vehicle);
 /*
 
 define:method maze_robot(me:vehicle, sensor_data);
-                        
+
     (sensor_data(3)/2)-sensor_data(1) -> left_motor_speed(me);
     (sensor_data(4)/2)-sensor_data(2) -> right_motor_speed(me);
 
@@ -527,7 +527,7 @@ create_vehicle(
 
 maze2();
 
-create_source(1800,1800,[[sound 100 exponential_decay 200]])-> source;  
+create_source(1800,1800,[[sound 100 exponential_decay 200]])-> source;
 
 control_panel();
 
@@ -548,8 +548,8 @@ define:method maze_robot(me:vehicle, sensor_data);
                 true -> turning_right;
                 8 -> left_motor_speed(me);
                 3 -> right_motor_speed(me);
-    
-            elseif sensor_data(5) > sensor_data(4) then 
+
+            elseif sensor_data(5) > sensor_data(4) then
                 true -> turning_left;
                 3 -> left_motor_speed(me);
                 8 -> right_motor_speed(me);
@@ -560,18 +560,18 @@ define:method maze_robot(me:vehicle, sensor_data);
         ;;;corner detected
 
         else
-        ;;; go straight 
+        ;;; go straight
             100 -((sensor_data(5)+sensor_data(3))/2) -> left_motor_speed(me);
             100 -((sensor_data(4)+sensor_data(3))/2) -> right_motor_speed(me);
         endif;
-        
+
     elseif turning_left then
 
         if sensor_data(3) > 80 then
         ;;;running into wall
             false -> turning_left;
             true -> straight;
-    
+
         else
         ;;;turn left
             3 -> left_motor_speed(me);
@@ -584,14 +584,14 @@ define:method maze_robot(me:vehicle, sensor_data);
         ;;;running into wall
             false -> turning_right;
             true -> straight;
-    
+
         else
         ;;;turn right
             8 -> left_motor_speed(me);
             3 -> right_motor_speed(me);
         endif;
 
-    else    
+    else
         0 -> left_motor_speed(me);
         0 -> right_motor_speed(me);
     endif;
@@ -610,7 +610,7 @@ create_vehicle(
                            ;;;(4)left        ;;;(5)right
 maze2();
 
-create_source(1800,1800,[[sound 100 exponential_decay 200]])-> source;  
+create_source(1800,1800,[[sound 100 exponential_decay 200]])-> source;
 
 control_panel();
 
@@ -623,12 +623,12 @@ make_dial_panel(vehicle);
         sensor_data(3)-5 < sensor_data(5) then
             100 -((sensor_data(5)+sensor_data(3))/2) -> left_motor_speed(me);
             100 -((sensor_data(4)+sensor_data(3))/2) -> right_motor_speed(me);
-    
-        elseif sensor_data(4) > sensor_data(5) then 
+
+        elseif sensor_data(4) > sensor_data(5) then
             8 -> left_motor_speed(me);
             3 -> right_motor_speed(me);
-    
-        elseif sensor_data(5) > sensor_data(4) then 
+
+        elseif sensor_data(5) > sensor_data(4) then
             3 -> left_motor_speed(me);
             8 -> right_motor_speed(me);
 

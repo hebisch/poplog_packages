@@ -98,7 +98,7 @@ define rc_apply_util(item, procedure util);
             mishap('Window or window object needed for ' sys_>< util, [^item])
         endif)
 enddefine;
-            
+
 define updaterof rc_apply_util(item, procedure util);
     ;;; apply updater of util to rc_widget(item) if item is a win_obj,
     ;;; otherwise to item.

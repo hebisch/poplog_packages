@@ -33,11 +33,11 @@ define global vars procedure async_unix_obey(list);
         else
              vedgenshell(hd(list), false);
         endif
-    enddefine;              
+    enddefine;
 
     ;;; async_vedinput will do things now or later, as needed.
     async_vedinput(async_unix_obey_do(%list%))
 enddefine;
-    
+
 
 endsection;

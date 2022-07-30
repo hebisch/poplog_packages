@@ -339,7 +339,7 @@ endsection;
 /* --- Revision History ---------------------------------------------------
 --- Aaron Sloman, Mar 29 2006
         Removed -lm from exload command
-        
+
 --- David Young, Apr  3 2000
         Now uses pop_radian from LIB * POP_RADIANS.
 --- David Young, Jan 28 2000

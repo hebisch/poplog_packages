@@ -45,7 +45,7 @@ define vars rc_handle_vedwarpcontext(win_obj, proc);
 
     if isprocedure(proc) then proc()
     elseif islist(proc) then
-        rc_process_event(proc); 
+        rc_process_event(proc);
     else
         clearstack();
         mishap('Procedure or event needed', [^proc])

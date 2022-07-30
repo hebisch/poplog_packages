@@ -63,7 +63,7 @@ global vars
     blocks_saved_image = false,
 
     ;;; flag for termination
-    blocks_terminate = false,   
+    blocks_terminate = false,
 
     ;;; Windows for graphics
     blocks_win = false,
@@ -192,13 +192,13 @@ define do_pause();
 
     if click_counter < 6 then
         ;;; Remind user the the first few times only.
-        'Click on CONTINUE when ready.' =>  
+        'Click on CONTINUE when ready.' =>
         click_counter + 1 -> click_counter;
     endif;
 
     vedscr_flush_output();
     blocks_win -> rc_current_window_object;
-    
+
     ;;; Now wait for user to click on Continue button.
     ;;; this will set blocks_wakeup true.
     dlocal blocks_wakeup = false;
@@ -730,7 +730,7 @@ enddefine;
 
 define do_puton(X, Y) -> result;
     lvars move, moves, different;
-    
+
     planmove(X,Y) -> moves;
     if moves == [] then
         'It is already there!' -> result;
@@ -945,7 +945,7 @@ define showparses(trees);
                 parse_win_width,
                 parse_win_height,
                 true, 'parses') -> parse_win;
-                ;;; syssleep(rc_window_sync_time);  
+                ;;; syssleep(rc_window_sync_time);
             rc_mousepic(parse_win, [button]);
             {window_button_1_down ^false ^false} -> rc_button_down_handlers(parse_win);
         endunless;
@@ -965,10 +965,10 @@ define showparses(trees);
             rc_showtree(tree, -rc_xorigin,-rc_yorigin, '6x13bold');
 
             ;;; rc_show_window(parse_win);
-            ;;; syssleep(rc_window_sync_time);  
+            ;;; syssleep(rc_window_sync_time);
             rc_sync_display();
         endprocedure();
-        
+
         do_pause();
         true -> oldwin;
         if parse_win then

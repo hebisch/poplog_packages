@@ -128,7 +128,7 @@ define rc_print_strings(x, y, strings, spacing, centre, font, bgcol, fgcol) -> (
     endfor;
     sys_grbg_list(widths);
     maxwidth -> maxwidth;
-    totalheight -> totalheight; 
+    totalheight -> totalheight;
 enddefine;
 
 endsection;

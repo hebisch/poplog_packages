@@ -248,7 +248,7 @@ define :method rc_move_sprite_on_path(s:rc_sprite, path, delay,  trail);
         explode(item) -> (steplen, turnang, num);
         rc_move_sprite(s, steplen, turnang, delay, num, trail)
     endfor;
-    
+
 enddefine;
 
 

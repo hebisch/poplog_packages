@@ -944,7 +944,7 @@ enddefine;
         http://www.cs.bham.ac.uk/research/poplog/lib/semnet_old.p
     Inserted some calls of ident_declare to prevent 'DECLARING VARIABLE'
     warnings.
-    
+
  */
 
 /*

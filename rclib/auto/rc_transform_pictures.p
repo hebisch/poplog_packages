@@ -70,7 +70,7 @@ define draw_radius(vec, colour, width, mode);
         %rc_foreground(rc_window)%,
 
         rc_linewidth;
-            
+
     if colour then colour -> rc_foreground(rc_window) endif;
     if width then width -> rc_linewidth endif;
 
@@ -262,7 +262,7 @@ define rc_transform_pictures(pics, steps, delay, trail);
 
     ;;; hand back temporary data structures
     free_vectors(newpics);
-    
+
 enddefine;
 
 endsection;

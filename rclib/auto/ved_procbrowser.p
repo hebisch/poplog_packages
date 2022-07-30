@@ -2,7 +2,7 @@
  > File:            $poplocal/local/rclib/auto/ved_procbrowser.p
  > Purpose:         Tool to support navigation of a pop-11 program file
  > Author:          Aaron Sloman, Sep  3 1999 (see revisions)
- > Documentation:   
+ > Documentation:
  > Related Files:   LIB RC_CONTROLPANEL, RC_PROCBROWSER
  */
 

@@ -37,7 +37,7 @@ define lconstant do_search();
         consolidate_or_activate(textinfield)
     endif;
 
-    ;;; Now get the options from the SOMEOF buttons     
+    ;;; Now get the options from the SOMEOF buttons
     [%
         if member('CaseLess', search_options) then "nocase"
             else false -> caseless endif,

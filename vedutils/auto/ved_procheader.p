@@ -58,7 +58,7 @@ enddefine;
 
 define lconstant insert_vars(list);
     lvars item;
-    
+
     if list == [] then vedinsertstring('NONE');
     else
         lvars wascomma = false;
@@ -195,7 +195,7 @@ define ved_procheader();
     then
         '???' -> name;
     endunless;
-    
+
     vedlinebelow();
     vedpositionpush();
     dlocal vedbreak = false;

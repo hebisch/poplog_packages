@@ -34,7 +34,7 @@ define speak_espeak(sentence);
     ;;; Make sure there is a space in the input to flite
     ;;; use slightly reduced speed, 120 not default 170
     sysobey('espeak -s 120 "'>< sentence ><'"');
-    
+
 enddefine;
 
 

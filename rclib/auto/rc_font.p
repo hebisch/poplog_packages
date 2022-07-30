@@ -96,7 +96,7 @@ define updaterof rc_font(font, window);
         endif;
         ;;; Remember most recent window and font.
         desc -> current_font;
-        window -> current_window;                       
+        window -> current_window;
     endif;
 enddefine;
 

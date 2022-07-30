@@ -258,7 +258,7 @@ CONTENTS -
 
 --- Aaron Sloman, Jun 10 1997
     Fixed handling of non-unity scale values.
-    
+
 --- Aaron Sloman, Jun  9 1997
     made it possible to add extra drawing instructions in rc_new_live_point
     Added rc_point_radius

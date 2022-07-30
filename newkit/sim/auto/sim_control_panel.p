@@ -60,9 +60,9 @@ global
     sim_delay = 0,  ;;; delay in 100ths of a second at the end of each cycle
 
     sim_terminate_simulation, ;;; if true, terminate simulation
-    
+
     sim_pause_demo,     ;;; if true pause simulation
-    
+
     sim_demo_maxcycles, ;;; maximum number of cycles allowed
 ;
 

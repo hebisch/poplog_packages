@@ -172,7 +172,7 @@ define :rc_defaults;
     ;;; If there's a blob to left of label use this colour
     rc_button_blobcolour_def = 'grey50';
 
-    ;;; This is "blob" size for "display" buttons, e.g. 
+    ;;; This is "blob" size for "display" buttons, e.g.
     ;;; e.g. toggle, counter, radio, someof buttons
     rc_button_default_blobrad = 5;
 
@@ -372,7 +372,7 @@ define :method updaterof rc_button_value(val, pic:rc_radio_button);
         val -> rc_informant_value(pic);
     else
         true -> in_rc_button_value;
-        
+
         lvars
             oldval = rc_button_value(pic);
 
@@ -591,7 +591,7 @@ define :method rc_draw_border(pic:rc_button, colour);
         halfborder = intof(border*0.5),
         height = rc_button_height(pic),
         width = rc_button_width(pic);
-        
+
     ;;; Draw the border as an oblong, or rectangle, or,...
     rc_draw_border_shape(pic, 0, 0, width, height, border, halfborder, colour);
 
@@ -910,7 +910,7 @@ define :method rc_mouse_exit(win_obj:rc_button_window, x, y, modifiers);
         isrc_button(rc_selected_action_button)
     then
         ;;; redraw the border, using local button coordinates
-        
+
         procedure();
             dlocal
                 rc_xorigin = rc_xorigin + rc_xscale*rc_picx(rc_selected_action_button),
@@ -1060,7 +1060,7 @@ define rc_async_apply(proc, deferring);
     define lconstant do_action_inVed() with_props 'do_action_inVed';
         ved_apply_action(
             procedure() with_props 'inVed';
-                
+
                 dlocal
                     cucharout,
                     cucharerr = cucharout,
@@ -1179,7 +1179,7 @@ define :method rc_do_button_action(pic:rc_action_button);
                     false)
     elseif isstring(action) then
         ;;; treat as ved command
-        
+
         rc_async_apply(veddo(%action,true%), false)
     else
         mishap('UNKNOWN ACTION TYPE IN ', [^action ^rc_active_picture_object])
@@ -1283,7 +1283,7 @@ define :method rc_rcbutton_1_up(pic:rc_action_button, x, y, modifiers);
         ;;; prevent repeated activation
         true -> exit_done;
     enddefine;
-    
+
     ;;; Re-enable events. Is this safe?
     dlocal rc_in_event_handler = false;
 
@@ -1308,7 +1308,7 @@ define :method rc_rcbutton_1_up(pic:rc_invisible_action_button, x, y, modifiers)
         true -> exit_done;
         rc_release_mouse_control();
     enddefine;
-    
+
     ;;; Re-enable events. Is this safe?
     dlocal rc_in_event_handler = true;
 
@@ -1527,7 +1527,7 @@ enddefine;
 define updaterof rc_options_chosen(options, buttons);
     ;;; find out what sorts of buttons they are
     lvars buttontype =
-        if isrc_someof_button(hd(buttons)) then     
+        if isrc_someof_button(hd(buttons)) then
             "someof"
         else "radio"
         endif;
@@ -1560,7 +1560,7 @@ define :method rc_rcbutton_1_down(pic:rc_radio_button, x, y, modifiers);
     endfor;
     ;;; Now indicate selected action and run the select procedure
     true -> rc_informant_value(pic);
-    
+
     rc_draw_linepic(pic);
     ;;; recursive_valof(rc_radio_select_action(pic))(pic);
     rc_async_apply_action(pic, rc_radio_select_action);
@@ -1583,7 +1583,7 @@ define rc_set_radio_buttons(item, buttons);
     ;;; label to be on, and the others off.
     ;;; If item is "none" then unset all buttons
 
-    dlocal rc_current_window_object;    
+    dlocal rc_current_window_object;
 
     lvars button;
     if isrc_button(item) then
@@ -1777,7 +1777,7 @@ define set_or_unset_someof_buttons_to(list, buttons, setting);
     ;;; still selected. If list is the world "all", then select every one.
     ;;; If it is "none" unset all
 
-    dlocal rc_current_window_object;    
+    dlocal rc_current_window_object;
 
     lvars item, items, button;
     if list == "all" then buttons -> items;
@@ -1889,7 +1889,7 @@ define procedure rc_button_spectrans = newproperty(
         [textbg ^rc_button_labelground]  [chosenbg ^rc_chosen_background]
         [blobrad ^rc_button_blobrad]     [blobcol ^rc_button_blobcolour]
         [labels ^rc_toggle_labels]       [constrain ^rc_constrain_contents]
-        [ident ^rc_informant_ident]      [border ^rc_button_border]     
+        [ident ^rc_informant_ident]      [border ^rc_button_border]
         [reactor ^rc_informant_reactor]],
         16, false, "perm");
 enddefine;
@@ -1903,7 +1903,7 @@ define expand_button_spec_abbreviations(spec) -> spec;
     lvars item, n;
     if isvector(spec) then
         fast_for n from 1 by 2 to datalength(spec) do
-            
+
             rc_button_spectrans(subscrv(n, spec)) -> item;
             if item then item -> subscrv(n, spec) endif
         endfor;
@@ -1974,7 +1974,7 @@ define :method modify_instance(button:rc_action_button, contents, type);
         dup(contents(1))
     elseif islist(contents) then
         contents(1), contents(2);
-        
+
         if listlength(contents) == 3 then
             ;;; third item should be a featurespec vector
             contents(3) -> newspecs
@@ -2126,7 +2126,7 @@ define :method modify_instance(button:rc_counter_button, contents, type);
     elseif isvector(contents) then
         if datalength(contents) == 5 then
             contents(5) -> newspecs;
-        endif;          
+        endif;
         contents(2), contents(3), contents(4)
     else mishap('List or vector expected for button', [^contents])
     endif -> (rc_button_label(button), rc_counter_value(button), inc);
@@ -2163,7 +2163,7 @@ define :method modify_instance(button:rc_option_button, contents, type);
 
     lvars newspecs = false;
 
-    ;;; [contents ^contents].Veddebug;  
+    ;;; [contents ^contents].Veddebug;
     if islist(contents) then
         ;;; this should not occur
         contents(1), contents(2)
@@ -2219,7 +2219,7 @@ define rc_button_key_of_type(type) -> key;
         recursive_valof(rc_button_type_key(type)) -> key;
     elseif iskey(type) then type -> key
     endif;
-    
+
     unless iskey(key) then
         mishap('Button type should be a key or a word',[^type])
     endunless;
@@ -2238,7 +2238,7 @@ define create_rc_button(x, y, width, height, contents, type, specs) -> button;
 
     rc_check_current_window('For create_rc_button');
 
-    ;;; [contents ^contents].Veddebug;  
+    ;;; [contents ^contents].Veddebug;
     ;;; This procedure creates and draws the button and adds it to the current window object
     ;;; Unless the final argument is "nodraw"
     lvars nodraw;
@@ -2248,7 +2248,7 @@ define create_rc_button(x, y, width, height, contents, type, specs) -> button;
     else
         false -> nodraw
     endif;
-        
+
 
     if isvector(contents) then
         ;;; The contents starts wtih the type word. Override the type argument
@@ -2429,7 +2429,7 @@ nil -> proglist;
         Made sure button labels are copied to rc_informant label(button)
 --- Aaron Sloman, Aug 25 2002
         replaced rc_informant*_contents with rc_informant_value
-        
+
 --- Aaron Sloman, Aug 21 2002
     Improved printing for most types of buttons.
     Changed toggle buttons not to confuse contents with ident.
@@ -2446,10 +2446,10 @@ Added new print instance methods for
     rc_unset_someof_panelfield.p
 
 --- Aaron Sloman, Aug 10 2002
-        
+
     Changed print_instance(button) to make pop_pr_quotes true instead of
     always adding string quotes: not appropriate when label is a word
-        
+
 --- Aug  8 2002
     Made rc_button_updating global to facilitate debugging.
         (probably not needed)
@@ -2461,7 +2461,7 @@ Added new print instance methods for
     to remove anomalies.
     Introduced rc_release_mouse_control() instead of
         false -> rc_mouse_selected(rc_active_window_object);
-        
+
 --- Aaron Sloman, Aug  7 2002
     Changed to make informant contents of radio and someof buttons only
     boolean values. Generally made simpler and more consistent. Got rid
@@ -2527,7 +2527,7 @@ Autoloadable procedures
      or a list of labels of buttons (usually strings). Select all the
      buttons in list, leaving any others that were previously selected
      still selected.
-        
+
     Made rc_set_button_defaults invoke check for rc_current_window_object
 
     New procedure
@@ -2709,7 +2709,7 @@ Autoloadable procedures
     Moved some inessentials to LIB * RC_BUTTON_UTILS
 
 --- Aaron Sloman, Jun 28 1997
-    
+
     Altered to allow extra feature spec option for individual
         buttons in list or vector.
 

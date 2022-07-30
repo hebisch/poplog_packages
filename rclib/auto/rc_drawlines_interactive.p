@@ -36,7 +36,7 @@ colour
 width
     An integer specifying the width of the lines to be drawn.
     (0 and 1 are equivalent).
-    
+
 closed
     If this is false then an open polygon is drawn. If it is true then
     a closed polygon, i.e. the last point selected is joined up to

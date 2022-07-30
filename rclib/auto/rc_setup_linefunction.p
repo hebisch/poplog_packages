@@ -75,7 +75,7 @@ define rc_setup_linefunction();
 
         if whitepixel == 1  then
             GXequiv -> Glinefunction;
-            rc_equiv_drawpic -> Gdrawprocedure; 
+            rc_equiv_drawpic -> Gdrawprocedure;
         else
             rc_xor_drawpic -> Gdrawprocedure;
             if whitepixel == 0 then
@@ -86,7 +86,7 @@ define rc_setup_linefunction();
                 mishap('Cannot identify drawing procedure for screen',[])
             endif -> Glinefunction;
         endif;
-        
+
         true -> Glinefunctionsetup;
     endunless;
 enddefine;

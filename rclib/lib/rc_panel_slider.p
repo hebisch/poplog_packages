@@ -97,7 +97,7 @@ vars x; for x from -500 by 5 to 500 do x -> rc_slider_value(ss4); endfor;
 
 Try again after:
 20-> rc_slider_step(ss4);
-    
+
 
 */
 
@@ -182,7 +182,7 @@ define :method create_slider_panel(slider:rc_panel_slider, panelinfo) -> numberi
     ;;; adjust for scale
     px/rc_xscale -> px;
     - py/rc_yscale -> py;
-    
+
     ;;; Adjust for width of bar
     lvars adjust
         = (if endnum == 1 then -1 else 1 endif)*0.5*rc_slider_barwidth(slider);

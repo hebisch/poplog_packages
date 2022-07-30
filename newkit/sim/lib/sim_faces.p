@@ -51,7 +51,7 @@ define :mixin face_pic;
     slot face_yloc;
     slot face_rad = 40;
     slot face_margin = 10;
-    
+
 enddefine;
 
 define :method sim_draw_face(thing:face_pic, feeling);

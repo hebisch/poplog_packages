@@ -97,7 +97,7 @@ define lconstant learn_frequencies(input_file, max_words) -> ( frequency, dictio
         curr_word -> prev_word2;
     endrepeat;
 enddefine;
-    
+
 
 define lconstant generate_word(prev_word1,prev_word2,frequency,dictionary) -> curr_word;
     ;;; Generate the next word on the basis of the last two read in.
@@ -123,8 +123,8 @@ endunless;
         for curr_word, val in_property row do
             sum fi_+ val -> sum;
         quitif( sum >= threshold );
-        endfor; 
-    endif;  
+        endfor;
+    endif;
 enddefine;
 
 

@@ -311,7 +311,7 @@ global vars
 define :mixin vars rc_selectable;
     ;;; uncommenting the following can cause the wrong drawing
     ;;; procedure to be associated with selectables
-    ;;; is rc_linepic;  
+    ;;; is rc_linepic;
     ;;; This can be used with rc_linepic, or rc_linepic_movable.
     ;;;     The former is for static pictures.
 
@@ -554,7 +554,7 @@ define :method rc_window_location(win_obj:rc_window_object) -> (x, y, w, h);
                 (shell_w, shell_h) -> (w, h);
                 shell_x - rc_border_allowance -> x;
                 shell_y - rc_title_allowance -> y;
-                
+
                 if resizeable
                     and ( abs(w - widg_w) > rc_resize_threshold or abs(h - widg_h) > rc_resize_threshold )
                 then
@@ -627,7 +627,7 @@ define :method updaterof rc_window_location(x, y, w, h, win_obj:rc_window_object
              endif;
 
             ;;; save new screen coords
-                
+
             x, y, w, h -> rc_screen_coords(win_obj);
 
             if (w and w > oldw) or (h and h > oldh) then
@@ -644,15 +644,15 @@ define :method updaterof rc_window_location(x, y, w, h, win_obj:rc_window_object
 
                 if w and w > oldw then
 
-                    (w + oldw) div 2 -> startcoord;         
+                    (w + oldw) div 2 -> startcoord;
                     ;;; paint the extended bit the background colour
                     rc_drawline_absolute(
                         startcoord,0, startcoord, h or oldh, "background", w - oldw);
                 endif;
 
                 if h and h > oldh then
-                    (h + oldh) div 2 -> startcoord;         
-                    
+                    (h + oldh) div 2 -> startcoord;
+
                     ;;; paint the extended bit the background colour
                     rc_drawline_absolute(
                         0, startcoord, w or oldw, startcoord, "background", h - oldh);
@@ -707,7 +707,7 @@ define rc_get_current_globals(window);
 
     ;;; Assume current RC frame should always be used as defaults
     ;;; except for position and heading
-    
+
     rc_xorigin, rc_yorigin, rc_xscale, rc_yscale,
     if window == rc_window then
         ;;; its the current window, so save turtle coords
@@ -862,11 +862,11 @@ define XptNewPanel(name, size, args, class) -> (widget, composite, shell);
         XtCreateManagedWidget(
             name sys_><'_composite', xpwCompositeWidget, shell, XptArgList(args))
             -> composite;
-    
+
 ;;; insert graphic widget in the composite
         XtCreateManagedWidget(name, class, composite, XptArgList(args))
             -> widget;
-        
+
         XtManageChild(widget);
         XtManageChild(composite)
     endif;
@@ -893,7 +893,7 @@ define xt_new_panel(string, xsize, ysize, xloc, yloc) -> (widget,composite,shell
         (string, xsize, ysize, xloc, yloc) ->
         (string, xsize, ysize, xloc, yloc, container)
     endif;
-    
+
     lconstant arg_vector = initv(4); ;;; re-usable vector for XptNewPanel
 
     check_string(string);
@@ -1070,7 +1070,7 @@ define rc_new_window_object(x, y, width, height, setframe) -> win_obj;
     else
         {% rc_set_window_defaults(x, y, width, height) %}
     endif ->> vec -> rc_window_frame(win_obj);
-    
+
     {% vec(1), vec(2), vec(3), vec(4) %} -> rc_window_origin(win_obj);
 
     ;;; Make new picture in the container, or else on the screen
@@ -1127,7 +1127,7 @@ define rc_new_window_object(x, y, width, height, setframe) -> win_obj;
                 if y+height+2 > c_height then y+height+2 else false endif
                     -> rc_window_location(container);
         endif;
-      endlblock 
+      endlblock
 
     else
         ;;; Not inside container.
@@ -1250,7 +1250,7 @@ define vars rc_new_window(width, height, xloc, yloc, setframe);
 
         if setframe then
             width div 2, height div 2, 1, -1,
-    
+
             ;;; turtle variables rc_xposition, rc_yposition, rc_heading,
             0, 0, 0,
             ;;; clipping variables (turn off clipping)
@@ -1304,7 +1304,7 @@ define rc_start();
     ;;; Check whether old version is needed, for compatibility with popvision
     ;;; utilities, etc.
     returnif(call_old_rc_proc(oldrc_start));
-    
+
     if xt_islivewindow(rc_window)
     and win_obj and win_obj == rc_current_window_object then
         ;;; do nothing -- use current window object. Just clear it
@@ -1360,7 +1360,7 @@ define :method rc_kill_window_object(win_obj:rc_window_object);
     if container then
         rc_unmap_window_object(win_obj);
     endif;
-    
+
     ;;; remove the window
     if xt_islivewindow(win) then
         ;;; in case window manager does not get rid of it immediately
@@ -1380,8 +1380,8 @@ define :method rc_kill_window_object(win_obj:rc_window_object);
 
     if wascurrent then false -> rc_current_window_object endif;
     ;;; if XptBusyCursorOn  then false -> XptBusyCursorOn endif;
-        
-enddefine;  
+
+enddefine;
 
 define rc_destroy();
     ;;; Kill current rc_graphic_window_object
@@ -1567,7 +1567,7 @@ define :method rc_container_xy(w:rc_window_object, x, y) -> (x, y);
     if container then
         rc_transxyin_in(container, x+xorigin, y+yorigin) -> (x,y);
     else
-        xorigin + x -> x; yorigin + y -> y;     
+        xorigin + x -> x; yorigin + y -> y;
     endif;
 enddefine;
 
@@ -1659,7 +1659,7 @@ define :method rc_redraw_window_object(win_obj:rc_window_object);
     ;;; list get drawn last, and therefore are most likely to be visible.
     lvars item,
         list = rev(rc_window_contents(win_obj));
-    
+
     ;;; undraw movable objects so that they are redrawn in the right
     ;;; state
     for item in list do
@@ -1680,9 +1680,9 @@ enddefine;
 define :method rc_clear_window_object(win_obj:rc_window_object);
     win_obj -> rc_current_window_object;
     XpwClearWindow(rc_widget(win_obj));
-enddefine;  
+enddefine;
 
-    
+
 ;;; for "uses"
 global vars rc_window_object = true;
 endexload_batch;
@@ -1787,7 +1787,7 @@ CONTENTS Use ENTER g define, or ENTER gg
     Made rc_adjust_window_location(win_obj) accessible to users
 
     Made rc_window_location not resize unless rc_resize_handler set.
-        
+
     Changes to rc_redraw_window_object(win_obj)
         Altered to draw objects in the reverse order of
             rc_window_contents(win);
@@ -1805,7 +1805,7 @@ CONTENTS Use ENTER g define, or ENTER gg
     object if the window object has been resized using mouse or a resize program
     command, provided that rc_resize_handler(win) is non-false.
     Event handlers are defined in LIB rc_mousepic
-    
+
     rc_resize_threshold is an integer, controlling the minimum size change
     before the window resize event handler is triggered.
 
@@ -1965,7 +1965,7 @@ CONTENTS Use ENTER g define, or ENTER gg
     rc_new_window_object just creates the Pop-11 object but doesn't
     create the widget until it is first shown. Seems to overcome some
     problems. There are still difficulties with twm, tvtwm, ctwm, not
-    getting screen coordinates right.   
+    getting screen coordinates right.
 
     Added rc_window_sync()  and rc_window_sync_time = 15;
 

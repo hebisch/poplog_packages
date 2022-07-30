@@ -2,7 +2,7 @@
  > File:            $poplocal/local/rcmenu/auto/define_menu.p
  > Purpose:         Introduce define :menu syntax for rc_control_panel
  > Author:          Aaron Sloman, Aug  3 1999 (see revisions)
- > Documentation:   
+ > Documentation:
  > Related Files:   Old version was $local/menu/auto/define_menu.p
  */
 
@@ -31,7 +31,7 @@
         [SLIDERS]    for changing the value of a numerical variable
         [TEXTIN]     for text input
         [NUMBERIN]   for numeric input
-        
+
     enddefine;
 
 If (re)compiled it immediately (re)builds the panel unless menu_popexecute

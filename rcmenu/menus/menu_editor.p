@@ -122,7 +122,7 @@ endsection;
 --- Aaron Sloman, Mar  9 2000
     Removed command to compile puilib
     Introduced rc_edittool and used it to replace pop_ui_edittool
-    
+
 --- Aaron Sloman, Sep 27 1999
     Added ved_procbrowser
 --- Aaron Sloman, Aug 11 1999

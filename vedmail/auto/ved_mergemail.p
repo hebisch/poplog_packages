@@ -70,7 +70,7 @@ define global ved_mergemail();
     dlocal vedargument = nullstring;
 
     mergemail(if arg then arg else 1 endif)
-    
+
 enddefine;
 
 endsection;

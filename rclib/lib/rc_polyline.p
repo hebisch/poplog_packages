@@ -83,7 +83,7 @@ poly1 =>
 lines ==>
 ;;; get from ends to lines that have those ends
 lines(1)=>
-rc_end1_owners(rc_end2(lines(1))) =>    
+rc_end1_owners(rc_end2(lines(1))) =>
 rc_end2_owners(rc_end2(lines(1))) =>
 
 vars line3 = lines(3), end31 = rc_end1(line3), end32=rc_end2(line3);
@@ -207,7 +207,7 @@ global vars
 define :class rc_line_end;
     is rc_point ;
     ;;; location
-    slot rc_end1_owners == [];  
+    slot rc_end1_owners == [];
     slot rc_end2_owners == [];
 enddefine;
 
@@ -228,8 +228,8 @@ define :class rc_line;
     is rc_selectable rc_linepic_movable;
     ;;; location
     slot rc_line_drawn = false;
-    slot rc_end1 = instance rc_line_end endinstance;    
-    slot rc_end2 = instance rc_line_end endinstance;    
+    slot rc_end1 = instance rc_line_end endinstance;
+    slot rc_end2 = instance rc_line_end endinstance;
 enddefine;
 
 
@@ -245,7 +245,7 @@ define rc_cons_line(x1, y1, x2, y2)-> line;
 
     conspair(line, rc_end1_owners(end1)) -> rc_end1_owners(end1);
     conspair(line, rc_end2_owners(end2)) -> rc_end2_owners(end2);
-    
+
 enddefine;
 
 define rc_cons_line_using1(end1, x2, y2)-> line;
@@ -260,7 +260,7 @@ define rc_cons_line_using1(end1, x2, y2)-> line;
 
     conspair(line, rc_end1_owners(end1)) -> rc_end1_owners(end1);
     conspair(line, rc_end2_owners(end2)) -> rc_end2_owners(end2);
-    
+
 enddefine;
 
 define rc_cons_line_using2(x1, y1, end2)-> line;
@@ -275,7 +275,7 @@ define rc_cons_line_using2(x1, y1, end2)-> line;
 
     conspair(line, rc_end1_owners(end1)) -> rc_end1_owners(end1);
     conspair(line, rc_end2_owners(end2)) -> rc_end2_owners(end2);
-    
+
 enddefine;
 
 define rc_cons_line_using_ends(end1, end2)-> line;
@@ -287,7 +287,7 @@ define rc_cons_line_using_ends(end1, end2)-> line;
 
     conspair(line, rc_end1_owners(end1)) -> rc_end1_owners(end1);
     conspair(line, rc_end2_owners(end2)) -> rc_end2_owners(end2);
-    
+
 enddefine;
 
 ;;; predefine two methods defined below
@@ -346,13 +346,13 @@ define rc_copy_end(oldend, linelist, num) -> (linelist, newend);
     for line in oldlines do
         newend -> endofoldline(line);
     endfor;
-    
+
     oldlines -> oldendowners(newend);
-    
+
     ;;; Now link in the new line between new and old point
     [^new_line] -> newendowners(newend);
     [^new_line] -> oldendowners(oldend);
-    
+
     ;;; now add the new line to the linelist
 
     lvars procedure otherendofline =
@@ -497,7 +497,7 @@ define rc_create_endlist(coords) -> ends;
                 erasenum(stacklength() - len);
                 mishap('ODD NUMBER OF NUMBERS IN POINTLIST',[^list])
             endif;
-            
+
             rc_cons_end(destpair(fast_destpair(coords)) -> coords)
         enduntil
     %] -> ends;

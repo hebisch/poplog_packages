@@ -48,5 +48,5 @@ define prb_map_action(rule_instance, action);
     endunless;
 
 enddefine;
-        
+
 endsection;

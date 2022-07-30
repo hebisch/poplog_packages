@@ -1258,7 +1258,7 @@ define :ruleset mult;
 
 enddefine;
 
-true ->> prb_walk -> prb_show_conditions;   
+true ->> prb_walk -> prb_show_conditions;
 true -> prb_allrules;
 false -> prb_sortrules;
 identfn -> prb_sortrules;
@@ -1304,21 +1304,21 @@ define :ruleset mult;
 enddefine;
 
 
-true ->> prb_walk -> prb_show_conditions;   
-;;;false -> prb_show_conditions;    
+true ->> prb_walk -> prb_show_conditions;
+;;;false -> prb_show_conditions;
 true -> prb_allrules;
 false -> prb_sortrules;
 
 prb_run(mult, []);
-true ->> prb_walk -> prb_show_conditions;   
-false -> prb_show_conditions;   
+true ->> prb_walk -> prb_show_conditions;
+false -> prb_show_conditions;
 true -> prb_allrules;
 identfn -> prb_sortrules;
 
 prb_run(mult, []);
 
-true ->> prb_walk -> prb_show_conditions;   
-false -> prb_show_conditions;   
+true ->> prb_walk -> prb_show_conditions;
+false -> prb_show_conditions;
 false -> prb_allrules;
 identfn -> prb_sortrules;
 

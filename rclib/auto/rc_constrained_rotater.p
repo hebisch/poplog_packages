@@ -27,9 +27,9 @@ define :mixin vars rc_constrained_rotater;
     slot rc_pivot_x == 0;   ;;; default - rotates about its centre
     slot rc_pivot_y == 0;
     ;;; absolute coords, calculated from location, offset and orientation
-    slot rc_real_pivot_x == false;  
+    slot rc_real_pivot_x == false;
     slot rc_real_pivot_y == false;
-    
+
     slot rc_pivot_length;
 
     ;;; coordinates of end of pointer relative to origin (rc_picx, rc_picy)
@@ -99,14 +99,14 @@ define :method rc_constrain_rotater(pic:rc_constrained_rotater, vang) -> newang;
             orient = 180 - rc_rotater_orient(pic),
         ;;; direction opposite to the middle of the allowed sector
             oppmiddiff = rc_oppmiddiff(pic);
-        
+
         ;;; (Note swap of max & min: hence use multiple assignment)
         (orient - angmin),
         (orient - angmax),
             -> (angmax, angmin);
 
         ;;; [MIN ^angmin MAX ^angmax]=>
-        
+
         lvars
             angdiff = (vang - angmin) mod 360;
 
@@ -122,7 +122,7 @@ define :method rc_constrain_rotater(pic:rc_constrained_rotater, vang) -> newang;
             ;;; should be within range, so use the angle itself
             vang
         endif;
-        
+
     endif -> newang;
 
     ;;; [newang ^ newang] =>
@@ -178,7 +178,7 @@ define :method rc_real_end_coords(pic:rc_constrained_rotater) -> (x,y);
         (x, y) = rc_coords(pic),
         (xp, yp) = rc_end_coords(pic);
 
-    x + xp -> x; y + yp -> y;       
+    x + xp -> x; y + yp -> y;
 enddefine;
 
 define :method updaterof rc_real_end_coords(x0, y0, pic:rc_constrained_rotater);
@@ -197,7 +197,7 @@ define :method rc_set_axis(pic:rc_constrained_rotater, ang, mode);
     ;;; Draw the picture with the new angle: will rotate
     call_next_method(pic, ang, mode);
 
-    ;;; Now set up new pivot ends   
+    ;;; Now set up new pivot ends
     lvars
         (xp, yp) = rc_pivot_coords(pic),
         len = rc_pivot_length(pic),
@@ -273,7 +273,7 @@ define :method rc_ang_to_point(pic:rc_constrained_rotater, x, y) -> ang;
         ;;; points too close together, so leave pic unchanged
         rc_axis(pic) -> ang;
     endif;
-    
+
 enddefine;
 
 define :method rc_move_to(pic:rc_constrained_rotater, x, y, mode);

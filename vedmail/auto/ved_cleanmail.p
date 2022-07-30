@@ -108,7 +108,7 @@ define ved_cleanmail();
                 nextloop();
             endif;
 
-    
+
         ;;;Veddebug('AAAAA');
         if vedcolumn > 50 then
             vedcharleft();vedcharleft();
@@ -193,7 +193,7 @@ define ved_cleanmail();
     veddo('gsr.\(10:146).\'.');     ;;; replace character ascii 146 with '
     veddo('gsr.\(10:147).`.');      ;;; replace character ascii 147 with `
     veddo('gsr.\(10:148).\'.');     ;;; replace character ascii 148 with '
-    veddo('gsr.\(10:150).\'.');     
+    veddo('gsr.\(10:150).\'.');
             ;;; replace (invisible) character ascii 150 with space
 
     ;;; redo in case:

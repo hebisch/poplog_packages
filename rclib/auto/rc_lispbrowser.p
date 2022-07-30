@@ -157,8 +157,8 @@ define rc_lispbrowser();
 
         if vedline <= line then
             lvars c = vedcurrentchar();
-            
-            if strmember(c, vedbratable) then       
+
+            if strmember(c, vedbratable) then
                 ved_mp();
                 vedcharright();
             else

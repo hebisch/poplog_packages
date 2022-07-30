@@ -598,7 +598,7 @@ turns into (in effect):
 
     enddefine;
 
-    
+
     <name> :: eliza_rules -> eliza_rules ;
 
 */
@@ -624,7 +624,7 @@ define :define_form newrule;
     elseif x /= ";" then
         mishap(x, 1, 'bad syntax in newrule')
     endif;
-    
+
     ;;; declare a label for end of procedure, in case RETURN is used
     ;;; now compile the rule
     sysPROCEDURE(name, 0);
@@ -2012,8 +2012,8 @@ define :newrule condolence;
       memorial
       memoriam
       tombstone
-        ])  
-    and random(100) < 40    
+        ])
+    and random(100) < 40
     then
         CIRCULATE
             [
@@ -2450,7 +2450,7 @@ endsection;
             "define :newrule <name>"
 --- Aaron Sloman, Sep 17 2002
         Altered bham online elizaprog to run once and exit.
-        
+
 --- Aaron Sloman, Oct  6 2000
     Added a few more options, and made the circulation of lists go more
     than one step at a time, using a random step

@@ -20,7 +20,7 @@ uses xved;
 ;;; uses set_output;
 
 #_IF pop_internal_version > 142300
-    
+
     uses vedselection_clear;
 
     uses vedselection_compile;

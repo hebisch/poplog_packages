@@ -12,11 +12,11 @@ compile_mode :pop11 +strict;
 uses rc_graphic
 
 section;
-    
+
 define vars rc_draw_Rsquare(x, y, side);
     ;;; draw the rotatable rectangle  with centre at x,y
     rc_draw_Rrect(x, y, side, side)
 enddefine;
-    
+
 
 endsection;

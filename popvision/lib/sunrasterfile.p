@@ -534,7 +534,7 @@ define sunrasterfile(filename) /* -> (array, [cmap])*/;
 
         ;;; fix the type field
         RT_STANDARD -> rasheader.ras_type;
-        
+
     endif;
 
     ;;; Create the output array and maybe colour map
@@ -653,7 +653,7 @@ endsection;
 --- Aaron Sloman, Dec  6 2004
     For linux set the default value of -sunrasterfile_converter-
     to "convert"
-            
+
 --- Aaron Sloman, Jan  8 2003
     Forgot to fix the type field
         RT_STANDARD -> rasheader.ras_type;
@@ -664,7 +664,7 @@ endsection;
     and ras_type = RT_FORMAT_RGB (3)
     This fixes wrong display of colours after conversion of some files to .ras
     format by the 'convert' utility.
-        
+
 --- David Young, Oct 26 2001
         Allowed use of convert as well as imconv for input and output
         filtering. Added variable -sunrasterfile_converter-.

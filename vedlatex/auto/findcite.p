@@ -139,7 +139,7 @@ define require(item, repeater, next);
     ;;; check that item is the next thing produced by the repeater
     ;;; apart from newlines. If it is not item produce an error.
 
-    ;;; Leave newlines on the stack. They will be put in a list 
+    ;;; Leave newlines on the stack. They will be put in a list
     ;;; by the caller.
     while next == newline then next; repeater() -> next endwhile;
     ;;; [next ^next] ==>
@@ -229,7 +229,7 @@ define process_file(citewords, texfile) -> cited;
         define getcited(cited) -> cited;
             ;;; get the list of cite arguments, when a citation has been
             ;;; found
-            
+
             lvars next = getnextitem();
 
             ;;; [getcited: next ^next] =>
@@ -265,9 +265,9 @@ define process_file(citewords, texfile) -> cited;
                     ;;; found one, so add it to the list
                     conspair(next, cited) -> cited;
                 endunless;
-                
+
             endrepeat;
-            
+
         enddefine;
 
 
@@ -276,7 +276,7 @@ define process_file(citewords, texfile) -> cited;
 
         repeat
             getnextitem() -> next;
-        
+
         quitif(next == termin);
 
             ;;;beware of '\def' or '\newcommand' etc.
@@ -344,7 +344,7 @@ global vars
 
 
     ;;; remaining variables localised in process_bib
-    
+
     line_num,
 
     ;;; this will hold the current line of text, a string
@@ -451,7 +451,7 @@ define print_citestrings(getnextitem) -> char;
     ;;; end entry and one blank linke
     pr(newline);
     pr(newline);
-    
+
 enddefine;
 
 
@@ -519,11 +519,11 @@ define print_citations(cited, getnextitem) -> char;
                     next -> lastitem;
                 endif;
             endrepeat;
-            
+
             if next == "@"
                 and (lastitem == newline or lastitem == "}")
             then
-                
+
                 lvars
                     bibtype = getnextitem(),
                     bibtypelcase = uppertolower(bibtype);
@@ -540,7 +540,7 @@ define print_citations(cited, getnextitem) -> char;
                         ;;; [bibtype ^bibtype ] =>
 
                     ;;; line_num :: startlines -> startlines;
-                    
+
                     lvars key;
                     ;;; get citation key
                     until (nextchar(getnextitem) ->> char) == `{`
@@ -565,7 +565,7 @@ define print_citations(cited, getnextitem) -> char;
                         first_occurrence = false,
                         lcase_key = uppertolower(key);
 
-                    
+
 
                     if check_duplicates
                     and fast_lmember(key, checked_keys)
@@ -618,7 +618,7 @@ define print_citations(cited, getnextitem) -> char;
             endif;
 
         endrepeat;
-    endprocedure(); 
+    endprocedure();
 
     if duplicates /== [] then
         ;;; Print out list of duplicates removed:
@@ -760,12 +760,12 @@ define process_bib(cited, bibfile);
         ;;; convenient for some editors:
         pr(newline);
     endprocedure();
-    
+
 enddefine;
 
 /*
 
- CONTENTS       
+ CONTENTS
 
  define require(item, repeater, next);
  define process_file(citewords, texfile) -> cited;
@@ -809,5 +809,5 @@ global vars findcite = true;
 --- Aaron Sloman, Feb 14 2004
     Changed to rely a lot less on pop11 itemiser. Introduced option
     for indentation control.
-    
+
  */

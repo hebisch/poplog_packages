@@ -36,7 +36,7 @@ define rc_draw_triangle(x1, y1, x2, y2, x3, y3, colour, linewidth );
     if colour then colour -> rc_foreground(rc_window) endif;
     if linewidth then linewidth -> rc_linewidth endif;
 
-    
+
     rc_transxyout(x1, y1) -> (x1, y1);
 
     lconstant pointvec = initshortvec(8);
@@ -44,7 +44,7 @@ define rc_draw_triangle(x1, y1, x2, y2, x3, y3, colour, linewidth );
         rc_window,
         fill(x1, y1, rc_transxyout(x2, y2), rc_transxyout(x3, y3), x1, y1, pointvec),
          CoordModeOrigin)
-    
+
 enddefine;
 
 endsection;

@@ -153,7 +153,7 @@ vars x; for x from -500 by 5 to 500 do x -> rc_slider_value(ss4); endfor;
 
 ;;; Try again after:
 20-> rc_slider_step(ss4);
-    
+
 rc_kill_window_object(win1a);
 vars win1a = rc_new_window_object( 650, 20, 350, 350, true, 'win1');
 vars ss1 = rc_slider(0, 0, -100, -100, 100, 7, 'red','black',
@@ -371,7 +371,7 @@ define :mixin vars rc_slider_frame;
     slot rc_slider_barwidth = rc_slider_barwidth_def ;
     slot rc_slider_barcol = rc_slider_barcol_def ;
     slot rc_slider_barframe = rc_slider_barframe_def;
-    
+
     ;;; any string label will move with the blob.
     slot rc_pic_strings == [];
 
@@ -472,7 +472,7 @@ define :method create_slider_panel(slider:rc_slider_frame, panelinfo) -> numberi
     ;;; adjust for scale
     px/rc_xscale -> px;
     - py/rc_yscale -> py;
-    
+
     ;;; Adjust for width of bar
     lvars adjust = 0.5*max(ht, rc_slider_barwidth(slider));
 
@@ -924,7 +924,7 @@ define slider_value_from_coords(s, x, y) -> val;
         line = rc_line_orientation(s),
         (rangestart, rangeend) = destpair(rc_slider_range(s)),
         rangedist = rangeend - rangestart;
-    
+
     rc_project_point(x, y, x1, y1, explode(line)) -> (x,y);
     if rc_constrain_slider then
         constrain_between(x, x1, x2) -> x;
@@ -983,7 +983,7 @@ enddefine;
 
 define slider_blob_coords_from_value(blob, s, val) -> (x, y);
     slider_coords_from_value(s, val) -> (x, y);
-    ;;; may need further transformation???  
+    ;;; may need further transformation???
 enddefine;
 
 define lconstant adjust_step_value(s, val) -> val;
@@ -1044,7 +1044,7 @@ define :method updaterof rc_slider_value(newval, s:rc_slider_frame);
     if slider_win and slider_win /== old_win then
         slider_win -> rc_current_window_object
     endif;
-    
+
     ;;; Now convert to internal value
     rc_slider_convert_in(s)(newval) -> newval;
 
@@ -1111,7 +1111,7 @@ define :method updaterof rc_informant_value(val, numberin:rc_slider_panel);
     dlocal updating_level = updating_level + 1;
     unless updating_level > 1 then
         lvars slider = rc_numberin_slider(numberin);
-        
+
         dlocal rc_constrain_slider = true;
         val -> rc_slider_value(slider);
         ;;; Get value subject to slider constraints
@@ -1218,7 +1218,7 @@ define create_rc_slider(x1, y1, x2, y2, range, radius, linecol, slidercol, strin
                 strings(1), strings(2)
             else
                 mishap('Two lists of vectors needed for slider strings',[^strings])
-            endif   
+            endif
         else
             ;;; only strings for end1
             strings, []
@@ -1273,10 +1273,10 @@ define create_rc_slider(x1, y1, x2, y2, range, radius, linecol, slidercol, strin
     if labelfont then labelfont -> rc_slider_labels_font(slider); endif;
 
     if isnumber(stepval) then stepval -> rc_slider_step(slider) endif;
-    
+
     ;;; set up line and orientation information
     rc_initialise_mover(slider);
-    
+
     ;;; prevent drawing when this assignment runs
     dlocal in_rc_slider_updater = true;
     default -> rc_informant_value(slider);
@@ -1295,7 +1295,7 @@ define create_rc_slider(x1, y1, x2, y2, range, radius, linecol, slidercol, strin
 
     if rc_panel_slider_blob then
         ;;; create new moving panel for slider blob
-        
+
         lvars
             old_win = rc_current_window_object,
             side = round(2*radius) - 1,
@@ -1473,7 +1473,7 @@ CONTENTS
         Changed compile mode
 --- Aaron Sloman, Aug 25 2002
     replaced rc_ informant_contents with rc_informant_value
-        
+
 --- Aaron Sloman, Aug 24 2002
     Slightly reduced size of square drawn in
         rc_draw_vert_slider_blob

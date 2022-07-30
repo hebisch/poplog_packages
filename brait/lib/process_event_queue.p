@@ -60,7 +60,7 @@ define vars procedure rc_process_event_queue();
         vedcharinsert(char)
     enddefine;
 
-    
+
     define lconstant prmishapinved();
         ;;; If errors occur, restore output
         dlocal cucharout = oldcucharout, cucharerr = oldcucharerr;
@@ -83,7 +83,7 @@ define vars procedure rc_process_event_queue();
         rc_process_event(event);
     enduntil;
 
-    rc_sync_display();  
+    rc_sync_display();
 
     ;;; now process deferred events, outside of the context used for the
     ;;; current active window object

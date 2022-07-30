@@ -35,7 +35,7 @@ define prb_read_header(allow_section)
     if item == "vars" then
         ;;; the default (false -> type, i.e. variable)
         readitem() -> name;
-    elseif item == "constant" then  
+    elseif item == "constant" then
         ;;; should handle other options
         true -> type;
         readitem() -> name;
@@ -47,7 +47,7 @@ define prb_read_header(allow_section)
         ;;; anonymous definition. Allowed in define_ruleset
         false -> name;
     else
-         ;;; Semi-colon should terminate header 
+         ;;; Semi-colon should terminate header
         pop11_need_nextreaditem(";") -> ;
         if pop_vm_compiling_list == [] then
             ;;; not in a procedure definition

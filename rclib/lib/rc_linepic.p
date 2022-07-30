@@ -211,7 +211,7 @@ enddefine;
 define :method updaterof rc_coords(/*x, y,*/ pic:rc_linepic);
     -> (rc_picx(pic), rc_picy(pic))
 enddefine;
-    
+
 define :method rc_undrawn(pic:rc_linepic);
     ;;; Can't undraw default linepics, so do nothing.
 enddefine;
@@ -377,9 +377,9 @@ define :method rc_linepic_bounds(pic:rc_linepic, absolute)
         ;;; having found the relative bounds, compute the absolute bounds.
         lvars (startx, starty) = rc_coords(pic);
 
-        startx + xmax -> xmax;      
-        startx + xmin -> xmin;      
-        starty + ymax -> ymax;      
+        startx + xmax -> xmax;
+        startx + xmin -> xmin;
+        starty + ymax -> ymax;
         starty + ymin -> ymin;
     endif
 enddefine;
@@ -477,7 +477,7 @@ define rc_interpret_qualified_strings(list, pic);
             rc_set_drawing_colour(
                 pic, destpair(fast_back(list))-> list, rc_window);
         endif;
-            
+
     endwhile;
 
     ;;; environment set, so do it
@@ -497,7 +497,7 @@ define vars procedure rc_interpret_strings(strings, pic);
     if isprocedure(strings) or isword(strings) then
         recursive_valof(strings)(pic)
     else
-        
+
         until strings == [] do
 
             destpair(strings) -> ( item, strings );
@@ -656,7 +656,7 @@ define vars procedure rc_interpret_pics(pic_specs, pic);
             ;;; Now what is to be drawn. Default is open polyline
             ;;; Is there a keyword? E.g. "CIRCLE", or "ARC" or "CLOSED",
             ;;; or a procedure name.
-            
+
             if item == "CLOSED" then
                 ;;; draw closed polyline
                 rc_draw_pointlist(fast_back(pic_specs), true);
@@ -710,7 +710,7 @@ define vars procedure rc_draw_lines_normal(startx, starty, pic_specs, strings, p
     ;;; Draw the lines and strings for a rotateable linepic, interpreting
     ;;; keywords, such as CLOSED, CIRCLE, ARC, etc. in pic_specs
 
-    lvars old_current = rc_current_picture_object;  
+    lvars old_current = rc_current_picture_object;
 
     dlocal
         0 % ,
@@ -718,7 +718,7 @@ define vars procedure rc_draw_lines_normal(startx, starty, pic_specs, strings, p
                 unset_current_picture_object(old_current) endif%;
 
     set_current_picture_object(pic);
-            
+
     ;;; Use startx and starty as rc_xorigin and rc_yorigin
     ;;; Could be extended to use scale arguments. But for now
     ;;; assumes rc_xscale and rc_yscale are global.
@@ -819,7 +819,7 @@ define :method rc_draw_linepic(pic:rc_linepic);
         rc_coords(pic), rc_pic_lines(pic), rc_pic_strings(pic), pic)
 enddefine;
 
-        
+
 
 define :method rc_draw_linepic(pic:rc_linepic_movable);
     ;;; The method that does the drawing for a movable object
@@ -924,7 +924,7 @@ define :method rc_undraw_linepic(pic:rc_linepic_movable);
         false -> rc_oldx(pic);
     endif;
 enddefine;
-    
+
 define :method rc_undraw_linepic(pic:rc_rotatable);
     if rc_oldx(pic) then
         rc_draw_oldpic(pic);
@@ -1053,7 +1053,7 @@ nil -> proglist;
         At the suggestion of Jonathan Cunningham, added dummy (null) methods
             rc_move_to(pic:rc_linepic, newx, newy, draw);
             rc_move_by(pic:rc_linepic, dx, dy, draw);
-    
+
 --- Aaron Sloman, Sep  9 2002
         Changed compile mode
 --- Aaron Sloman, Aug  8 2002

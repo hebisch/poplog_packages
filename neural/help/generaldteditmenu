@@ -24,7 +24,7 @@ output converter function.
 This option allows you to change the number of arguments required by the
 output converter function and the number of results returned by the
 input converter function. This number is the same as the number of input
-or output units required to represent this datatype.             
+or output units required to represent this datatype.
 
 
 -- 'input converter' --------------------------------------------------

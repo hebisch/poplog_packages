@@ -34,7 +34,7 @@ define :method rc_draw_slider_square(s:rc_square_slider);
         ry = rc_slider_blobradius(s)/abs(rc_yscale),
         colour = rc_slider_blobcol(s),
         thick = round(rc_slider_square_thickness(s)/scale);
-    
+
     dlocal
         %rc_foreground(rc_window)%,
         rc_linewidth;

@@ -390,7 +390,7 @@ enddefine;
 define lconstant RC_add_pic_to_container(pic, item, moving);
     ;;; moving is a boolean, true for movable objects
     lvars win_obj;
-    
+
     if islist(item) then hd(item) else item endif -> win_obj;
 
     unless isinlist(win_obj, rc_pic_containers(pic)) then

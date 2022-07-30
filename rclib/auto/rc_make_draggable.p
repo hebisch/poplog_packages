@@ -29,7 +29,7 @@ define :method rc_make_draggable(win_obj:rc_window_object, button, xloc, yloc);
     define rc_drag_window(pic, x, y, modifiers, xloc, yloc);
         lvars xscale,yscale,container = rc_window_container(pic);
         rc_transxyout(x,y) -> (x,y);
-        if container then       
+        if container then
             explode(rc_window_origin(container)) -> ( , ,xscale, yscale);
             (x-xloc)/xscale -> x; (y-yloc)/yscale -> y;
         else

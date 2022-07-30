@@ -135,7 +135,7 @@ void bplearnseqr(niter,
                  weights,
                  wtchange,
                  nweights,
-                 eta,    
+                 eta,
                  alpha,
                  outvec,
                  ifail)

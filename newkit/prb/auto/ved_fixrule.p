@@ -125,7 +125,7 @@ define ved_fixrule();
     unless strmember(`l`, vedargument) then
         ;;; not the last rule, so delete 'enddefine;'
         ;;; should probably check!
-        vedlinedelete();    
+        vedlinedelete();
     endunless;
 enddefine;
 

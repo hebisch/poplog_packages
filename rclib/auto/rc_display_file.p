@@ -71,7 +71,7 @@ define vars rc_display_file(x, y, file, panel_fields, acceptor, reactor, rows, c
             string
         endrepeat
     %} -> strings;
-    
+
     [{blobcol ^rc_display_strings_surround_def} ^^scrollspecs] -> scrollspecs;
     rc_display_strings(x, y, strings, panel_fields, acceptor, reactor, rows, cols, scrollspecs, title,
         if container then container endif) -> panel;

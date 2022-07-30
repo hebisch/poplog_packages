@@ -55,5 +55,5 @@ define global vars procedure sysgetmailname(user) -> name;
     name -> mailnames(user);    ;;; cache
 
 enddefine;
-        
+
 endsection;

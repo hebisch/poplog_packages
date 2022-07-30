@@ -226,12 +226,12 @@ define lconstant applyto_all(proc, list);
     lvars
         item,
         procedure proc_val = recursive_valof(proc);
-    
+
     for item in list do
         proc_val(item)
     endfor;
 enddefine;
-    
+
 
 
 /*
@@ -589,16 +589,16 @@ define setup_simulation(setup_info);
             for win_info in rest do
                 lvars win_name, win_spec, win_frame, win;
                 win_info --> ! [?win_name ?win_spec];
-                
+
                 ;;; make sure the name is declared as a variable
                 sysVARS(win_name, 0);
 
                 unless startwin then win_name -> startwin endunless;
-                
+
                 if isrc_window_object(win_spec) then
                     win_spec -> win
                 else
-                    
+
                     ;;; Create new scenario window using win_spec, which should
                     ;;; be a list or vector of arguments for rc_new_window_object
 
@@ -611,7 +611,7 @@ define setup_simulation(setup_info);
                         explode(win_spec) ->win_frame, newsim_picagent_window) -> win;
                         fill(explode(win_frame), sim_picframe(win)) ->;
                         ;;;; [win_frame ^win_frame] ==>
-                        
+
                 endif;
                 win -> valof(win_name);
                 ;;; [window ^win_name ^(sim_picframe(win))] ==>
@@ -700,7 +700,7 @@ define setup_simulation(setup_info);
 
     ;;; print instructions:
     pr(newline);
-    lvars string;           
+    lvars string;
     for string in instructions do string => endfor;
 
 enddefine;

@@ -69,7 +69,7 @@ define rc_popup_readin(
         ;;; A text header field
         [TEXT
             {margin 5}  ;;; margin above and below the text
-            
+
             {align ^align} :
             ;;; Now the strings
             ^^strings
@@ -86,7 +86,7 @@ define rc_popup_readin(
 
     lvars input_field = rc_field_contents(rc_field_of_label(panel, "text1"));
 
-    
+
     rc_handle_text_input_temp -> rc_keypress_handler(panel);
     rc_button_1_down_temp -> rc_button_down_handlers(panel)(1);
 

@@ -1878,7 +1878,7 @@ define create_vehicle(vlength, width, coord_x, coord_y, direction,
                     ->> sensor -> sensor_list(sensor_num);
                 diagonal/2    -> sensor(2);
                 (360 - angle) -> sensor(3);
-            
+
             elseif sensor_location == "centre" then
             ;;;[CALCULATING centre sensor_num position]==>; ;;;debug
 

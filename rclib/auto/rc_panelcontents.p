@@ -6,7 +6,7 @@
                     including suggestions from Mark Gemmell
  > Documentation:   HELP RCLIB, HELP RC_CONTROL_PANEL
  > Related Files:   LIB rclib, LIB rc_control_panel, LIB rc_panel_field_value
-            
+
  */
 
 
@@ -113,7 +113,7 @@ define :method rc_panelcontents(panel:rc_panel, labels) -> item;
             endif
         endif;
     endif
-    
+
 enddefine;
 
 define :method updaterof rc_panelcontents(val, panel:rc_panel, labels);
@@ -123,7 +123,7 @@ define :method updaterof rc_panelcontents(val, panel:rc_panel, labels);
     unless panel == rc_current_window_object then
         panel -> rc_current_window_object;
     endunless;
-    
+
     if null(labels) or listlength(labels) /== 3 and last(labels) /== "val" then
         mishap('Inappropriate path for panelcontents updater', [%labels%]);
     else
@@ -136,7 +136,7 @@ define :method updaterof rc_panelcontents(val, panel:rc_panel, labels);
             endunless;
         elseif isrc_someof_button(item) then
             val -> rc_button_value(item);
-    
+
         elseif isrc_radio_button(item) then
             ;;; check that it makes sens to update. not if this mishaps
             rc_panelcontents(panel, labels) -> ;

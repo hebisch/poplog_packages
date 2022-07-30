@@ -12,7 +12,7 @@ uses rclib
 uses rc_text_input
 
 define vars procedure rc_consolidate_input(item);
-    
+
     if rc_text_input_active(item) then
         consolidate_or_activate(item)
     endif;

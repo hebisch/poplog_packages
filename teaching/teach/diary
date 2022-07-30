@@ -24,37 +24,37 @@ might be considered plagiarism).
          CONTENTS - (Use <ENTER> g to access required sections)
 
  -- Prerequisites
- -- Objectives 
- -- Quick revision of the pattern matcher 
- -- -- Example 1 
- -- -- Example 2 
- -- -- Example 3 
- -- -- Example 4 
- -- -- Example 5 
- -- -- Example 6 
- -- -- Example 7 
- -- -- Example 8 
- -- -- Example 9 
- -- -- Example 10: A toy Eliza-like application 
- -- -- Example 11: Another toy Eliza-like application 
- -- Quick revision of the database 
- -- -- ADD procedure 
- -- -- -- Example 12 
+ -- Objectives
+ -- Quick revision of the pattern matcher
+ -- -- Example 1
+ -- -- Example 2
+ -- -- Example 3
+ -- -- Example 4
+ -- -- Example 5
+ -- -- Example 6
+ -- -- Example 7
+ -- -- Example 8
+ -- -- Example 9
+ -- -- Example 10: A toy Eliza-like application
+ -- -- Example 11: Another toy Eliza-like application
+ -- Quick revision of the database
+ -- -- ADD procedure
+ -- -- -- Example 12
  -- -- -- Example 13
- -- -- PRESENT procedure 
- -- -- FOREACH-DO-ENDFOREACH 
+ -- -- PRESENT procedure
+ -- -- FOREACH-DO-ENDFOREACH
  -- -- -- Example 14
  -- -- -- Example 15
- -- -- FLUSH procedure 
- -- -- A Toy Eliza based on the database 
- -- The assignment 
- -- -- add_appointment() 
+ -- -- FLUSH procedure
+ -- -- A Toy Eliza based on the database
+ -- The assignment
+ -- -- add_appointment()
  -- -- cancel_appointment()
- -- -- appointments() 
+ -- -- appointments()
  -- -- search_appointments()
- -- -- Improvements 
+ -- -- Improvements
  -- Suggestions for the implementation
- -- Further reading 
+ -- Further reading
 
 
 -- Prerequisites ------------------------------------------------------
@@ -93,7 +93,7 @@ of  a class of lists).  See  HELP *MATCHES or  TEACH *MATCHES for more
 details.
 
 In the following, several examples of use of  the pattern matchers are
-given. They are also present in your lecture notes. 
+given. They are also present in your lecture notes.
 
 -- -- Example 1 ------------------------------------------------------
 
@@ -101,7 +101,7 @@ given. They are also present in your lecture notes.
 
 The result of compiling the  previous line is:
 
-** <true> 
+** <true>
 
 -- -- Example 2 ------------------------------------------------------
 
@@ -109,7 +109,7 @@ The result of compiling the  previous line is:
 
 The result of compiling the  previous line is:
 
-** <true> 
+** <true>
 
 -- -- Example 3 ------------------------------------------------------
 
@@ -117,7 +117,7 @@ The result of compiling the  previous line is:
 
 The result of compiling the  previous line is:
 
-** <true> 
+** <true>
 
 -- -- Example 4 ------------------------------------------------------
 
@@ -125,7 +125,7 @@ The result of compiling the  previous line is:
 
 The result of compiling the  previous line is:
 
-** <false> 
+** <false>
 
 -- -- Example 5 ------------------------------------------------------
 
@@ -133,7 +133,7 @@ The result of compiling the  previous line is:
 
 The result of compiling the  previous line is:
 
-** <true> 
+** <true>
 
 -- -- Example 6 ------------------------------------------------------
 
@@ -141,7 +141,7 @@ The result of compiling the  previous line is:
 
 The result of compiling the  previous line is:
 
-** <true> 
+** <true>
 
 -- -- Example 7 ------------------------------------------------------
 
@@ -150,8 +150,8 @@ vars l;
 l =>
 
 The result of compiling the  previous lines is:
-** <true> 
-** A 
+** <true>
+** A
 
 -- -- Example 8 ------------------------------------------------------
 
@@ -159,7 +159,7 @@ The result of compiling the  previous lines is:
 l =>
 
 The result of compiling the  previous lines is:
-** <true> 
+** <true>
 ** [a b c]
 
 
@@ -173,15 +173,15 @@ lvars l;
 l =>
 
 The result of compiling the  previous lines is:
-** <true> 
+** <true>
 ** [a b c]
 
 
 -- -- Example 10: A toy Eliza-like application ------------------------
 
 readline() -> x;
-if x matches [== my name is ??l] then 
-    [Hello ^^l !] ==> 
+if x matches [== my name is ??l] then
+    [Hello ^^l !] ==>
 endif
 
 The result of compiling the  previous lines with the following input:
@@ -202,8 +202,8 @@ is
 
 vars x, y;
 readline() -> x;
-if x matches [== father ==] or 
-   x matches [== mother ==] then 
+if x matches [== father ==] or
+   x matches [== mother ==] then
     [Tell me more about your family] =>
 elseif x matches [ == I am ??y] then
     [Did you come here because you are ^^y?] =>
@@ -271,7 +271,7 @@ database ==>
 
 The result of compiling the  previous lines is:
 
-** [[this is a thing I want to remember]] 
+** [[this is a thing I want to remember]]
 
 -- -- -- Example 13 -----------------------------------------------------
 
@@ -287,7 +287,7 @@ lines is:
 
 ** [[this is another important thing]
     [this is a thing I want to remember]]
-** [this is another important thing] 
+** [this is another important thing]
 
 -- -- PRESENT procedure -----------------------------------------------
 
@@ -301,8 +301,8 @@ it =>
 After Example 12  and 13 have been run,   the result of  compiling the
 previous lines is:
 
-** <true> 
-** [this is another important thing] 
+** <true>
+** [this is another important thing]
 
 -- -- FOREACH-DO-ENDFOREACH ------------------------------------------
 
@@ -311,8 +311,8 @@ the database that matches a given pattern. Here are some examples.
 
 -- -- -- Example 14 --------------------------------------------------
 
-foreach [== thing ==] do 
-    it => 
+foreach [== thing ==] do
+    it =>
 endforeach;
 
 The result of compiling the previous lines is:
@@ -322,8 +322,8 @@ The result of compiling the previous lines is:
 
 -- -- -- Example 15 --------------------------------------------------
 
-foreach [this is ??x] do 
-    x => 
+foreach [this is ??x] do
+    x =>
 endforeach;
 
 The result of compiling the previous lines is:
@@ -354,7 +354,7 @@ add([problem 'Is this the reason why you came here?']);
 define eliza();
     lvars sentence, topic, reply, word;
 
-    repeat 
+    repeat
         readline() -> sentence;
         foreach ![?topic ?reply] do
            for word in sentence do
@@ -380,7 +380,7 @@ Tell me more about your family
 
 By using what you have learnt  on Pop-11 (in particular on procedures,
 loops, conditionals,  the pattern matcher and  the  database), try and
-write a set of procedures that implement  an electronic diary. 
+write a set of procedures that implement  an electronic diary.
 
 Do this  in a file  called diary.p in  your home directory.  Save this
 file at  the end of  the workshop and make   sure that it  is readable
@@ -432,7 +432,7 @@ important. As  ":" can be used to  express numbers in a different base
 (e.g.  in  binary or octal), if   the spaces  are  absent, Pop-11 will
 interpret 10:30 as    the number 30  in   base 10. Try compiling   the
 following line:
-      
+
     [10:30am] =>
 
 -- -- cancel_appointment() -------------------------------------------
@@ -508,7 +508,7 @@ A possible call could be:
 search_appointments( [March =], [== am], [==] )
 
 This call would retrieve all the appointments in the diary which are
-in March AND in the morning. 
+in March AND in the morning.
 
 The structure    of this   procedure  would  be   similar to  that  of
 appointments() (which could actually call search_appointments() with a
@@ -527,7 +527,7 @@ could use the instructions
 
    database -> datafile('MY_FILENAME');
 
-to save the database in a file called MY_FILENAME, and 
+to save the database in a file called MY_FILENAME, and
 
    datafile('MY_FILENAME') -> database;
 
@@ -546,10 +546,10 @@ Documentation on basic database facilities can be found in
 HELP * ADD * PRESENT, * LOOKUP, * REMOVE, * FLUSH, * MATCHES, * IT,
     * ISIN, *AREIN * WHICH * FOREACH * ALLPRESENT * FOREVERY.
 
-TEACH * POPCORE 
+TEACH * POPCORE
   Is an online summary of a subset of Pop-11.
 
-TEACH * PRIMER 
+TEACH * PRIMER
   Is a large  introduction to most  Pop-11 features.  (Paper copies  of
   this file are available for a small fee in the School library.)
 

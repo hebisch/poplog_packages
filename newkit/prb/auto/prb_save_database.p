@@ -48,7 +48,7 @@ uses poprulebase
 
 ;;; This variable defined in LIB poprulebase. It gets the value of
 ;;; sim_noprint_keys in LIB sim_agent
-vars prb_noprint_keys;  
+vars prb_noprint_keys;
 
 define prb_save_database(db, include_keys, exclude_keys) -> dblist;
     [%

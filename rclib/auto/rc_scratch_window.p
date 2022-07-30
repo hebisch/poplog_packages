@@ -123,7 +123,7 @@ define updaterof active rc_scratch_window(item);
             rc_window_location(default_window) ->
             (rc_scratch_x, rc_scratch_y,
                 rc_scratch_width, rc_scratch_height);
-            
+
             rc_scratch_x + rc_window_x_offset -> rc_scratch_x;
             rc_scratch_y + rc_window_y_offset -> rc_scratch_y;
             false ->  default_window;
@@ -150,7 +150,7 @@ define rc_tearoff();
     ;;; forget but don't destroy the current scratchpad. Add it to
     ;;; the tearoffs
     undef  -> rc_scratch_window;
-    
+
     ;;; get new scratch window
     rc_scratch_window ->;
 enddefine;
@@ -189,7 +189,7 @@ define lconstant switch_scratchpad();
             ;;; make the current window the scratchpad
             delete(win_obj,scratchpad_tearoffs, nonop ==) -> scratchpad_tearoffs;
         endif;
-    endif;  
+    endif;
     win_obj -> default_window;
 enddefine;
 

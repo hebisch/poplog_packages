@@ -67,6 +67,6 @@ define rc_add_kill_button(win, x, y, buttonwidth, buttonheight);
             x, y, buttonwidth, buttonheight,
             ['KILL' rc_kill_panel], "action", buttonspec) ->;
 
-enddefine;  
+enddefine;
 
 endsection;
