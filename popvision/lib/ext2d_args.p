@@ -63,8 +63,8 @@ define ext2d_args(arrlist, region) -> args;
     ;;; Check arrays organised by row, have same no. of dimensions
     ;;; and include region.
     for arr in arrlist do
-        unless arr.isarray_by_row then
-            mishap(arr, 1, 'Need array ordered by row')
+        unless isarray_by_column(arr) then
+            mishap(arr, 1, 'Need array ordered by column')
         endunless;
         if ndim then
             unless pdnargs(arr) == ndim then

@@ -190,8 +190,8 @@ define lconstant array_vec(arr, reg)
         1 -> ncols;
 
     elseif adim == 2 then
-        unless arr.isarray_by_row then
-            mishap(arr, 1, 'lapop: Need array arranged "by row"')
+        unless isarray_by_column(arr) then
+            mishap(arr, 1, 'lapop: Need array arranged "by column"')
         endunless;
         lvars (ax0, ax1, ay0, ay1) = explode(b);
 

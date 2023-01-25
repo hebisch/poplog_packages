@@ -105,8 +105,8 @@ oldanyarray(tag, bounds_list, element_init, init_p, subscr_p) -> array
         used to hold one element of the array, which is one way of
         implementing packed arrays of complex numbers.)
 
-        The other arguments to newanyarray, arrayvec_offset and by_row,
-        are not supported, but poparray_by_row can be used to control
+        The other arguments to newanyarray, arrayvec_offset and by_column,
+        are not supported, but poparray_by_column can be used to control
         row or column ordering.
 
         Two arrays created by oldanyarray may share storage if both

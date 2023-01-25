@@ -46,7 +46,7 @@ define arrayshift(arr, shift /* [, shiftcrds]*/) /* -> newarr */;
 
     if arr.isarray then
         lvars ( , off) = arrayvector_bounds(arr);
-        newanyarray(newb, arr, off-1, arr.isarray_by_row)
+        newanyarray(newb, arr, off-1, isarray_by_column(arr))
     else
         newb
     endif

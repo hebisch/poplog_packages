@@ -1340,8 +1340,8 @@ define lconstant byrow1(arr, region, tag) -> arr;
     ;;; Would be more efficient if low-level procedures could handle
     ;;; by-column arrays, but this would need considerable work,
     ;;; especially to arraysample.
-    ;;; Expect poparray_by_row to be <true> when called.
-    unless arr.isarray_by_row then
+    ;;; Expect poparray_by_column to be <true> when called.
+    unless isarray_by_column(arr) then
         oldanyarray(tag, region or boundslist(arr), arr,
             datakey(arrayvector(arr))) -> arr
     endunless
@@ -1375,7 +1375,7 @@ enddefine;
 define rc_array(arr, arr_region, win_region, arr_cols, win_cols);
     dlocal
         rc_array_sample,        ;;; may be changed if arr_cols is "direct"
-        poparray_by_row = true; ;;; for all lower level routines
+        poparray_by_column = true; ;;; for all lower level routines
 
     ;;; start a new window if necessary - do not call rc_start as this
     ;;; resets the coordinates

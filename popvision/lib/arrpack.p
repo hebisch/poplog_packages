@@ -361,7 +361,7 @@ define lconstant spec(argno, arr, reg, samp) -> specv;
         fast_subscrv(N, fast_subscrv(fi_check(argno,1,maxargs), specvecs))
     endif -> specv;
 
-    lvars firstfastest = arr.isarray_by_row, bds = arr.boundslist;
+    lvars firstfastest = isarray_by_column(arr), bds = arr.boundslist;
     if reg == [] and samp == 1 then    ;;; just need array bounds
         firstfastest and 8:22 or 8:20 -> fast_subscrintvec(1, specv);
         N -> fast_subscrintvec(2, specv);
@@ -428,7 +428,7 @@ define lconstant indvec(n, arr, ind) -> (ind, offset, len);
         endunless;
         lvars
             (b1, b2, b3, b4) = explode(boundslist(ind)),
-            ff = ind.isarray_by_row;            ;;; first fastest
+            ff = isarray_by_column(ind);            ;;; first fastest
         unless b1 == 1 and b3 == 1 then
             mishap(ind, 1, 'arrpack: index array dimensions not 1-based')
         endunless;

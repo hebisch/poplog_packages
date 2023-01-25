@@ -324,8 +324,7 @@ spec. There are various possibilities:
 Floating point array arguments must be "packed" arrays (that is, made
 specially to contain numerical data, not ordinary Pop-11 arrays which
 have a "full" arrayvector). They must be created with the variable
-*poparray_by_row set to <true> (that is, they are stored "by column",
-oddly enough).
+*poparray_by_column set to <true> (that is, they are stored "by column").
 
 You can create suitable arrays using the procedures in *popvision:
 

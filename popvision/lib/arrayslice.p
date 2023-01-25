@@ -83,7 +83,7 @@ define arrayslice(arr, dim, i, arrout, regionout) -> arrout;
             adddim(boundsout, dim, i) -> boundsoutp
         endif;
         lvars ( , off) = arrayvector_bounds(arrout);
-        newanyarray(boundsoutp, arrout, off-1, arrout.isarray_by_row)
+        newanyarray(boundsoutp, arrout, off-1, isarray_by_column(arrout))
             -> arroutp
     endif;
 
@@ -95,7 +95,7 @@ define arrayslice(arr, dim, i, arrout, regionout) -> arrout;
     ;;; Otherwise need to build (N-1)-dim array on N-dim arroutp, which
     ;;; will already have regionout as its boundslist.
     unless arrout then
-        newanyarray(regionout, arroutp, arroutp.isarray_by_row) -> arrout
+        newanyarray(regionout, arroutp, isarray_by_column(arroutp)) -> arrout
     endunless
 enddefine;
 
@@ -125,7 +125,7 @@ define updaterof arrayslice(arrin, regionin, arrout, dim, i);
 
     lvars arrinp,
         ( , off) = arrayvector_bounds(arrin);
-    newanyarray(boundsinp, arrin, off-1, arrin.isarray_by_row) -> arrinp;
+    newanyarray(boundsinp, arrin, off-1, isarray_by_column(arrin)) -> arrinp;
 
     arraysample(arrinp, regionout, arrout, regionout, "nearest") -> ;
 enddefine;

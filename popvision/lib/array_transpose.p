@@ -36,16 +36,16 @@ define array_transpose(arrin, region, arrout) -> arrout;
     else
         newanyarray(regout, datakey(arrayvector(arrin))) -> arrout
     endif;
-    if arrin.issfloatarray and arrin.isarray_by_row
-    and arrout.issfloatarray and arrout.isarray_by_row then
+    if arrin.issfloatarray and isarray_by_column(arrin)
+    and arrout.issfloatarray and isarray_by_column(arrout) then
         ;;; can use external routine
         lvars
             argsin = ext2d_args([^arrin], region),
             ( , , vecout, offout, xincout)
             = explode(ext2d_args([^arrout], regout));
         exacc array_transpose_f(explode(argsin), vecout, offout, xincout);
-    elseif arrin.isbytearray and arrin.isarray_by_row
-    and arrout.isbytearray and arrout.isarray_by_row then
+    elseif arrin.isbytearray and isarray_by_column(arrin)
+    and arrout.isbytearray and isarray_by_column(arrout) then
         ;;; can use external routine
         lvars
             argsin = ext2d_args([^arrin], region),

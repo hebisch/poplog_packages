@@ -537,7 +537,7 @@ enddefine;
 
 define procedure arraysample(arrin, regionin, arrout, regionout)
         -> arrout;
-    dlocal poparray_by_row = true;      ;;; ensure arrays created correctly
+    dlocal poparray_by_column = true;      ;;; ensure arrays created correctly
 
     lvars opt = "nearest";      ;;; optional argument
     if regionout.isword then
@@ -569,11 +569,11 @@ define procedure arraysample(arrin, regionin, arrout, regionout)
 
     ;;; Check arrayed by row. If necessary, could handle by-column arrays
     ;;; by flipping boundslists, but gets complex.
-    unless arrin.isarray_by_row then
-        mishap(arrin, 1, 'Input array must be ordered by row')
+    unless isarray_by_column(arrin) then
+        mishap(arrin, 1, 'Input array must be ordered by column')
     endunless;
-    unless not(arrout) or arrout.isarray_by_row then
-        mishap(arrout, 1, 'Output array must be ordered by row')
+    unless not(arrout) or isarray_by_column(arrout) then
+        mishap(arrout, 1, 'Output array must be ordered by column')
     endunless;
 
     ;;; get type of output array - convert on first call to resample_nx1d

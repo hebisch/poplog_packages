@@ -30,8 +30,8 @@ define lconstant float_2d_array_check(arr, tag) /* -> arr */;
     ;;; Checks an array is 2d.
     ;;; Checks the array has a float array vector, and if not,
     ;;; constructs a new array of that type, with the data copied.
-    dlocal poparray_by_row = true;
-    unless arr.isarray_by_row and pdnargs(arr) == 2 then
+    dlocal poparray_by_column = true;
+    unless isarray_by_column(arr) and pdnargs(arr) == 2 then
         mishap(arr, 1, 'Need 2-D array ordered by row')
     endunless;
     if arr.issfloatarray then

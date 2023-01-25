@@ -260,8 +260,8 @@ define lconstant array_spec(arr, reg, ndim, prec)
         ndim or 1 -> ndim;
 
     elseif adim == 2 then
-        unless arr.isarray_by_row then
-            mishap(arr, 1, 'lapack: Need array arranged "by row"')
+        unless isarray_by_column(arr) then
+            mishap(arr, 1, 'lapack: Need array arranged "by column"')
         endunless;
 
         lvars (ax0, ax1, ay0, ay1) = explode(b);

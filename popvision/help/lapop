@@ -196,7 +196,7 @@ In general, arrays of any type can be used as input or output arguments,
 with a few restrictions. The active regions of input arrays must contain
 only numbers, and output arrays where supplied must be such that the
 results can be assigned to them. Arrays must be created with the
-variable *poparray_by_row set to <true> (the default). The array
+variable *poparray_by_column set to <true> (the default). The array
 arguments in a call to a procedure do not need to be the same type.
 
 Thus "ordinary" Pop-11 arrays created with *newarray can always be used

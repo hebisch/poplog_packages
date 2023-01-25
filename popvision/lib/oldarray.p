@@ -52,7 +52,8 @@ define oldanyarray(tag, bounds, key) -> arr;
 
         ;;; Get array for this tag
         unless (arraystore(tag) ->> arr) and boundslist(arr) = bounds
-        and arr.isarray_by_row == poparray_by_row and elem_init == [] then
+          and isarray_by_column(arr) == poparray_by_column and elem_init == []
+        then
             if arr and length(arrayvector(arr)) >= size_p(boundsize(bounds))
             then
                 ;;; Create an array on top of the existing arrayvector.

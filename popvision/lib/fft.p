@@ -109,7 +109,7 @@ enddefine;
 define lconstant negate_region(arr, region);
     ;;; Negates each element of arr in place.
     unless region then boundslist(arr) -> region endunless;
-    if arr.issfloatarray and arr.isarray_by_row then
+    if arr.issfloatarray and isarray_by_column(arr) then
         lconstant arrlist = [0];
         arr -> hd(arrlist);
         exacc negate_region_EXT(explode(ext2d_args(arrlist, region)))
@@ -124,7 +124,7 @@ enddefine;
 
 define lconstant multiply_region(f, arr, region);
     ;;; Multiplies each element of arr in place.
-    if arr.issfloatarray and arr.isarray_by_row then
+    if arr.issfloatarray and isarray_by_column(arr) then
         lconstant arrlist = [0];
         arr -> hd(arrlist);
         exacc multiply_region_EXT(
@@ -896,7 +896,7 @@ enddefine;
 
 
 define fft_2d(N, M, dir, inr, ini, outr, outi) -> (outr, outi);
-    dlocal poparray_by_row = true;
+    dlocal poparray_by_column = true;
 
     ;;; Check and sort out args - first N and M
     if (N and N /== nextpow2(N)) or (M and M /== nextpow2(M)) then
@@ -906,9 +906,9 @@ define fft_2d(N, M, dir, inr, ini, outr, outi) -> (outr, outi);
     ;;;     - inputs
     lvars b = boundslist(inr), inx0, inx1, iny0, iny1;
     unless pdnargs(inr) == 2 and b = boundslist(ini)
-    and inr.isarray_by_row and ini.isarray_by_row then
+    and isarray_by_column(inr) and isarray_by_column(ini) then
         mishap(inr, ini, 2,
-            'Input arrays must be 2-D, arrayed by row, with same boundslists')
+         'Input arrays must be 2-D, arrayed by column, with same boundslists')
     endunless;
     explode(b) -> (inx0, inx1, iny0, iny1);
     N or nextpow2(inx1 - inx0 + 1) -> N;
@@ -922,10 +922,10 @@ define fft_2d(N, M, dir, inr, ini, outr, outi) -> (outr, outi);
         boundslist(outr) -> bout;
         unless pdnargs(outr) == 2 and bout = boundslist(outi)
         and arrayvector(outr) /== arrayvector(outi)
-        and outr.isarray_by_row and outi.isarray_by_row then
+        and isarray_by_column(outr) and isarray_by_column(outi) then
             mishap(outr, outi, 2,
                 'Output arrs must be 2-D, same boundslists, '
-                <> 'arrayed by row with different arrayvectors')
+                <> 'arrayed by column with different arrayvectors')
         endunless;
         explode(bout) -> (outx0, outx1, outy0, outy1);
         ;;; Calculate first point for transform (must be congruent to 0)
@@ -1005,7 +1005,7 @@ enddefine;
 
 
 define fft_2d_real_fwd(N, M, inr, outr, outi) -> (outr, outi);
-    dlocal poparray_by_row = true;
+    dlocal poparray_by_column = true;
 
     ;;; Check and sort out args - first N and M
     if (N and N /== nextpow2(N)) or (M and M /== nextpow2(M)) then
@@ -1015,9 +1015,9 @@ define fft_2d_real_fwd(N, M, inr, outr, outi) -> (outr, outi);
     ;;;     - inputs
     lvars b = boundslist(inr),
         inx0, inx1, iny0, iny1, sx0, sy0, inxsize, inoffr;
-    unless pdnargs(inr) == 2 and inr.isarray_by_row then
+    unless pdnargs(inr) == 2 and isarray_by_column(inr) then
         mishap(inr, 1,
-            'Input array must be 2-D, arrayed by row')
+            'Input array must be 2-D, arrayed by column')
     endunless;
     explode(b) -> (inx0, inx1, iny0, iny1);
     N or nextpow2(inx1 - inx0 + 1) -> N;
@@ -1049,10 +1049,10 @@ define fft_2d_real_fwd(N, M, inr, outr, outi) -> (outr, outi);
         boundslist(outr) -> bout;
         unless pdnargs(outr) == 2 and bout = boundslist(outi)
         and arrayvector(outr) /== arrayvector(outi)
-        and outr.isarray_by_row and outi.isarray_by_row then
+        and isarray_by_column(outr) and isarray_by_column(outi) then
             mishap(outr, outi, 2,
                 'Output arrs must be 2-D, same boundslists, '
-                <> 'arrayed by row with different arrayvectors')
+                <> 'arrayed by column with different arrayvectors')
         endunless;
         explode(bout) -> (outx0, outx1, outy0, outy1);
         ;;; Calculate first point for transform (must be congruent to 0)
@@ -1128,7 +1128,7 @@ enddefine;
 
 
 define fft_2d_real_bckwd(N, M, inr, ini, outr) -> outr;
-    dlocal poparray_by_row = true;
+    dlocal poparray_by_column = true;
 
     ;;; Check and sort out args - first N and M
     if (N and N /== nextpow2(N)) or (M and M /== nextpow2(M)) then
@@ -1139,9 +1139,9 @@ define fft_2d_real_bckwd(N, M, inr, ini, outr) -> outr;
     lvars b = boundslist(inr),
         inx0, inx1, iny0, iny1, sx0, sy0, inxsize, inoffr, inoffi;
     unless pdnargs(inr) == 2 and b = boundslist(ini)
-    and inr.isarray_by_row and ini.isarray_by_row then
+    and isarray_by_column(inr) and isarray_by_column(ini) then
         mishap(inr, ini, 2,
-            'Input arrays must be 2-D, arrayed by row, with same boundslists')
+         'Input arrays must be 2-D, arrayed by column, with same boundslists')
     endunless;
     explode(b) -> (inx0, inx1, iny0, iny1);
     N or 2*nextpow2(inx1 - inx0) -> N;    ;;; assume x-axis truncated
@@ -1171,8 +1171,8 @@ define fft_2d_real_bckwd(N, M, inr, ini, outr) -> outr;
         tx0, ty0, tregion, outrE= false;
     if outr.isarray then            ;;; output array supplied
         boundslist(outr) -> bout;
-        unless pdnargs(outr) == 2 and outr.isarray_by_row then
-            mishap(outr, 1, 'Output array must be 2-D, arrayed by row')
+        unless pdnargs(outr) == 2 and isarray_by_column(outr) then
+            mishap(outr, 1, 'Output array must be 2-D, arrayed by column')
         endunless;
         explode(bout) -> (outx0, outx1, outy0, outy1);
         ;;; Calculate first point for transform (must be congruent to 0)
@@ -1241,7 +1241,7 @@ enddefine;
 
 
 define fft_2d_real_sym(N, M, dir, inr, outr) -> outr;
-    dlocal poparray_by_row = true;
+    dlocal poparray_by_column = true;
 
     ;;; Check and sort out args - first N and M
     if (N and N /== nextpow2(N)) or (M and M /== nextpow2(M)) then
@@ -1252,7 +1252,7 @@ define fft_2d_real_sym(N, M, dir, inr, outr) -> outr;
     lvars
         b = boundslist(inr),
         (inx0, inx1, iny0, iny1) = explode(b);
-    unless pdnargs(inr) == 2 and inr.isarray_by_row then
+    unless pdnargs(inr) == 2 and isarray_by_column(inr) then
         mishap(inr, 1,
             'Input array must be 2-D, arrayed by row')
     endunless;
@@ -1337,7 +1337,7 @@ define fft_2d_real_sym(N, M, dir, inr, outr) -> outr;
     if outr.isarray then            ;;; output arrays supplied
         boundslist(outr) -> bout;
         explode(bout) -> (outx0, outx1, outy0, outy1);
-        unless pdnargs(outr) == 2 and outr.isarray_by_row then
+        unless pdnargs(outr) == 2 and isarray_by_column(outr) then
             mishap(outr, 1, 'Output array must be 2-D, arrayed by row')
         endunless;
         ;;; Calculate first point for transform (must be congruent to 0)
